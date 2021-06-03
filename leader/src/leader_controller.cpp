@@ -57,9 +57,9 @@ void payload_imu_callback(const sensor_msgs::Imu::ConstPtr& msg){
   // tf::Quaternion Q(x, y, z, w);
   // tf::Matrix3x3(Q).getRPY(payload_roll, payload_pitch, payload_yaw);
 
-  // R_pl_B << cos(payload_yaw), sin(payload_yaw),   0,
-  //          -sin(payload_yaw), cos(payload_yaw),   0,
-  //                          0,                0,   1;
+  R_pl_B << cos(payload_yaw), sin(payload_yaw),   0,
+           -sin(payload_yaw), cos(payload_yaw),   0,
+                           0,                0,   1;
 
   Eigen::Vector3d tmp;
   tmp << imu_data.angular_velocity.x,

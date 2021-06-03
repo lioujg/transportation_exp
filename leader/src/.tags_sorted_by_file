@@ -1,0 +1,53 @@
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+Izz	leader_controller.cpp	/^double mp = 0.5, L = 1.0, g = 9.8, Izz = mp*L*L\/12;$/;"	v
+L	leader_controller.cpp	/^double mp = 0.5, L = 1.0, g = 9.8, Izz = mp*L*L\/12;$/;"	v
+PAYLOAD_LENGTH	leader_controller.cpp	18;"	d	file:
+PI	leader_controller.cpp	20;"	d	file:
+R_pl_B	leader_controller.cpp	/^Eigen::Matrix3d R_pl_B;$/;"	v
+ax	leader_controller.cpp	/^double vir_x, vir_y, theta_r, vx, vy, ax, ay, jx, jy;$/;"	v
+ay	leader_controller.cpp	/^double vir_x, vir_y, theta_r, vx, vy, ax, ay, jx, jy;$/;"	v
+controller_force	leader_controller.cpp	/^geometry_msgs::Point controller_force;$/;"	v
+debug_msg	leader_controller.cpp	/^geometry_msgs::Point debug_msg;$/;"	v
+desired_pose	leader_controller.cpp	/^geometry_msgs::PoseStamped desired_pose;$/;"	v
+err_state	leader_controller.cpp	/^Eigen::Vector3d err_state;$/;"	v
+est_vel_cb	leader_controller.cpp	/^void est_vel_cb(const geometry_msgs::Point::ConstPtr& msg){$/;"	f
+eta_cb	leader_controller.cpp	/^void eta_cb(const geometry_msgs::Point::ConstPtr& msg){$/;"	f
+flag	leader_controller.cpp	/^bool flag = false;$/;"	v
+g	leader_controller.cpp	/^double mp = 0.5, L = 1.0, g = 9.8, Izz = mp*L*L\/12;$/;"	v
+imu_data	leader_controller.cpp	/^sensor_msgs::Imu imu_data;$/;"	v
+jx	leader_controller.cpp	/^double vir_x, vir_y, theta_r, vx, vy, ax, ay, jx, jy;$/;"	v
+jy	leader_controller.cpp	/^double vir_x, vir_y, theta_r, vx, vy, ax, ay, jx, jy;$/;"	v
+k1	leader_controller.cpp	/^double k1 = 1.0, k2 = 2.0, k3 = 1.0, kv = 2.5, kw = 7.0;$/;"	v
+k2	leader_controller.cpp	/^double k1 = 1.0, k2 = 2.0, k3 = 1.0, kv = 2.5, kw = 7.0;$/;"	v
+k3	leader_controller.cpp	/^double k1 = 1.0, k2 = 2.0, k3 = 1.0, kv = 2.5, kw = 7.0;$/;"	v
+kv	leader_controller.cpp	/^double k1 = 1.0, k2 = 2.0, k3 = 1.0, kv = 2.5, kw = 7.0;$/;"	v
+kw	leader_controller.cpp	/^double k1 = 1.0, k2 = 2.0, k3 = 1.0, kv = 2.5, kw = 7.0;$/;"	v
+last_w	leader_controller.cpp	/^double last_w = 0.0;$/;"	v
+main	leader_controller.cpp	/^int main(int argc, char **argv){$/;"	f
+mp	leader_controller.cpp	/^double mp = 0.5, L = 1.0, g = 9.8, Izz = mp*L*L\/12;$/;"	v
+nonholonomic_output	leader_controller.cpp	/^Eigen::Vector3d nonholonomic_output(double x_r, double y_r, double theta_r, double v_r, double w_r){$/;"	f
+normal	leader_controller.cpp	19;"	d	file:
+optitrack_payload_yaw_callback	leader_controller.cpp	/^void optitrack_payload_yaw_callback(const geometry_msgs::Pose2D::ConstPtr& msg){$/;"	f
+payload_imu_callback	leader_controller.cpp	/^void payload_imu_callback(const sensor_msgs::Imu::ConstPtr& msg){$/;"	f
+payload_yaw	leader_controller.cpp	/^float payload_yaw;$/;"	v
+pc2_cb	leader_controller.cpp	/^void pc2_cb(const geometry_msgs::Point::ConstPtr& msg){$/;"	f
+pc2_est	leader_controller.cpp	/^Eigen::Vector3d pc2_est;$/;"	v
+pose	leader_controller.cpp	/^Eigen::Vector3d pose, vel;$/;"	v
+theta_e	leader_controller.cpp	/^double x_e, y_e, theta_e;$/;"	v
+theta_r	leader_controller.cpp	/^double vir_x, vir_y, theta_r, vx, vy, ax, ay, jx, jy;$/;"	v
+tick	leader_controller.cpp	/^unsigned int tick = 0;$/;"	v
+v_p	leader_controller.cpp	/^Eigen::Vector3d v_p;$/;"	v
+v_w_eta	leader_controller.cpp	/^Eigen::Vector3d v_w_eta;$/;"	v
+vel	leader_controller.cpp	/^Eigen::Vector3d pose, vel;$/;"	v
+vir_x	leader_controller.cpp	/^double vir_x, vir_y, theta_r, vx, vy, ax, ay, jx, jy;$/;"	v
+vir_y	leader_controller.cpp	/^double vir_x, vir_y, theta_r, vx, vy, ax, ay, jx, jy;$/;"	v
+vx	leader_controller.cpp	/^double vir_x, vir_y, theta_r, vx, vy, ax, ay, jx, jy;$/;"	v
+vy	leader_controller.cpp	/^double vir_x, vir_y, theta_r, vx, vy, ax, ay, jx, jy;$/;"	v
+w_	leader_controller.cpp	/^Eigen::Vector3d w_;$/;"	v
+x_e	leader_controller.cpp	/^double x_e, y_e, theta_e;$/;"	v
+y_e	leader_controller.cpp	/^double x_e, y_e, theta_e;$/;"	v
