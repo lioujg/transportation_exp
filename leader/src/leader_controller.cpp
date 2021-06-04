@@ -29,6 +29,8 @@ double vir_x, vir_y, theta_r, vx, vy, ax, ay, jx, jy;
 double last_w = 0.0;
 
 float payload_yaw;
+// double payload_roll, payload_yaw, payload_pitch;
+
 Eigen::Vector3d v_w_eta;
 Eigen::Vector3d pc2_est;
 
@@ -112,18 +114,19 @@ int main(int argc, char **argv){
   ros::NodeHandle nh;
 
   ros::Subscriber imu1_sub = nh.subscribe("/mavros/imu/data",2,payload_imu_callback);
-  //ros::Subscriber imu1_sub = nh.subscribe("/payload/IMU1",2,payload_imu_callback);
+  // ros::Subscriber imu1_sub = nh.subscribe("/payload/IMU1",2,payload_imu_callback);
   ros::Subscriber est_vel_sub = nh.subscribe<geometry_msgs::Point>("est_vel",3,est_vel_cb);
   ros::Subscriber pc2_sub = nh.subscribe("pointpc2",2,pc2_cb);
   ros::Subscriber eta_sub = nh.subscribe("pointvc2",2,eta_cb);
   ros::Subscriber yaw_sub = nh.subscribe("optitrack_payload_yaw",2,optitrack_payload_yaw_callback);
+  // ros::Subscriber yaw_sub = nh.subscribe("/fucking_yaw",2,optitrack_payload_yaw_callback);
 
   ros::Publisher controller_force_pub = nh.advertise<geometry_msgs::Point>("/controller_force",2);
   ros::Publisher debug_pub = nh.advertise<geometry_msgs::Point>("/debug_msg",2);
 
   ros::Rate loop_rate(50.0);
-  //nh.setParam("/start",false);
-  geometry_msgs::PoseStamped force;
+  nh.setParam("/start",false);
+  // geometry_msgs::PoseStamped force;
 
   //planning
   qptrajectory plan;
@@ -187,70 +190,87 @@ int main(int argc, char **argv){
 
   while(ros::ok()){
 
-    vir_x = data[tick].pos(0);
-    vir_y = data[tick].pos(1);
-    vx = data[tick].vel(0);
-    vy = data[tick].vel(1);
-    ax = data[tick].acc(0);
-    ay = data[tick].acc(1);
-    jx = data[tick].jerk(0);
-    jy = data[tick].jerk(1);
+    nh.getParam("/start",flag);
 
-    debug_msg.x = data[tick].pos(0);
-    debug_msg.y = data[tick].vel(0);
-    debug_msg.z = data[tick].acc(0);
+    if(flag == false || ( tick > data.size() )){
+      //do position control
+      nh.setParam("/start",false);
+      tick = 0;
 
-    theta_r = atan2(data[tick].vel(1),data[tick].vel(0));   //(4)
-
-    if(theta_r <0){
-      theta_r += 2*PI;
+      // force.pose.position.x = 3*(desired_pose.pose.position.x - pose(0)) + 1*(0 - vel(0));
+      // force.pose.position.y = 3*(desired_pose.pose.position.y - pose(1)) + 1*(0 - vel(1));
+      // force.pose.position.z = 3*(desired_pose.pose.position.z - pose(2)) + 1*(0 - vel(2)) + mp*g/2.0;
+      controller_force.x = 0;
+      controller_force.y = 0;
     }
+    else
+    {
+      vir_x = data[tick].pos(0);
+      vir_y = data[tick].pos(1);
+      vx = data[tick].vel(0);
+      vy = data[tick].vel(1);
+      ax = data[tick].acc(0);
+      ay = data[tick].acc(1);
+      jx = data[tick].jerk(0);
+      jy = data[tick].jerk(1);
 
-    Eigen::Vector3d alpha;
-    alpha << 0, 0, (w_(2) - last_w)/0.02;
-    last_w = w_(2); //payload imu
+      debug_msg.x = data[tick].pos(0);
+      debug_msg.y = data[tick].vel(0);
+      debug_msg.z = data[tick].acc(0);
 
-    double w_r = (ay*vx - ax*vy)/(vx*vx + vy*vy); //(theta_r - last_theta_r) /(0.02) ;
-    double vr = sqrt(vx*vx + vy*vy);
+      theta_r = atan2(data[tick].vel(1),data[tick].vel(0));   //(4)
 
-    Eigen::Vector3d nonholoutput = nonholonomic_output(vir_x, vir_y, theta_r, vr, w_r);   //vd, w_d, 0
-    double vr_dot = sqrt(ax*ax + ay*ay);
-    double theta_e_dot = w_r - w_(2);  //the error of the angular velocity
-    double x_e_dot = w_(2) * y_e + vr*cos(theta_e) - v_w_eta(0);  //(58)
-                                                    //UKF 2nd
-    double y_e_dot = - w_(2) * x_e + vr*sin(theta_e);  //(58)
-    double w_r_dot = (jy*vx - jx*vy)/(vr*vr) - (2*vr_dot*w_r)/vr;     //vr^(-3) ??
-    double w_d_dot = w_r_dot + vr_dot*k2*y_e + vr*k2*y_e_dot + k3*theta_e_dot*cos(theta_e);   //take (43) time derivative
-    double vd_dot = vr_dot*cos(theta_e) - vr*theta_e_dot*sin(theta_e) + k1*x_e_dot;
+      if(theta_r <0){
+        theta_r += 2*PI;
+      }
 
-    Eigen::Vector3d nonlinearterm;
+      Eigen::Vector3d alpha;
+      alpha << 0, 0, (w_(2) - last_w)/0.02;
+      last_w = w_(2); //payload imu
 
-    nonlinearterm = w_.cross(v_p) - alpha.cross(r_p_c2) - w_.cross(w_.cross(r_p_c2)); //the last term of (41)
+      double w_r = (ay*vx - ax*vy)/(vx*vx + vy*vy); //(theta_r - last_theta_r) /(0.02) ;
+      double vr = sqrt(vx*vx + vy*vy);
 
-    if( nonholoutput(0) > 10 ){   //vd
-      nonholoutput(0) = 10;
+      Eigen::Vector3d nonholoutput = nonholonomic_output(vir_x, vir_y, theta_r, vr, w_r);   //vd, w_d, 0
+      double vr_dot = sqrt(ax*ax + ay*ay);
+      double theta_e_dot = w_r - w_(2);  //the error of the angular velocity
+      double x_e_dot = w_(2) * y_e + vr*cos(theta_e) - v_w_eta(0);  //(58)
+                                                      //UKF 2nd
+      double y_e_dot = - w_(2) * x_e + vr*sin(theta_e);  //(58)
+      double w_r_dot = (jy*vx - jx*vy)/(vr*vr) - (2*vr_dot*w_r)/vr;     //vr^(-3) ??
+      double w_d_dot = w_r_dot + vr_dot*k2*y_e + vr*k2*y_e_dot + k3*theta_e_dot*cos(theta_e);   //take (43) time derivative
+      double vd_dot = vr_dot*cos(theta_e) - vr*theta_e_dot*sin(theta_e) + k1*x_e_dot;
+
+      Eigen::Vector3d nonlinearterm;
+
+      nonlinearterm = w_.cross(v_p) - alpha.cross(r_p_c2) - w_.cross(w_.cross(r_p_c2)); //the last term of (41)
+
+      if( nonholoutput(0) > 10 ){   //vd
+        nonholoutput(0) = 10;
+      }
+
+      Eigen::Vector3d tmp;
+      Eigen::Vector3d cmd_;
+
+      //(41)(42) separately
+      tmp << kv * (nonholoutput(0) - v_w_eta(0)) + x_e + nonlinearterm(0) + vd_dot,
+             kw * (nonholoutput(1) - v_w_eta(1)) + sin(theta_e)/k2 + w_d_dot,   //ffy is close to zero.
+             0;
+
+      Eigen::Matrix3d M;
+      M <<   mp,        0,    0,
+              0,  2*Izz/L,    0,
+              0,        0,    1;
+
+      cmd_ = R_pl_B.transpose() * M * tmp;
+
+      tick++;
+
+
+      controller_force.x = cmd_(0);   // + nonlinearterm(0);// + vd_dot ;
+      controller_force.y = cmd_(1);   // + w_d_dot;
+
     }
-
-    Eigen::Vector3d tmp;
-    Eigen::Vector3d cmd_;
-
-    //(41)(42) separately
-    tmp << kv * (nonholoutput(0) - v_w_eta(0)) + x_e + nonlinearterm(0) + vd_dot,
-           kw * (nonholoutput(1) - v_w_eta(1)) + sin(theta_e)/k2 + w_d_dot,   //ffy is close to zero.
-           0;
-
-    Eigen::Matrix3d M;
-    M <<   mp,        0,    0,
-            0,  2*Izz/L,    0,
-            0,        0,    1;
-
-    cmd_ = R_pl_B.transpose() * M * tmp;
-
-    tick++;
-
-
-    controller_force.x = cmd_(0);   // + nonlinearterm(0);// + vd_dot ;
-    controller_force.y = cmd_(1);   // + w_d_dot;
 
     controller_force_pub.publish(controller_force);
     debug_pub.publish(debug_msg);
