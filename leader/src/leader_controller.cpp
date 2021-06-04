@@ -275,7 +275,10 @@ int main(int argc, char **argv){
     controller_force_pub.publish(controller_force);
     debug_pub.publish(debug_msg);
 
-    std::cout << "payload_yaw " << payload_yaw << std::endl;
+    // std::cout << "payload_yaw " << payload_yaw << std::endl;
+    printf("controller force x: %f, y: %f\n", controller_force.x, controller_force.y);
+    // std::cout << "controller force x " << controller_force.x;
+    // std::cout << "controller force y " << controller_force.y << std::endl;
 
     ros::spinOnce();
     loop_rate.sleep();
