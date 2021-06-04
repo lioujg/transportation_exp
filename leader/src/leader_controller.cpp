@@ -174,13 +174,13 @@ int main(int argc, char **argv){
     p8.acc << 0,0,0;
     p8.yaw = 0;
 
-  path.push_back(segments(p1,p2,4.0));
-  path.push_back(segments(p2,p3,4.0));
-  path.push_back(segments(p3,p4,4.0));
-  path.push_back(segments(p4,p5,4.0));
-  path.push_back(segments(p5,p6,4.0));
-  path.push_back(segments(p6,p7,4.0));
-  path.push_back(segments(p7,p8,4.0));
+  path.push_back(segments(p1,p2,6.0));
+  path.push_back(segments(p2,p3,6.0));
+  path.push_back(segments(p3,p4,6.0));
+  path.push_back(segments(p4,p5,6.0));
+  path.push_back(segments(p5,p6,6.0));
+  path.push_back(segments(p6,p7,6.0));
+  path.push_back(segments(p7,p8,6.0));
   data = plan.get_profile(path,path.size(),0.02);
 
   desired_pose.pose.position.x = 0.05;
