@@ -62,6 +62,7 @@ void optitrack_cb(const geometry_msgs::PoseStamped::ConstPtr& msg){
   payload_rotation_i_b = payload_rotation_b_i.transpose();
 
   pc1 << msg->pose.position.x, msg->pose.position.y, msg->pose.position.z;
+  pc2 =  pc1 +  payload_rotation_b_i * Eigen::Vector3d(-PAYLOAD_LENGTH,0,0);
 
   // float w,x,y,z;
   // x = msg->pose.orientation.x;
@@ -74,16 +75,16 @@ void optitrack_cb(const geometry_msgs::PoseStamped::ConstPtr& msg){
   //                     2*x*z-2*w*y,     2*y*z+2*w*x, w*w-x*x-y*y+z*z;
 }
 
-void force_cb(const geometry_msgs::Point::ConstPtr& msg){
-  Eigen::Vector3d f;
-  f << msg->x, msg->y, msg->z;
+// void force_cb(const geometry_msgs::Point::ConstPtr& msg){
+//   Eigen::Vector3d f;
+//   f << msg->x, msg->y, msg->z;
 
-  // pb = PL - uav_rotation * Eigen::Vector3d(0,0,0.05);// offset x from uav to connector
-  // pc1 = pb + (f/f.norm())*l;
+//   // pb = PL - uav_rotation * Eigen::Vector3d(0,0,0.05);// offset x from uav to connector
+//   // pc1 = pb + (f/f.norm())*l;
 
-  //find pc2
-  pc2 =  pc1 +  payload_rotation_b_i * Eigen::Vector3d(-PAYLOAD_LENGTH,0,0);
-}
+//   //find pc2
+//   pc2 =  pc1 +  payload_rotation_b_i * Eigen::Vector3d(-PAYLOAD_LENGTH,0,0);
+// }
 
 int main(int argc, char **argv){
   ros::init(argc, argv, "pose_estimate");
@@ -91,7 +92,7 @@ int main(int argc, char **argv){
 
   ros::Subscriber imu1_sub = nh.subscribe<sensor_msgs::Imu>("/mavros/imu/data",2,imu1_cb);  //payload imu
   ros::Subscriber odometry_sub = nh.subscribe<geometry_msgs::PoseStamped>("/vrpn_client_node/payload/pose",2,optitrack_cb);
-  ros::Subscriber force_sub = nh.subscribe<geometry_msgs::Point>("/force_estimate",2,force_cb);
+  // ros::Subscriber force_sub = nh.subscribe<geometry_msgs::Point>("/force_estimate",2,force_cb);
 
   ros::Publisher point2_pub = nh.advertise<geometry_msgs::Point>("pointpc2",2);
   ros::Publisher point_pub = nh.advertise<geometry_msgs::Point>("pointvc2",2);
