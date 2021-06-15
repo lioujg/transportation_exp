@@ -198,9 +198,9 @@ int main(int argc, char **argv){
     p4.yaw = 0;
 
 
-  path.push_back(segments(p1,p2,6.0));
-  path.push_back(segments(p2,p3,6.0));
-  path.push_back(segments(p3,p4,6.0));
+  path.push_back(segments(p1,p2,8.0));
+  path.push_back(segments(p2,p3,8.0));
+  path.push_back(segments(p3,p4,8.0));
   // path.push_back(segments(p4,p5,6.0));
   // path.push_back(segments(p5,p6,6.0));
   // path.push_back(segments(p6,p7,6.0));
