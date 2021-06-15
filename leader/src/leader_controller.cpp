@@ -15,7 +15,7 @@
 #include <nav_msgs/Odometry.h>
 #include <geometry_msgs/Pose2D.h>
 
-#define PAYLOAD_LENGTH 1.58
+#define PAYLOAD_LENGTH 1.5
 #define normal
 #define PI 3.1415926
 
