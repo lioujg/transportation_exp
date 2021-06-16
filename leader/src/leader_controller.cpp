@@ -285,7 +285,7 @@ int main(int argc, char **argv){
 
       //(41)(42) separately
       tmp << kv * (nonholoutput(0) - v_w_eta(0)) + x_e + nonlinearterm(0) + vd_dot,
-             kw * (nonholoutput(1) - v_w_eta(1)) + sin(theta_e)/k2 + w_d_dot,   //ffy is close to zero.
+             kw * (nonholoutput(1) - v_w_eta(2)) + sin(theta_e)/k2 + w_d_dot,   //ffy is close to zero.
              0;
 
       Eigen::Matrix3d M;
