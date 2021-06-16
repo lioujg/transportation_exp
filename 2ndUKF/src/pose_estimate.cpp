@@ -62,10 +62,10 @@ void optitrack_cb(const geometry_msgs::PoseStamped::ConstPtr& msg){
   tf::Matrix3x3(Q).getRPY(payload_roll, payload_pitch, payload_yaw);
   payload_data.theta = payload_yaw;
 
-  payload_rotation_b_i << cos(payload_yaw), sin(payload_yaw),   0,
+  payload_rotation_i_b << cos(payload_yaw), sin(payload_yaw),   0,
                          -sin(payload_yaw), cos(payload_yaw),   0,
                                          0,                0,   1;
-  payload_rotation_i_b = payload_rotation_b_i.transpose();
+  payload_rotation_b_i = payload_rotation_i_b.transpose();
 
   pc1 << msg->pose.position.x, msg->pose.position.y, msg->pose.position.z;
   pc2 =  pc1 +  payload_rotation_b_i * Eigen::Vector3d(-PAYLOAD_LENGTH,0,0);
