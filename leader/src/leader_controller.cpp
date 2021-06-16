@@ -194,19 +194,19 @@ int main(int argc, char **argv){
     // p4.acc << 0,0,0;
     // p4.yaw = 0;
 
-    p1.pos << -1.5,0,0;
+    p1.pos << -1.2,0,0;
     p1.vel << 0,0,0;
     p1.acc << 0,0,0;
     p1.yaw = 0;
 
-    p2.pos << -1.0,0,0;
+    p2.pos << -0.7,0,0;
     p2.vel << 0,0,0;
     p2.acc << 0,0,0;
     p2.yaw = 0;
 
 
   path.push_back(segments(p1,p2,6.0));
-  path.push_back(segments(p2,p3,6.0));
+  // path.push_back(segments(p2,p3,6.0));
   // path.push_back(segments(p3,p4,6.0));
   // path.push_back(segments(p4,p5,6.0));
   // path.push_back(segments(p5,p6,6.0));
