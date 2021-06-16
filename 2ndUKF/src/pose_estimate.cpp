@@ -9,7 +9,7 @@
 #include "eigen3/Eigen/Dense"
 #include <geometry_msgs/Pose2D.h>
 
-#define PAYLOAD_LENGTH 1.58
+#define PAYLOAD_LENGTH 1.5
 
 float l = 0.18, L = 0.5, g = 9.81;
 Eigen::Vector3d pc1, pc2, pa, pb;
@@ -17,6 +17,7 @@ sensor_msgs::Imu imu_data;
 Eigen::Matrix3d payload_rotation_b_i; //body to inertial
 Eigen::Matrix3d payload_rotation_i_b; //inertial to body
 geometry_msgs::Pose2D payload_data;
+geometry_msgs::Point pc1_debug, pc2_debug, pa_debug;
 
 // Eigen::Matrix3d uav_rotation;
 Eigen::Vector3d omega_p;
@@ -39,6 +40,11 @@ void imu1_cb(const sensor_msgs::Imu::ConstPtr& msg){
 
   pa = payload_rotation_b_i * data - Eigen::Vector3d(0,0,g);
   omega_p = payload_rotation_b_i * wdata;
+
+  pa_debug.x = pa(0);
+  pa_debug.y = pa(1);
+  pa_debug.z = pa(2);
+
 }
 
 // Eigen::Vector3d PL;
@@ -63,6 +69,14 @@ void optitrack_cb(const geometry_msgs::PoseStamped::ConstPtr& msg){
 
   pc1 << msg->pose.position.x, msg->pose.position.y, msg->pose.position.z;
   pc2 =  pc1 +  payload_rotation_b_i * Eigen::Vector3d(-PAYLOAD_LENGTH,0,0);
+
+  pc1_debug.x = pc1(0);
+  pc1_debug.y = pc1(1);
+  pc1_debug.z = pc1(2);
+
+  pc2_debug.x = pc2(0);
+  pc2_debug.y = pc2(1);
+  pc2_debug.z = pc2(2);
 
   // float w,x,y,z;
   // x = msg->pose.orientation.x;
@@ -98,6 +112,12 @@ int main(int argc, char **argv){
   ros::Publisher point_pub = nh.advertise<geometry_msgs::Point>("pointvc2",2);
   ros::Publisher vel_est_pub = nh.advertise<geometry_msgs::Point>("est_vel",2);
   ros::Publisher payload_yaw_pub = nh.advertise<geometry_msgs::Pose2D>("optitrack_payload_yaw",2);
+
+  ros::Publisher pc1_debug_pub = nh.advertise<geometry_msgs::Point>("pc1_debug",2);
+  ros::Publisher pc2_debug_pub = nh.advertise<geometry_msgs::Point>("pc2_debug",2);
+  ros::Publisher pa_debug_pub = nh.advertise<geometry_msgs::Point>("pa_debug",2);
+
+
 
   ros::Rate loop_rate(50);
   forceest forceest1(statesize,measurementsize);
@@ -171,7 +191,12 @@ int main(int argc, char **argv){
     vel_est_pub.publish(point_vel);
     point_pub.publish(point);
     point2_pub.publish(point2);
+
     payload_yaw_pub.publish(payload_data);
+    pc1_debug_pub.publish(pc1_debug);
+    pc2_debug_pub.publish(pc2_debug);
+    pa_debug_pub.publish(pa_debug);
+
     loop_rate.sleep();
     ros::spinOnce();
   }
