@@ -19,7 +19,7 @@
 #define normal
 #define PI 3.1415926
 
-double k1 = 1.0, k2 = 2.0, k3 = 1.0, kv = 2.5, kw = 7.0;
+double k1 = 1.0, k2 = 2.0, k3 = 1.0, kv = 2.5, kw = 5.0;
 double mp = 0.5, L = 1.5, g = 9.8, Izz = mp*L*L/12;
 
 Eigen::Vector3d pose, vel;
@@ -219,10 +219,10 @@ int main(int argc, char **argv){
     p5.acc << 0,0,0;
     p5.yaw = 0;
 
-  path.push_back(segments(p1,p2,2.0));
-  path.push_back(segments(p2,p3,3.0));
-  path.push_back(segments(p3,p4,3.0));
-  path.push_back(segments(p4,p5,2.0));
+  path.push_back(segments(p1,p2,1.0));
+  path.push_back(segments(p2,p3,2.5));
+  path.push_back(segments(p3,p4,2.5));
+  path.push_back(segments(p4,p5,1.0));
   // path.push_back(segments(p5,p6,6.0));
   // path.push_back(segments(p6,p7,6.0));
   // path.push_back(segments(p7,p8,6.0));

@@ -28,17 +28,17 @@ void imu1_cb(const sensor_msgs::Imu::ConstPtr& msg){
   data << imu_data.linear_acceleration.x, imu_data.linear_acceleration.y, imu_data.linear_acceleration.z;
   wdata << imu_data.angular_velocity.x, imu_data.angular_velocity.y, imu_data.angular_velocity.z;
 
-  float w,x,y,z;
-  x = imu_data.orientation.x;
-  y = imu_data.orientation.y;
-  z = imu_data.orientation.z;
-  w = imu_data.orientation.w;
+  // float w,x,y,z;
+  // x = imu_data.orientation.x;
+  // y = imu_data.orientation.y;
+  // z = imu_data.orientation.z;
+  // w = imu_data.orientation.w;
 
-  payload_rotation_b_i << w*w+x*x-y*y-z*z,     2*x*y-2*w*z,     2*x*z+2*w*y,
-                          2*x*y+2*w*z, w*w-x*x+y*y-z*z,     2*y*z-2*w*x,
-                          2*x*z-2*w*y,     2*y*z+2*w*x, w*w-x*x-y*y+z*z;
+  // payload_rotation_b_i << w*w+x*x-y*y-z*z,     2*x*y-2*w*z,     2*x*z+2*w*y,
+  //                         2*x*y+2*w*z, w*w-x*x+y*y-z*z,     2*y*z-2*w*x,
+  //                         2*x*z-2*w*y,     2*y*z+2*w*x, w*w-x*x-y*y+z*z;
 
-  payload_rotation_i_b = payload_rotation_b_i.transpose();
+  // payload_rotation_i_b = payload_rotation_b_i.transpose();
 
   pa = payload_rotation_b_i * data - Eigen::Vector3d(0,0,g);
   omega_p = payload_rotation_b_i * wdata;
@@ -64,10 +64,10 @@ void optitrack_cb(const geometry_msgs::PoseStamped::ConstPtr& msg){
   tf::Matrix3x3(Q).getRPY(payload_roll, payload_pitch, payload_yaw);
   payload_data.theta = payload_yaw;
 
-  // payload_rotation_i_b << cos(payload_yaw), sin(payload_yaw),   0,
-  //                        -sin(payload_yaw), cos(payload_yaw),   0,
-  //                                        0,                0,   1;
-  // payload_rotation_b_i = payload_rotation_i_b.transpose();
+  payload_rotation_i_b << cos(payload_yaw), sin(payload_yaw),   0,
+                         -sin(payload_yaw), cos(payload_yaw),   0,
+                                         0,                0,   1;
+  payload_rotation_b_i = payload_rotation_i_b.transpose();
 
 
   pc1 << msg->pose.position.x, msg->pose.position.y, msg->pose.position.z;
