@@ -134,46 +134,6 @@ int main(int argc, char **argv){
   trajectory_profile p1,p2,p3,p4,p5,p6,p7,p8;
   std::vector<trajectory_profile> data;
 
-    // p1.pos << 0,0,0;
-    // p1.vel << 0,0,0;
-    // p1.acc << 0,0,0;
-    // p1.yaw = 0;
-
-    // p2.pos << 0.175,-0.28,0;
-    // p2.vel << 0,0,0;
-    // p2.acc << 0,0,0;
-    // p2.yaw = 0;
-
-    // p3.pos << 0.84,0,0;
-    // p3.vel << 0,0,0;
-    // p3.acc << 0,0,0;
-    // p3.yaw = 0;
-
-    // p4.pos << 0.175,0.35,0;
-    // p4.vel << 0,0,0;
-    // p4.acc << 0,0,0;
-    // p4.yaw = 0;
-
-    // p5.pos << -0.28,-0.35,0;
-    // p5.vel << 0,0,0;
-    // p5.acc << 0,0,0;
-    // p5.yaw = 0;
-
-    // p6.pos << -0.84,0,0;
-    // p6.vel << 0,0,0;
-    // p6.acc << 0,0,0;
-    // p6.yaw = 0;
-
-    // p7.pos << -0.28,0.35,0;
-    // p7.vel << 0,0,0;
-    // p7.acc << 0,0,0;
-    // p7.yaw = 0;
-
-    // p8.pos << 0,0,0;
-    // p8.vel << 0,0,0;
-    // p8.acc << 0,0,0;
-    // p8.yaw = 0;
-
     // p1.pos << -1.5,0,0;
     // p1.vel << 0,0,0;
     // p1.acc << 0,0,0;
@@ -259,10 +219,6 @@ int main(int argc, char **argv){
       jx = data[tick].jerk(0);
       jy = data[tick].jerk(1);
 
-      debug_msg.x = data[tick].pos(0);
-      debug_msg.y = data[tick].vel(0);
-      debug_msg.z = data[tick].acc(0);
-
       theta_r = atan2(data[tick].vel(1),data[tick].vel(0));   //(4)
 
       if(theta_r <0){
@@ -315,15 +271,21 @@ int main(int argc, char **argv){
       controller_force.x = cmd_(0);   // + nonlinearterm(0);// + vd_dot ;
       controller_force.y = cmd_(1);   // + w_d_dot;
 
+      debug_msg.x = nonholoutput(0) - v_w_eta(0);
+      debug_msg.y = nonholoutput(1) - v_w_eta(2);
+      debug_msg.z = w_d_dot;
+
     }
 
     controller_force_pub.publish(controller_force);
     debug_pub.publish(debug_msg);
 
     // std::cout << "payload_yaw " << payload_yaw << std::endl;
-    printf("controller force x: %f, y: %f\n", controller_force.x, controller_force.y);
-    // std::cout << "controller force x " << controller_force.x;
-    // std::cout << "controller force y " << controller_force.y << std::endl;
+    // printf("controller force x: %f, y: %f\n", controller_force.x, controller_force.y);
+    printf("controller force x: %f, y: %f\t", controller_force.x, controller_force.y);
+    printf("eta x: %f, eta y: %f, w_d_dot: %f\n", debug_msg.x, debug_msg.y, debug_msg.z);
+
+
 
     ros::spinOnce();
     loop_rate.sleep();
