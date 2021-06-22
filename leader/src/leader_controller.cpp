@@ -46,6 +46,7 @@ geometry_msgs::PoseStamped desired_pose;
 geometry_msgs::Point controller_force;
 
 geometry_msgs::Point debug_msg;
+geometry_msgs::Point path_plot;
 
 sensor_msgs::Imu imu_data;
 void payload_imu_callback(const sensor_msgs::Imu::ConstPtr& msg){
@@ -123,6 +124,7 @@ int main(int argc, char **argv){
 
   ros::Publisher controller_force_pub = nh.advertise<geometry_msgs::Point>("/controller_force",2);
   ros::Publisher debug_pub = nh.advertise<geometry_msgs::Point>("/debug_msg",2);
+  ros::Publisher path_pub = nh.advertise<geometry_msgs::Point>("/path_plot",2);
 
   ros::Rate loop_rate(50.0);
   nh.setParam("/start",false);
@@ -219,6 +221,9 @@ int main(int argc, char **argv){
       jx = data[tick].jerk(0);
       jy = data[tick].jerk(1);
 
+      path_plot.x = vir_x;
+      path_plot.y = vir_y;
+
       theta_r = atan2(data[tick].vel(1),data[tick].vel(0));   //(4)
 
       if(theta_r <0){
@@ -279,6 +284,7 @@ int main(int argc, char **argv){
 
     controller_force_pub.publish(controller_force);
     debug_pub.publish(debug_msg);
+    path_pub.publish(path_plot);
 
     // std::cout << "payload_yaw " << payload_yaw << std::endl;
     // printf("controller force x: %f, y: %f\n", controller_force.x, controller_force.y);
