@@ -289,7 +289,7 @@ int main(int argc, char **argv){
     // std::cout << "payload_yaw " << payload_yaw << std::endl;
     // printf("controller force x: %f, y: %f\n", controller_force.x, controller_force.y);
     printf("controller force x: %f, y: %f\t", controller_force.x, controller_force.y);
-    printf("eta x: %f, eta y: %f, w_d_dot: %f\n", debug_msg.x, debug_msg.y, debug_msg.z);
+    printf("sin(theta e): %f, eta y: %f, w_d_dot: %f\n", sin(theta_e), debug_msg.y, debug_msg.z);
 
 
 
