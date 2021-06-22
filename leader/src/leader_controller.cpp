@@ -45,6 +45,7 @@ Eigen::Vector3d w_;
 geometry_msgs::PoseStamped desired_pose;
 geometry_msgs::Point controller_force;
 
+float nonlinear, vd_dot_debug;
 geometry_msgs::Point debug_msg;
 geometry_msgs::Point path_plot;
 
@@ -279,6 +280,8 @@ int main(int argc, char **argv){
       debug_msg.x = nonholoutput(0) - v_w_eta(0);
       debug_msg.y = nonholoutput(1) - v_w_eta(2);
       debug_msg.z = w_d_dot;
+      nonlinear = nonlinearterm(0);
+      vd_dot_debug = vd_dot;
 
     }
 
@@ -288,8 +291,8 @@ int main(int argc, char **argv){
 
     // std::cout << "payload_yaw " << payload_yaw << std::endl;
     // printf("controller force x: %f, y: %f\n", controller_force.x, controller_force.y);
-    printf("controller force x: %f, y: %f\t", controller_force.x, controller_force.y);
-    printf("sin(theta e): %f, eta y: %f, w_d_dot: %f\n", sin(theta_e), debug_msg.y, debug_msg.z);
+    printf("vd_dot: %f, x_e: %f, eta x: %f, nonlinear: %f\t", vd_dot_debug, x_e, debug_msg.x, nonlinear);
+    printf("eta y: %f, w_d_dot: %f, sin(theta e): %f\n", debug_msg.y, debug_msg.z, sin(theta_e));
 
 
 
