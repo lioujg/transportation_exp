@@ -19,7 +19,7 @@
 #define normal
 #define PI 3.1415926
 
-double k1 = 1.0, k2 = 2.0, k3 = 1.0, kv = 1.5, kw = 1.0;
+double k1 = 1.0, k2 = 2.0, k3 = 1.0, kv = 1.0, kw = 2.5;
 double mp = 0.5, L = 1.5, g = 9.8, Izz = mp*L*L/12;
 
 Eigen::Vector3d pose, vel;
@@ -290,7 +290,7 @@ int main(int argc, char **argv){
     path_pub.publish(path_plot);
 
     // std::cout << "payload_yaw " << payload_yaw << std::endl;
-    // printf("controller force x: %f, y: %f\n", controller_force.x, controller_force.y);
+    printf("controller force x: %f, y: %f\n", controller_force.x, controller_force.y);
     printf("vd_dot: %f, x_e: %f, eta x: %f, nonlinear: %f\t", vd_dot_debug, x_e, debug_msg.x, nonlinear);
     printf("eta y: %f, w_d_dot: %f, sin(theta e): %f\n", debug_msg.y, debug_msg.z, sin(theta_e));
 
