@@ -20,7 +20,7 @@
 #define normal
 #define PI 3.1415926
 
-double k1 = 1.0, k2 = 2.0, k3 = 1.0, kv = 1.0, kw = 4.0;
+double k1 = 1.0, k2 = 1.0, k3 = 1.0, kv = 1.0, kw = 6.0;
 double mp = 0.5,  g = 9.8, Izz = mp * PAYLOAD_LENGTH * PAYLOAD_LENGTH / 12;
 
 Eigen::Vector3d pose, vel;
