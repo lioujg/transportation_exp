@@ -9,9 +9,9 @@
 #include "eigen3/Eigen/Dense"
 #include <geometry_msgs/Pose2D.h>
 
-#define PAYLOAD_LENGTH 1.5
+#define PAYLOAD_LENGTH 1.58
 
-float l = 0.18, L = 0.5, g = 9.81;
+float g = 9.81;
 Eigen::Vector3d pp, pc1, pc2, pa, pb;
 sensor_msgs::Imu imu_data;
 Eigen::Matrix3d payload_rotation_b_i; //body to inertial

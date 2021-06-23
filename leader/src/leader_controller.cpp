@@ -15,7 +15,7 @@
 #include <nav_msgs/Odometry.h>
 #include <geometry_msgs/Pose2D.h>
 
-#define PAYLOAD_LENGTH 1.5
+#define PAYLOAD_LENGTH 1.59
 #define normal
 #define PI 3.1415926
 
@@ -162,12 +162,12 @@ int main(int argc, char **argv){
     p1.acc << 0,0,0;
     p1.yaw = 0;
 
-    p2.pos << -0.8,0,0;
+    p2.pos << -0.8,-0.0,0;
     p2.vel << 0,0,0;
     p2.acc << 0,0,0;
     p2.yaw = 0;
 
-    p3.pos << -1.1,0,0;
+    p3.pos << -0.6,0,0;
     p3.vel << 0,0,0;
     p3.acc << 0,0,0;
     p3.yaw = 0;
@@ -182,8 +182,8 @@ int main(int argc, char **argv){
     p5.acc << 0,0,0;
     p5.yaw = 0;
 
-  path.push_back(segments(p1,p2,5.0));
-  // path.push_back(segments(p2,p3,2.5));
+  path.push_back(segments(p1,p2,4.0));
+  path.push_back(segments(p2,p3,2.5));
   // path.push_back(segments(p3,p4,2.5));
   // path.push_back(segments(p4,p5,1.0));
   // path.push_back(segments(p5,p6,6.0));
