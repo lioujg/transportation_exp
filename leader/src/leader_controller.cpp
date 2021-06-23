@@ -14,6 +14,7 @@
 #include <sensor_msgs/Imu.h>
 #include <nav_msgs/Odometry.h>
 #include <geometry_msgs/Pose2D.h>
+#include <nav_msgs/Path.h>
 
 #define PAYLOAD_LENGTH 1.59
 #define normal
@@ -125,11 +126,20 @@ int main(int argc, char **argv){
 
   ros::Publisher controller_force_pub = nh.advertise<geometry_msgs::Point>("/controller_force",2);
   ros::Publisher debug_pub = nh.advertise<geometry_msgs::Point>("/debug_msg",2);
-  ros::Publisher path_pub = nh.advertise<geometry_msgs::Point>("/path_plot",2);
+  ros::Publisher my_path_pub = nh.advertise<geometry_msgs::Point>("/path_plot",2);
+  ros::Publisher ycc_path_pub = nh.advertise<nav_msgs::Path>("trajectory", 1, true);
 
   ros::Rate loop_rate(50.0);
   nh.setParam("/start",false);
   // geometry_msgs::PoseStamped force;
+
+  // YCC QP path plot
+  ros::Time current_time;//, last_time;
+  current_time = ros::Time::now();
+  // last_time = ros::Time::now();
+  nav_msgs::Path ycc_path;
+  ycc_path.header.stamp = current_time;
+  ycc_path.header.frame_id = "map";
 
   //planning
   qptrajectory plan;
@@ -162,12 +172,12 @@ int main(int argc, char **argv){
     p1.acc << 0,0,0;
     p1.yaw = 0;
 
-    p2.pos << -0.8,-0.0,0;
+    p2.pos << -0.9,-0.0,0;
     p2.vel << 0,0,0;
     p2.acc << 0,0,0;
     p2.yaw = 0;
 
-    p3.pos << -0.6,0,0;
+    p3.pos << -0.6,0.2,0;
     p3.vel << 0,0,0;
     p3.acc << 0,0,0;
     p3.yaw = 0;
@@ -182,8 +192,8 @@ int main(int argc, char **argv){
     p5.acc << 0,0,0;
     p5.yaw = 0;
 
-  path.push_back(segments(p1,p2,4.0));
-  path.push_back(segments(p2,p3,2.5));
+  path.push_back(segments(p1,p2,3.0));
+  path.push_back(segments(p2,p3,3.0));
   // path.push_back(segments(p3,p4,2.5));
   // path.push_back(segments(p4,p5,1.0));
   // path.push_back(segments(p5,p6,6.0));
@@ -224,6 +234,16 @@ int main(int argc, char **argv){
 
       path_plot.x = vir_x;
       path_plot.y = vir_y;
+
+      // YCC QP path plot
+      geometry_msgs::PoseStamped this_pose_stamped;
+      this_pose_stamped.pose.position.x = vir_x;
+      this_pose_stamped.pose.position.y = vir_y;
+      this_pose_stamped.pose.position.z = 2.5;
+
+      this_pose_stamped.header.stamp = current_time;
+      this_pose_stamped.header.frame_id = "map";
+      ycc_path.poses.push_back(this_pose_stamped);
 
       theta_r = atan2(data[tick].vel(1),data[tick].vel(0));   //(4)
 
@@ -287,7 +307,9 @@ int main(int argc, char **argv){
 
     controller_force_pub.publish(controller_force);
     debug_pub.publish(debug_msg);
-    path_pub.publish(path_plot);
+    my_path_pub.publish(path_plot);
+
+    ycc_path_pub.publish(ycc_path);
 
     // std::cout << "payload_yaw " << payload_yaw << std::endl;
     printf("controller force x: %f, y: %f\n", controller_force.x, controller_force.y);
