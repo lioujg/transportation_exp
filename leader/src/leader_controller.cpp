@@ -20,7 +20,7 @@
 #define PI 3.1415926
 
 double k1 = 1.0, k2 = 2.0, k3 = 1.0, kv = 1.0, kw = 2.5;
-double mp = 0.5, L = 1.5, g = 9.8, Izz = mp*L*L/12;
+double mp = 0.5,  g = 9.8, Izz = mp * PAYLOAD_LENGTH * PAYLOAD_LENGTH / 12;
 
 Eigen::Vector3d pose, vel;
 Eigen::Vector3d v_p;
@@ -265,9 +265,9 @@ int main(int argc, char **argv){
              0;
 
       Eigen::Matrix3d M;
-      M <<   mp,        0,    0,
-              0,  2*Izz/L,    0,
-              0,        0,    1;
+      M <<   mp,                     0,    0,
+              0,  2*Izz/PAYLOAD_LENGTH,    0,
+              0,                     0,    1;
 
       cmd_ = R_pl_B.transpose() * M * tmp;
 

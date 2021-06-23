@@ -12,7 +12,7 @@
 #define PAYLOAD_LENGTH 1.5
 
 float l = 0.18, L = 0.5, g = 9.81;
-Eigen::Vector3d pc1, pc2, pa, pb;
+Eigen::Vector3d pp, pc1, pc2, pa, pb;
 sensor_msgs::Imu imu_data;
 Eigen::Matrix3d payload_rotation_b_i; //body to inertial
 Eigen::Matrix3d payload_rotation_i_b; //inertial to body
@@ -69,9 +69,9 @@ void optitrack_cb(const geometry_msgs::PoseStamped::ConstPtr& msg){
                                          0,                0,   1;
   payload_rotation_b_i = payload_rotation_i_b.transpose();
 
-
-  pc1 << msg->pose.position.x, msg->pose.position.y, msg->pose.position.z;
-  pc2 =  pc1 +  payload_rotation_b_i * Eigen::Vector3d(-PAYLOAD_LENGTH,0,0);
+  pp << msg->pose.position.x, msg->pose.position.y, msg->pose.position.z;
+  pc1 = pp + payload_rotation_b_i * Eigen::Vector3d(PAYLOAD_LENGTH/2,0,0);
+  pc2 = pp + payload_rotation_b_i * Eigen::Vector3d(-PAYLOAD_LENGTH/2,0,0);
 
   pc1_debug.x = pc1(0);
   pc1_debug.y = pc1(1);
