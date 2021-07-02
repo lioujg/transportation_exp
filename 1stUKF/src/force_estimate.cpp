@@ -24,6 +24,8 @@ geometry_msgs::PoseStamped optitrack_data, drone_pose, last_pose;
 geometry_msgs::TwistStamped drone_vel;
 float dt = 0.02;
 
+bool flag = false;
+
 void imu_cb(const sensor_msgs::Imu::ConstPtr &msg){
   drone_imu = *msg;
 }
@@ -219,9 +221,17 @@ int main(int argc, char **argv){
       force.y = forceest1.x[F_y] + 0.3;
       force.z = forceest1.x[F_z];
       torque.z = forceest1.x[tau_z];
+   
+      printf("UKF estimated force  x: %f  y: %f  z: %f\n", force.x, force.y, force.z);
+
+      nh.getParam("/start",flag);
+      if(flag == false){
+        force.x = 0.0;
+        force.y = 0.0;
+        printf("!");
+      }
 
       force_pub.publish(force);
-      printf("UKF estimated force  x: %f  y: %f  z: %f\n", force.x, force.y, force.z);
     }
 
 
