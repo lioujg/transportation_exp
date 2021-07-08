@@ -13,6 +13,7 @@
 #include "geometry_msgs/WrenchStamped.h"
 #include <random>
 #include "proj_conf.h"
+#include <float.h>
 
 #define l 0.25
 #define k 0.02
@@ -23,16 +24,23 @@ sensor_msgs::Imu drone_imu;
 geometry_msgs::PoseStamped optitrack_data, drone_pose, last_pose;
 geometry_msgs::TwistStamped drone_vel;
 float dt = 0.02;
-
+int nan_count = 0;
 bool flag = false;
 
 void imu_cb(const sensor_msgs::Imu::ConstPtr &msg){
   drone_imu = *msg;
 }
 
-Eigen::Vector3d thrust;
+Eigen::Vector3d thrust, last_thrust;
 void thrust_cb(const geometry_msgs::WrenchStamped::ConstPtr &msg){
   thrust << msg->wrench.force.x, msg->wrench.force.y, msg->wrench.force.z;
+  if(isnan(thrust(2)) != 0){
+    thrust(2) = last_thrust(2);
+    std::cout << "I meet something cool like nan!!" << std::endl;
+    nan_count++;
+  }
+  // std::cout << thrust(2) << std::endl;
+  last_thrust = thrust;
 }
 
 void optitrack_cb(const geometry_msgs::PoseStamped::ConstPtr &msg){
@@ -221,14 +229,14 @@ int main(int argc, char **argv){
       force.y = forceest1.x[F_y] + 0.3;
       force.z = forceest1.x[F_z];
       torque.z = forceest1.x[tau_z];
-   
+
       printf("UKF estimated force  x: %f  y: %f  z: %f\n", force.x, force.y, force.z);
 
       nh.getParam("/start",flag);
       if(flag == false){
         force.x = 0.0;
         force.y = 0.0;
-        printf("!");
+        printf("%d!", nan_count);
       }
 
       force_pub.publish(force);

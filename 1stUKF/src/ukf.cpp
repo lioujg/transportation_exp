@@ -12,7 +12,8 @@ ukf::ukf(int state_size , int measurement_size){
   L=x_size;
   x_sigmavector_size=2*x_size+1;
 
-  lambda = -13;
+  // lambda= alpha * alpha * (L + kappa) -L;
+  lambda = -12;
   x.setZero(x_size);
   y.setZero(y_size);
 
@@ -62,11 +63,19 @@ void ukf::predict(){
   x_sigmavector.setZero();
   x_sigmavector.col(0) = x;
 
+  // for(int i=0;i<x_size;i++){
+  //   Eigen::VectorXd sigma = (M.row(i)).transpose();
+  //   x_sigmavector.col(i+1) = x + sigma;
+  //   x_sigmavector.col(i+x_size+1) = x - sigma;
+  // }
+
+  double lambda_plue_n_x_sqrt = sqrt(lambda + x_size);
   for(int i=0;i<x_size;i++){
     Eigen::VectorXd sigma = (M.row(i)).transpose();
     x_sigmavector.col(i+1) = x + sigma;
     x_sigmavector.col(i+x_size+1) = x - sigma;
   }
+
 
   buffer = dynamics( x_sigmavector);
   x_sigmavector = buffer;
