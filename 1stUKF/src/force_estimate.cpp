@@ -33,8 +33,9 @@ void imu_cb(const sensor_msgs::Imu::ConstPtr &msg){
 
 Eigen::Vector3d thrust, last_thrust;
 void thrust_cb(const geometry_msgs::WrenchStamped::ConstPtr &msg){
-  thrust << msg->wrench.force.x, msg->wrench.force.y, msg->wrench.force.z;
-  if(isnan(thrust(2)) != 0){
+  if(isnan(msg->wrench.force.z) == 0){
+    thrust << msg->wrench.force.x, msg->wrench.force.y, msg->wrench.force.z;}
+  else if(isnan(msg->wrench.force.z) != 0){
     thrust(2) = last_thrust(2);
     std::cout << "I meet something cool like nan!!" << std::endl;
     nan_count++;
