@@ -44,6 +44,8 @@ void thrust_cb(const geometry_msgs::WrenchStamped::ConstPtr &msg){
   last_thrust = thrust;
 }
 
+float ground_truth_yaw;
+
 void optitrack_cb(const geometry_msgs::PoseStamped::ConstPtr &msg){
   optitrack_data = *msg;
 
@@ -53,6 +55,17 @@ void optitrack_cb(const geometry_msgs::PoseStamped::ConstPtr &msg){
   drone_vel.twist.linear.y = (drone_pose.pose.position.y - last_pose.pose.position.y)/dt;
   drone_vel.twist.linear.z = (drone_pose.pose.position.z - last_pose.pose.position.z)/dt;
   last_pose.pose = optitrack_data.pose;
+
+  //yaw
+  double quaternion_w, quaternion_x, quaternion_y, quaternion_z;
+  double payload_roll, payload_yaw, payload_pitch;
+  quaternion_x = optitrack_data.pose.orientation.x;
+  quaternion_y = optitrack_data.pose.orientation.y;
+  quaternion_z = optitrack_data.pose.orientation.z;
+  quaternion_w = optitrack_data.pose.orientation.w;
+  tf::Quaternion quaternion(quaternion_x, quaternion_y, quaternion_z, quaternion_w);
+  tf::Matrix3x3(quaternion).getRPY(payload_roll, payload_pitch, payload_yaw);
+  ground_truth_yaw = payload_yaw;
 }
 
 int main(int argc, char **argv){
@@ -231,13 +244,15 @@ int main(int argc, char **argv){
       force.z = forceest1.x[F_z];
       torque.z = forceest1.x[tau_z];
 
-      printf("UKF estimated force  x: %f  y: %f  z: %f\n", force.x, force.y, force.z);
+      printf("%d", nan_count);
+      printf("UKF estimated force  x: %f  y: %f  z: %f  yaw: %f\n", force.x, force.y, force.z, ground_truth_yaw);
+
 
       nh.getParam("/start",flag);
       if(flag == false){
         force.x = 0.0;
         force.y = 0.0;
-        printf("%d!", nan_count);
+        printf("!");
       }
 
       force_pub.publish(force);
