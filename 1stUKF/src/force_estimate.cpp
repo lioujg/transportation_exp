@@ -14,6 +14,7 @@
 #include <random>
 #include "proj_conf.h"
 #include <float.h>
+#include <cmath>
 
 #define l 0.25
 #define k 0.02
@@ -65,7 +66,7 @@ void optitrack_cb(const geometry_msgs::PoseStamped::ConstPtr &msg){
   quaternion_w = optitrack_data.pose.orientation.w;
   tf::Quaternion quaternion(quaternion_x, quaternion_y, quaternion_z, quaternion_w);
   tf::Matrix3x3(quaternion).getRPY(payload_roll, payload_pitch, payload_yaw);
-  ground_truth_yaw = payload_yaw;
+  ground_truth_yaw = payload_yaw * 180 / M_PI;
 }
 
 int main(int argc, char **argv){
