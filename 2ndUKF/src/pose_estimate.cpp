@@ -122,7 +122,7 @@ int main(int argc, char **argv){
 
 
 
-  ros::Rate loop_rate(50);
+  ros::Rate loop_rate(20);
   forceest forceest1(statesize,measurementsize);
   Eigen::MatrixXd mnoise;
 

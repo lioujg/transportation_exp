@@ -222,7 +222,7 @@ int main(int argc, char **argv){
   nh.setParam("/force_control",false);
 
   triggered = false;
-  ros::Rate loop_rate(50.0);
+  ros::Rate loop_rate(20.0);
 
   desired_pose.pose.position.x = -0.3;
   desired_pose.pose.position.y = 0.0;

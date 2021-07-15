@@ -135,7 +135,7 @@ int main(int argc, char **argv){
   ros::Subscriber pc2_sub = nh.subscribe("pointpc2",2,pc2_cb);
   ros::Subscriber eta_sub = nh.subscribe("pointvc2",2,eta_cb);
 
-  ros::Rate loop_rate(50.0);
+  ros::Rate loop_rate(20.0);
   nh.setParam("/start",false);
   geometry_msgs::PoseStamped force;
 

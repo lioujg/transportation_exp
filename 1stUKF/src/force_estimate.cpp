@@ -109,7 +109,7 @@ int main(int argc, char **argv){
 
   ros::Publisher force_pub = nh.advertise<geometry_msgs::Point>("force_estimate",2);
 
-  ros::Rate loop_rate(50);
+  ros::Rate loop_rate(20);
 
   float measure_ex, measure_ey, measure_ez;
 
