@@ -27,6 +27,30 @@ geometry_msgs::TwistStamped drone_vel;
 float dt = 0.02;
 int nan_count = 0;
 bool flag = false;
+float ukf_lpf_gain;
+float ukf_estimated_force_enu[3];
+float ukf_estimated_force_enu_lpf[3];
+
+void lpf_first_order_init(float *ret_gain, float sampling_time, float cutoff_freq)
+{
+  //reference: low pass filter (wikipedia)
+
+  //return the alpha value of the first order low pass filter
+  *ret_gain = sampling_time / (sampling_time + 1/ (2 * M_PI * cutoff_freq));
+}
+
+void lpf_first_order(float origin, float *filtered, float alpha)
+{
+  *filtered = (origin * alpha) + (*filtered * (1.0f - alpha));
+}
+
+void ukf_low_pass_filter(float * ukf_estimated_force_enu, float * ukf_estimated_force_enu_lpf)
+{
+  //parameter.ukf_lpf_gain = 0.13f;
+  lpf_first_order(ukf_estimated_force_enu[0], &(ukf_estimated_force_enu_lpf[0]), ukf_lpf_gain);
+  lpf_first_order(ukf_estimated_force_enu[1], &(ukf_estimated_force_enu_lpf[1]), ukf_lpf_gain);
+  lpf_first_order(ukf_estimated_force_enu[2], &(ukf_estimated_force_enu_lpf[2]), ukf_lpf_gain);
+}
 
 void imu_cb(const sensor_msgs::Imu::ConstPtr &msg){
   drone_imu = *msg;
@@ -161,6 +185,9 @@ int main(int argc, char **argv){
 
   forceest1.set_measurement_matrix(measurement_matrix);
 
+  // sampling time = 0.05s (20Hz), cutoff frequency = 5Hz
+  lpf_first_order_init(&ukf_lpf_gain, 0.05, 5);
+
   while(ros::ok()){
 
     float F1, F2, F3, F4;
@@ -240,10 +267,16 @@ int main(int argc, char **argv){
       euler_ref.y = pitch_ref*180/3.1415926;       //pitch_ref*180/3.1415926
       euler_ref.z = yaw_ref*180/3.1415926;         //yaw_ref*180/3.1415926
 
-      force.x = forceest1.x[F_x] + 0.3; // bias
-      force.y = forceest1.x[F_y] + 0.3 + 0.3;
-      force.z = forceest1.x[F_z];
+      ukf_estimated_force_enu[0] = forceest1.x[F_x] + 0.3; // bias
+      ukf_estimated_force_enu[1] = forceest1.x[F_y] + 0.3 + 0.3;
+      ukf_estimated_force_enu[2] = forceest1.x[F_z];
       torque.z = forceest1.x[tau_z];
+
+      ukf_low_pass_filter(ukf_estimated_force_enu, ukf_estimated_force_enu_lpf);
+
+      force.x = ukf_estimated_force_enu_lpf[0];
+      force.y = ukf_estimated_force_enu_lpf[1];
+      force.z = ukf_estimated_force_enu_lpf[2];
 
       printf("%d", nan_count);
       printf("UKF estimated force  x: %f  y: %f  z: %f  yaw: %f\n", force.x, force.y, force.z, ground_truth_yaw);
