@@ -1,0 +1,1685 @@
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+dynamics	1stUKF/src/force_est.cpp	/^Eigen::MatrixXd forceest::  dynamics(Eigen::MatrixXd sigma_state){$/;"	f	class:forceest
+state_to_measure	1stUKF/src/force_est.cpp	/^Eigen::MatrixXd forceest::state_to_measure(Eigen::MatrixXd sigma_state){$/;"	f	class:forceest
+FORCEEST_H	1stUKF/src/force_est.h	2;"	d
+F_x	1stUKF/src/force_est.h	/^  F_x,$/;"	e	enum:state
+F_y	1stUKF/src/force_est.h	/^  F_y,$/;"	e	enum:state
+F_z	1stUKF/src/force_est.h	/^  F_z,$/;"	e	enum:state
+R_IB	1stUKF/src/force_est.h	/^  Eigen::Matrix3d R_IB;$/;"	m	class:forceest
+U	1stUKF/src/force_est.h	/^  Eigen::Vector3d U;$/;"	m	class:forceest
+beta_x	1stUKF/src/force_est.h	/^  beta_x,$/;"	e	enum:state
+beta_y	1stUKF/src/force_est.h	/^  beta_y,$/;"	e	enum:state
+beta_z	1stUKF/src/force_est.h	/^  beta_z,$/;"	e	enum:state
+e_x	1stUKF/src/force_est.h	/^  e_x,$/;"	e	enum:state
+e_y	1stUKF/src/force_est.h	/^  e_y,$/;"	e	enum:state
+e_z	1stUKF/src/force_est.h	/^  e_z,$/;"	e	enum:state
+forceest	1stUKF/src/force_est.h	/^  forceest(int x, int y) : ukf(x,y){$/;"	f	class:forceest
+forceest	1stUKF/src/force_est.h	/^class forceest : public ukf{$/;"	c
+gausian_noise	1stUKF/src/force_est.h	/^  Eigen::Vector3d gausian_noise;$/;"	m	class:forceest
+me_x	1stUKF/src/force_est.h	/^  me_x,$/;"	e	enum:measurement
+me_y	1stUKF/src/force_est.h	/^  me_y,$/;"	e	enum:measurement
+me_z	1stUKF/src/force_est.h	/^  me_z,$/;"	e	enum:measurement
+measurement	1stUKF/src/force_est.h	/^enum measurement{$/;"	g
+measurementsize	1stUKF/src/force_est.h	/^  measurementsize$/;"	e	enum:measurement
+momega_x	1stUKF/src/force_est.h	/^  momega_x,$/;"	e	enum:measurement
+momega_y	1stUKF/src/force_est.h	/^  momega_y,$/;"	e	enum:measurement
+momega_z	1stUKF/src/force_est.h	/^  momega_z,$/;"	e	enum:measurement
+mp_x	1stUKF/src/force_est.h	/^  mp_x,$/;"	e	enum:measurement
+mp_y	1stUKF/src/force_est.h	/^  mp_y,$/;"	e	enum:measurement
+mp_z	1stUKF/src/force_est.h	/^  mp_z,$/;"	e	enum:measurement
+mv_x	1stUKF/src/force_est.h	/^  mv_x,$/;"	e	enum:measurement
+mv_y	1stUKF/src/force_est.h	/^  mv_y,$/;"	e	enum:measurement
+mv_z	1stUKF/src/force_est.h	/^  mv_z,$/;"	e	enum:measurement
+omega_x	1stUKF/src/force_est.h	/^  omega_x,$/;"	e	enum:state
+omega_y	1stUKF/src/force_est.h	/^  omega_y,$/;"	e	enum:state
+omega_z	1stUKF/src/force_est.h	/^  omega_z,$/;"	e	enum:state
+p_x	1stUKF/src/force_est.h	/^  p_x,$/;"	e	enum:state
+p_y	1stUKF/src/force_est.h	/^  p_y,$/;"	e	enum:state
+p_z	1stUKF/src/force_est.h	/^  p_z,$/;"	e	enum:state
+q_k1_0	1stUKF/src/force_est.h	/^  Eigen::Vector4d q_k1_0;$/;"	m	class:forceest
+q_m_k	1stUKF/src/force_est.h	/^  Eigen::Vector4d q_m_k;$/;"	m	class:forceest
+qk1	1stUKF/src/force_est.h	/^  Eigen::Vector4d qk1;$/;"	m	class:forceest
+state	1stUKF/src/force_est.h	/^enum state{$/;"	g
+statesize	1stUKF/src/force_est.h	/^  statesize$/;"	e	enum:state
+tau_z	1stUKF/src/force_est.h	/^  tau_z,$/;"	e	enum:state
+thrust	1stUKF/src/force_est.h	/^  float thrust;$/;"	m	class:forceest
+v_x	1stUKF/src/force_est.h	/^  v_x,$/;"	e	enum:state
+v_y	1stUKF/src/force_est.h	/^  v_y,$/;"	e	enum:state
+v_z	1stUKF/src/force_est.h	/^  v_z,$/;"	e	enum:state
+angular_v	1stUKF/src/force_estimate.cpp	/^geometry_msgs::Point euler, euler_ref, force, torque, bias, angular_v, pose;$/;"	v
+bias	1stUKF/src/force_estimate.cpp	/^geometry_msgs::Point euler, euler_ref, force, torque, bias, angular_v, pose;$/;"	v
+drone_imu	1stUKF/src/force_estimate.cpp	/^sensor_msgs::Imu drone_imu;$/;"	v
+drone_pose	1stUKF/src/force_estimate.cpp	/^geometry_msgs::PoseStamped optitrack_data, drone_pose, last_pose;$/;"	v
+drone_vel	1stUKF/src/force_estimate.cpp	/^geometry_msgs::TwistStamped drone_vel;$/;"	v
+dt	1stUKF/src/force_estimate.cpp	/^float dt = 0.02;$/;"	v
+euler	1stUKF/src/force_estimate.cpp	/^geometry_msgs::Point euler, euler_ref, force, torque, bias, angular_v, pose;$/;"	v
+euler_ref	1stUKF/src/force_estimate.cpp	/^geometry_msgs::Point euler, euler_ref, force, torque, bias, angular_v, pose;$/;"	v
+flag	1stUKF/src/force_estimate.cpp	/^bool flag = false;$/;"	v
+force	1stUKF/src/force_estimate.cpp	/^geometry_msgs::Point euler, euler_ref, force, torque, bias, angular_v, pose;$/;"	v
+imu_cb	1stUKF/src/force_estimate.cpp	/^void imu_cb(const sensor_msgs::Imu::ConstPtr &msg){$/;"	f
+k	1stUKF/src/force_estimate.cpp	21;"	d	file:
+l	1stUKF/src/force_estimate.cpp	20;"	d	file:
+last_pose	1stUKF/src/force_estimate.cpp	/^geometry_msgs::PoseStamped optitrack_data, drone_pose, last_pose;$/;"	v
+last_thrust	1stUKF/src/force_estimate.cpp	/^Eigen::Vector3d thrust, last_thrust;$/;"	v
+lpf_first_order	1stUKF/src/force_estimate.cpp	/^void lpf_first_order(float origin, float *filtered, float alpha)$/;"	f
+lpf_first_order_init	1stUKF/src/force_estimate.cpp	/^void lpf_first_order_init(float *ret_gain, float sampling_time, float cutoff_freq)$/;"	f
+main	1stUKF/src/force_estimate.cpp	/^int main(int argc, char **argv){$/;"	f
+model_name	1stUKF/src/force_estimate.cpp	/^std::string model_name;$/;"	v
+nan_count	1stUKF/src/force_estimate.cpp	/^int nan_count = 0;$/;"	v
+optitrack_cb	1stUKF/src/force_estimate.cpp	/^void optitrack_cb(const geometry_msgs::PoseStamped::ConstPtr &msg){$/;"	f
+optitrack_data	1stUKF/src/force_estimate.cpp	/^geometry_msgs::PoseStamped optitrack_data, drone_pose, last_pose;$/;"	v
+pose	1stUKF/src/force_estimate.cpp	/^geometry_msgs::Point euler, euler_ref, force, torque, bias, angular_v, pose;$/;"	v
+thrust	1stUKF/src/force_estimate.cpp	/^Eigen::Vector3d thrust, last_thrust;$/;"	v
+thrust_cb	1stUKF/src/force_estimate.cpp	/^void thrust_cb(const geometry_msgs::WrenchStamped::ConstPtr &msg){$/;"	f
+torque	1stUKF/src/force_estimate.cpp	/^geometry_msgs::Point euler, euler_ref, force, torque, bias, angular_v, pose;$/;"	v
+ukf_estimated_force_enu	1stUKF/src/force_estimate.cpp	/^float ukf_estimated_force_enu[3];$/;"	v
+ukf_estimated_force_enu_lpf	1stUKF/src/force_estimate.cpp	/^float ukf_estimated_force_enu_lpf[3];$/;"	v
+ukf_low_pass_filter	1stUKF/src/force_estimate.cpp	/^void ukf_low_pass_filter(float * ukf_estimated_force_enu, float * ukf_estimated_force_enu_lpf)$/;"	f
+ukf_lpf_gain	1stUKF/src/force_estimate.cpp	/^float ukf_lpf_gain;$/;"	v
+x_bias_queue	1stUKF/src/force_estimate.cpp	/^queue<float> x_bias_queue;$/;"	v
+y_bias_queue	1stUKF/src/force_estimate.cpp	/^queue<float> y_bias_queue;$/;"	v
+correct	1stUKF/src/ukf.cpp	/^void ukf::correct(Eigen::VectorXd measure){$/;"	f	class:ukf
+dynamics	1stUKF/src/ukf.cpp	/^Eigen::MatrixXd ukf::dynamics(Eigen::MatrixXd sigma_state){$/;"	f	class:ukf
+predict	1stUKF/src/ukf.cpp	/^void ukf::predict(){$/;"	f	class:ukf
+rotate	1stUKF/src/ukf.cpp	/^Eigen::MatrixXd ukf::rotate(float roll, float yaw, float pitch){$/;"	f	class:ukf
+set_measurement_matrix	1stUKF/src/ukf.cpp	/^void ukf::set_measurement_matrix(Eigen::MatrixXd matrix){$/;"	f	class:ukf
+set_measurement_noise	1stUKF/src/ukf.cpp	/^void ukf::set_measurement_noise(Eigen::MatrixXd matrix){$/;"	f	class:ukf
+set_process_noise	1stUKF/src/ukf.cpp	/^void ukf::set_process_noise(Eigen::MatrixXd matrix){$/;"	f	class:ukf
+ukf	1stUKF/src/ukf.cpp	/^ukf::ukf(int state_size , int measurement_size){$/;"	f	class:ukf
+~ukf	1stUKF/src/ukf.cpp	/^ukf::~ukf(){$/;"	f	class:ukf
+H	1stUKF/src/ukf.h	/^    Eigen::MatrixXd H; \/\/measurement transform$/;"	m	class:ukf
+Kalman_gain	1stUKF/src/ukf.h	/^    Eigen::MatrixXd Kalman_gain;$/;"	m	class:ukf
+L	1stUKF/src/ukf.h	/^    float L;$/;"	m	class:ukf
+P	1stUKF/src/ukf.h	/^    Eigen::MatrixXd P; \/\/covariance matrix$/;"	m	class:ukf
+P_	1stUKF/src/ukf.h	/^    Eigen::MatrixXd P_;  \/\/covariance matrix$/;"	m	class:ukf
+P_a	1stUKF/src/ukf.h	/^    Eigen::MatrixXd P_a; \/\/covariance matrix$/;"	m	class:ukf
+P_xy	1stUKF/src/ukf.h	/^    Eigen::MatrixXd P_xy;$/;"	m	class:ukf
+P_yy	1stUKF/src/ukf.h	/^    Eigen::MatrixXd P_yy;$/;"	m	class:ukf
+Q	1stUKF/src/ukf.h	/^    Eigen::MatrixXd Q; \/\/noise matrix$/;"	m	class:ukf
+R	1stUKF/src/ukf.h	/^    Eigen::MatrixXd R; \/\/noise matrix$/;"	m	class:ukf
+UKF_H	1stUKF/src/ukf.h	2;"	d
+alpha	1stUKF/src/ukf.h	/^    float alpha;$/;"	m	class:ukf
+angular_v_measure	1stUKF/src/ukf.h	/^    Eigen::Vector3d angular_v_measure;$/;"	m	class:ukf
+beta	1stUKF/src/ukf.h	/^    float beta;$/;"	m	class:ukf
+dt	1stUKF/src/ukf.h	/^    float dt;$/;"	m	class:ukf
+euler_angle	1stUKF/src/ukf.h	/^    Eigen::Vector3d euler_angle;$/;"	m	class:ukf
+kappa	1stUKF/src/ukf.h	/^    float kappa;$/;"	m	class:ukf
+lambda	1stUKF/src/ukf.h	/^    float lambda;$/;"	m	class:ukf
+last_quat	1stUKF/src/ukf.h	/^    Eigen::Vector4d last_quat;$/;"	m	class:ukf
+qk11	1stUKF/src/ukf.h	/^    Eigen::Vector4d qk11;$/;"	m	class:ukf
+quat	1stUKF/src/ukf.h	/^    Eigen::Vector4d quat;$/;"	m	class:ukf
+quat_m	1stUKF/src/ukf.h	/^    Eigen::Vector4d quat_m;$/;"	m	class:ukf
+quaternion	1stUKF/src/ukf.h	/^    Eigen::Vector4d quaternion;$/;"	m	class:ukf
+ukf	1stUKF/src/ukf.h	/^class ukf$/;"	c
+w_c	1stUKF/src/ukf.h	/^    Eigen::VectorXd w_c;  \/\/weight c$/;"	m	class:ukf
+w_m	1stUKF/src/ukf.h	/^    Eigen::VectorXd w_m;  \/\/weight m$/;"	m	class:ukf
+x	1stUKF/src/ukf.h	/^    Eigen::VectorXd x; \/\/states$/;"	m	class:ukf
+x_a	1stUKF/src/ukf.h	/^    Eigen::VectorXd x_a;$/;"	m	class:ukf
+x_a_hat	1stUKF/src/ukf.h	/^    Eigen::VectorXd x_a_hat;$/;"	m	class:ukf
+x_a_sigmavector	1stUKF/src/ukf.h	/^    Eigen::MatrixXd x_a_sigmavector;$/;"	m	class:ukf
+x_hat	1stUKF/src/ukf.h	/^    Eigen::VectorXd x_hat; \/\/x mean$/;"	m	class:ukf
+x_sigmavector	1stUKF/src/ukf.h	/^    Eigen::MatrixXd x_sigmavector;$/;"	m	class:ukf
+x_sigmavector_size	1stUKF/src/ukf.h	/^    int x_sigmavector_size;$/;"	m	class:ukf
+x_size	1stUKF/src/ukf.h	/^    int x_size;$/;"	m	class:ukf
+y	1stUKF/src/ukf.h	/^    Eigen::VectorXd y; \/\/measurements$/;"	m	class:ukf
+y_hat	1stUKF/src/ukf.h	/^    Eigen::VectorXd y_hat; \/\/y mean$/;"	m	class:ukf
+y_sigmavector	1stUKF/src/ukf.h	/^    Eigen::MatrixXd y_sigmavector;$/;"	m	class:ukf
+y_sigmavector_size	1stUKF/src/ukf.h	/^    int y_sigmavector_size;$/;"	m	class:ukf
+y_size	1stUKF/src/ukf.h	/^    int y_size;$/;"	m	class:ukf
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+I	2ndUKF/src/forceest.cpp	10;"	d	file:
+L	2ndUKF/src/forceest.cpp	3;"	d	file:
+M	2ndUKF/src/forceest.cpp	9;"	d	file:
+a	2ndUKF/src/forceest.cpp	7;"	d	file:
+dynamics	2ndUKF/src/forceest.cpp	/^Eigen::MatrixXd forceest::dynamics(Eigen::MatrixXd sigma_state){$/;"	f	class:forceest
+g	2ndUKF/src/forceest.cpp	5;"	d	file:
+l	2ndUKF/src/forceest.cpp	8;"	d	file:
+pi	2ndUKF/src/forceest.cpp	4;"	d	file:
+r	2ndUKF/src/forceest.cpp	6;"	d	file:
+FORCEEST_H	2ndUKF/src/forceest.h	2;"	d
+ac1_x	2ndUKF/src/forceest.h	/^  ac1_x,$/;"	e	enum:state
+ac1_y	2ndUKF/src/forceest.h	/^  ac1_y,$/;"	e	enum:state
+ac1_z	2ndUKF/src/forceest.h	/^  ac1_z,$/;"	e	enum:state
+forceest	2ndUKF/src/forceest.h	/^  forceest(int x, int y) : ukf(x,y){$/;"	f	class:forceest
+forceest	2ndUKF/src/forceest.h	/^class forceest : public ukf{$/;"	c
+mac1_x	2ndUKF/src/forceest.h	/^  mac1_x,$/;"	e	enum:measurement
+mac1_y	2ndUKF/src/forceest.h	/^  mac1_y,$/;"	e	enum:measurement
+mac1_z	2ndUKF/src/forceest.h	/^  mac1_z,$/;"	e	enum:measurement
+measurement	2ndUKF/src/forceest.h	/^enum measurement{$/;"	g
+measurementsize	2ndUKF/src/forceest.h	/^  measurementsize$/;"	e	enum:measurement
+mpc1_x	2ndUKF/src/forceest.h	/^  mpc1_x,$/;"	e	enum:measurement
+mpc1_y	2ndUKF/src/forceest.h	/^  mpc1_y,$/;"	e	enum:measurement
+mpc1_z	2ndUKF/src/forceest.h	/^  mpc1_z,$/;"	e	enum:measurement
+pc1_x	2ndUKF/src/forceest.h	/^  pc1_x,$/;"	e	enum:state
+pc1_y	2ndUKF/src/forceest.h	/^  pc1_y,$/;"	e	enum:state
+pc1_z	2ndUKF/src/forceest.h	/^  pc1_z,$/;"	e	enum:state
+state	2ndUKF/src/forceest.h	/^enum state{$/;"	g
+statesize	2ndUKF/src/forceest.h	/^  statesize$/;"	e	enum:state
+vc1_x	2ndUKF/src/forceest.h	/^  vc1_x,$/;"	e	enum:state
+vc1_y	2ndUKF/src/forceest.h	/^  vc1_y,$/;"	e	enum:state
+vc1_z	2ndUKF/src/forceest.h	/^  vc1_z,$/;"	e	enum:state
+PAYLOAD_LENGTH	2ndUKF/src/pose_estimate.cpp	12;"	d	file:
+g	2ndUKF/src/pose_estimate.cpp	/^float g = 9.81;$/;"	v
+imu1_cb	2ndUKF/src/pose_estimate.cpp	/^void imu1_cb(const sensor_msgs::Imu::ConstPtr& msg){$/;"	f
+imu_data	2ndUKF/src/pose_estimate.cpp	/^sensor_msgs::Imu imu_data;$/;"	v
+main	2ndUKF/src/pose_estimate.cpp	/^int main(int argc, char **argv){$/;"	f
+omega_p	2ndUKF/src/pose_estimate.cpp	/^Eigen::Vector3d omega_p;$/;"	v
+optitrack_cb	2ndUKF/src/pose_estimate.cpp	/^void optitrack_cb(const geometry_msgs::PoseStamped::ConstPtr& msg){$/;"	f
+pa	2ndUKF/src/pose_estimate.cpp	/^Eigen::Vector3d pp, pc1, pc2, pa, pb;$/;"	v
+pa_debug	2ndUKF/src/pose_estimate.cpp	/^geometry_msgs::Point pc1_debug, pc2_debug, pa_debug;$/;"	v
+payload_data	2ndUKF/src/pose_estimate.cpp	/^geometry_msgs::Pose2D payload_data;$/;"	v
+payload_rotation_b_i	2ndUKF/src/pose_estimate.cpp	/^Eigen::Matrix3d payload_rotation_b_i; \/\/body to inertial$/;"	v
+payload_rotation_i_b	2ndUKF/src/pose_estimate.cpp	/^Eigen::Matrix3d payload_rotation_i_b; \/\/inertial to body$/;"	v
+pb	2ndUKF/src/pose_estimate.cpp	/^Eigen::Vector3d pp, pc1, pc2, pa, pb;$/;"	v
+pc1	2ndUKF/src/pose_estimate.cpp	/^Eigen::Vector3d pp, pc1, pc2, pa, pb;$/;"	v
+pc1_debug	2ndUKF/src/pose_estimate.cpp	/^geometry_msgs::Point pc1_debug, pc2_debug, pa_debug;$/;"	v
+pc2	2ndUKF/src/pose_estimate.cpp	/^Eigen::Vector3d pp, pc1, pc2, pa, pb;$/;"	v
+pc2_debug	2ndUKF/src/pose_estimate.cpp	/^geometry_msgs::Point pc1_debug, pc2_debug, pa_debug;$/;"	v
+pp	2ndUKF/src/pose_estimate.cpp	/^Eigen::Vector3d pp, pc1, pc2, pa, pb;$/;"	v
+correct	2ndUKF/src/ukf.cpp	/^void ukf::correct(Eigen::VectorXd measure){$/;"	f	class:ukf
+dynamics	2ndUKF/src/ukf.cpp	/^Eigen::MatrixXd ukf::dynamics(Eigen::MatrixXd sigma_state){$/;"	f	class:ukf
+predict	2ndUKF/src/ukf.cpp	/^void ukf::predict(){$/;"	f	class:ukf
+set_measurement_matrix	2ndUKF/src/ukf.cpp	/^void ukf::set_measurement_matrix(Eigen::MatrixXd matrix){$/;"	f	class:ukf
+set_measurement_noise	2ndUKF/src/ukf.cpp	/^void ukf::set_measurement_noise(Eigen::MatrixXd matrix){$/;"	f	class:ukf
+set_process_noise	2ndUKF/src/ukf.cpp	/^void ukf::set_process_noise(Eigen::MatrixXd matrix){$/;"	f	class:ukf
+ukf	2ndUKF/src/ukf.cpp	/^ukf::ukf(int state_size , int measurement_size){$/;"	f	class:ukf
+~ukf	2ndUKF/src/ukf.cpp	/^ukf::~ukf(){$/;"	f	class:ukf
+H	2ndUKF/src/ukf.h	/^    Eigen::MatrixXd H ;    \/\/measurement transform$/;"	m	class:ukf
+Kalman_gain	2ndUKF/src/ukf.h	/^    Eigen::MatrixXd Kalman_gain ;$/;"	m	class:ukf
+L	2ndUKF/src/ukf.h	/^    float L;$/;"	m	class:ukf
+P	2ndUKF/src/ukf.h	/^    Eigen::MatrixXd P ; \/\/covariance matrix$/;"	m	class:ukf
+P_	2ndUKF/src/ukf.h	/^    Eigen::MatrixXd P_ ; \/\/covariance matrix$/;"	m	class:ukf
+P_a	2ndUKF/src/ukf.h	/^    Eigen::MatrixXd P_a ; \/\/covariance matrix$/;"	m	class:ukf
+P_xy	2ndUKF/src/ukf.h	/^    Eigen::MatrixXd P_xy ;$/;"	m	class:ukf
+P_yy	2ndUKF/src/ukf.h	/^    Eigen::MatrixXd P_yy ;$/;"	m	class:ukf
+Q	2ndUKF/src/ukf.h	/^    Eigen::MatrixXd Q ; \/\/noise matrix$/;"	m	class:ukf
+R	2ndUKF/src/ukf.h	/^    Eigen::MatrixXd R ; \/\/noise matrix$/;"	m	class:ukf
+UKF_H	2ndUKF/src/ukf.h	2;"	d
+alpha	2ndUKF/src/ukf.h	/^    float alpha ;$/;"	m	class:ukf
+beta	2ndUKF/src/ukf.h	/^    float beta ;$/;"	m	class:ukf
+dt	2ndUKF/src/ukf.h	/^    float dt;$/;"	m	class:ukf
+kappa	2ndUKF/src/ukf.h	/^    float kappa ;$/;"	m	class:ukf
+lambda	2ndUKF/src/ukf.h	/^    float lambda ;$/;"	m	class:ukf
+ukf	2ndUKF/src/ukf.h	/^class ukf$/;"	c
+w_c	2ndUKF/src/ukf.h	/^    Eigen::VectorXd w_c ; \/\/weight c$/;"	m	class:ukf
+w_m	2ndUKF/src/ukf.h	/^    Eigen::VectorXd w_m ;  \/\/weight m$/;"	m	class:ukf
+x	2ndUKF/src/ukf.h	/^    Eigen::VectorXd x ; \/\/states$/;"	m	class:ukf
+x_a	2ndUKF/src/ukf.h	/^    Eigen::VectorXd x_a;$/;"	m	class:ukf
+x_a_hat	2ndUKF/src/ukf.h	/^    Eigen::VectorXd x_a_hat;$/;"	m	class:ukf
+x_a_sigmavector	2ndUKF/src/ukf.h	/^    Eigen::MatrixXd x_a_sigmavector;$/;"	m	class:ukf
+x_hat	2ndUKF/src/ukf.h	/^    Eigen::VectorXd x_hat; \/\/x mean$/;"	m	class:ukf
+x_sigmavector	2ndUKF/src/ukf.h	/^    Eigen::MatrixXd x_sigmavector ;$/;"	m	class:ukf
+x_sigmavector_size	2ndUKF/src/ukf.h	/^    int x_sigmavector_size;$/;"	m	class:ukf
+x_size	2ndUKF/src/ukf.h	/^    int x_size;$/;"	m	class:ukf
+y	2ndUKF/src/ukf.h	/^    Eigen::VectorXd y ; \/\/measurements$/;"	m	class:ukf
+y_hat	2ndUKF/src/ukf.h	/^    Eigen::VectorXd y_hat; \/\/y mean$/;"	m	class:ukf
+y_sigmavector	2ndUKF/src/ukf.h	/^    Eigen::MatrixXd y_sigmavector ;$/;"	m	class:ukf
+y_sigmavector_size	2ndUKF/src/ukf.h	/^    int y_sigmavector_size;$/;"	m	class:ukf
+y_size	2ndUKF/src/ukf.h	/^    int y_size;$/;"	m	class:ukf
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+PI	IMU/src/imu.cpp	8;"	d	file:
+imu_Callback	IMU/src/imu.cpp	/^void imu_Callback(const sensor_msgs::Imu::ConstPtr& msg)$/;"	f
+imu_flag	IMU/src/imu.cpp	/^bool imu_flag = false;$/;"	v
+main	IMU/src/imu.cpp	/^int main(int argc, char **argv)$/;"	f
+optitrack_Callback	IMU/src/imu.cpp	/^void optitrack_Callback(const geometry_msgs::PoseStamped::ConstPtr& msg)$/;"	f
+yaw_flag	IMU/src/imu.cpp	/^bool yaw_flag = true;$/;"	v
+dasum_	controller/include/blas_redefines.h	15;"	d
+daxpy_	controller/include/blas_redefines.h	10;"	d
+dcopy_	controller/include/blas_redefines.h	8;"	d
+ddot_	controller/include/blas_redefines.h	12;"	d
+dgbmv_	controller/include/blas_redefines.h	21;"	d
+dgbsv_	controller/include/blas_redefines.h	121;"	d
+dgbtrf_	controller/include/blas_redefines.h	117;"	d
+dgbtrs_	controller/include/blas_redefines.h	119;"	d
+dgees_	controller/include/blas_redefines.h	149;"	d
+dgelqf_	controller/include/blas_redefines.h	109;"	d
+dgels_	controller/include/blas_redefines.h	87;"	d
+dgemm_	controller/include/blas_redefines.h	43;"	d
+dgemv_	controller/include/blas_redefines.h	19;"	d
+dgeqp3_	controller/include/blas_redefines.h	153;"	d
+dgeqrf_	controller/include/blas_redefines.h	103;"	d
+dger_	controller/include/blas_redefines.h	36;"	d
+dgesdd_	controller/include/blas_redefines.h	101;"	d
+dgesv_	controller/include/blas_redefines.h	64;"	d
+dgesvd_	controller/include/blas_redefines.h	99;"	d
+dgetrf_	controller/include/blas_redefines.h	58;"	d
+dgetri_	controller/include/blas_redefines.h	62;"	d
+dgetrs_	controller/include/blas_redefines.h	60;"	d
+dgges_	controller/include/blas_redefines.h	151;"	d
+dgtsv_	controller/include/blas_redefines.h	123;"	d
+dgttrf_	controller/include/blas_redefines.h	129;"	d
+dgttrs_	controller/include/blas_redefines.h	131;"	d
+dlacpy_	controller/include/blas_redefines.h	147;"	d
+dnrm2_	controller/include/blas_redefines.h	13;"	d
+dorglq_	controller/include/blas_redefines.h	113;"	d
+dorgqr_	controller/include/blas_redefines.h	107;"	d
+dormlq_	controller/include/blas_redefines.h	111;"	d
+dormqr_	controller/include/blas_redefines.h	105;"	d
+dpbsv_	controller/include/blas_redefines.h	125;"	d
+dpbtrf_	controller/include/blas_redefines.h	135;"	d
+dpbtrs_	controller/include/blas_redefines.h	143;"	d
+dposv_	controller/include/blas_redefines.h	72;"	d
+dpotrf_	controller/include/blas_redefines.h	66;"	d
+dpotri_	controller/include/blas_redefines.h	67;"	d
+dpotrs_	controller/include/blas_redefines.h	70;"	d
+dptsv_	controller/include/blas_redefines.h	127;"	d
+dpttrf_	controller/include/blas_redefines.h	141;"	d
+dpttrs_	controller/include/blas_redefines.h	145;"	d
+dsbmv_	controller/include/blas_redefines.h	26;"	d
+dscal_	controller/include/blas_redefines.h	5;"	d
+dswap_	controller/include/blas_redefines.h	3;"	d
+dsyev_	controller/include/blas_redefines.h	89;"	d
+dsyevd_	controller/include/blas_redefines.h	93;"	d
+dsyevr_	controller/include/blas_redefines.h	95;"	d
+dsyevx_	controller/include/blas_redefines.h	91;"	d
+dsygv_	controller/include/blas_redefines.h	85;"	d
+dsymm_	controller/include/blas_redefines.h	45;"	d
+dsymv_	controller/include/blas_redefines.h	23;"	d
+dsyr2_	controller/include/blas_redefines.h	41;"	d
+dsyr2k_	controller/include/blas_redefines.h	51;"	d
+dsyr_	controller/include/blas_redefines.h	39;"	d
+dsyrk_	controller/include/blas_redefines.h	48;"	d
+dsysv_	controller/include/blas_redefines.h	83;"	d
+dsytrf_	controller/include/blas_redefines.h	74;"	d
+dsytri_	controller/include/blas_redefines.h	77;"	d
+dsytrs_	controller/include/blas_redefines.h	79;"	d
+dtbmv_	controller/include/blas_redefines.h	30;"	d
+dtbsv_	controller/include/blas_redefines.h	34;"	d
+dtbtrf_	controller/include/blas_redefines.h	139;"	d
+dtbtrs_	controller/include/blas_redefines.h	137;"	d
+dtrmm_	controller/include/blas_redefines.h	54;"	d
+dtrmv_	controller/include/blas_redefines.h	28;"	d
+dtrsm_	controller/include/blas_redefines.h	56;"	d
+dtrsv_	controller/include/blas_redefines.h	32;"	d
+dtrtri_	controller/include/blas_redefines.h	133;"	d
+dtrtrs_	controller/include/blas_redefines.h	115;"	d
+dzasum_	controller/include/blas_redefines.h	16;"	d
+dznrm2_	controller/include/blas_redefines.h	14;"	d
+idamax_	controller/include/blas_redefines.h	17;"	d
+ilaenv_	controller/include/blas_redefines.h	97;"	d
+izamax_	controller/include/blas_redefines.h	18;"	d
+zaxpy_	controller/include/blas_redefines.h	11;"	d
+zcopy_	controller/include/blas_redefines.h	9;"	d
+zdscal_	controller/include/blas_redefines.h	7;"	d
+zgbmv_	controller/include/blas_redefines.h	22;"	d
+zgbsv_	controller/include/blas_redefines.h	122;"	d
+zgbtrf_	controller/include/blas_redefines.h	118;"	d
+zgbtrs_	controller/include/blas_redefines.h	120;"	d
+zgees_	controller/include/blas_redefines.h	150;"	d
+zgelqf_	controller/include/blas_redefines.h	110;"	d
+zgels_	controller/include/blas_redefines.h	88;"	d
+zgemm_	controller/include/blas_redefines.h	44;"	d
+zgemv_	controller/include/blas_redefines.h	20;"	d
+zgeqp3_	controller/include/blas_redefines.h	154;"	d
+zgeqrf_	controller/include/blas_redefines.h	104;"	d
+zgerc_	controller/include/blas_redefines.h	37;"	d
+zgeru_	controller/include/blas_redefines.h	38;"	d
+zgesdd_	controller/include/blas_redefines.h	102;"	d
+zgesv_	controller/include/blas_redefines.h	65;"	d
+zgesvd_	controller/include/blas_redefines.h	100;"	d
+zgetrf_	controller/include/blas_redefines.h	59;"	d
+zgetri_	controller/include/blas_redefines.h	63;"	d
+zgetrs_	controller/include/blas_redefines.h	61;"	d
+zgges_	controller/include/blas_redefines.h	152;"	d
+zgtsv_	controller/include/blas_redefines.h	124;"	d
+zgttrf_	controller/include/blas_redefines.h	130;"	d
+zgttrs_	controller/include/blas_redefines.h	132;"	d
+zhbmv_	controller/include/blas_redefines.h	27;"	d
+zheev_	controller/include/blas_redefines.h	90;"	d
+zheevd_	controller/include/blas_redefines.h	94;"	d
+zheevr_	controller/include/blas_redefines.h	96;"	d
+zheevx_	controller/include/blas_redefines.h	92;"	d
+zhegv_	controller/include/blas_redefines.h	98;"	d
+zhemm_	controller/include/blas_redefines.h	47;"	d
+zhemv_	controller/include/blas_redefines.h	25;"	d
+zher2_	controller/include/blas_redefines.h	42;"	d
+zher2k_	controller/include/blas_redefines.h	53;"	d
+zher_	controller/include/blas_redefines.h	40;"	d
+zherk_	controller/include/blas_redefines.h	50;"	d
+zhesv_	controller/include/blas_redefines.h	86;"	d
+zhetrf_	controller/include/blas_redefines.h	76;"	d
+zhetri_	controller/include/blas_redefines.h	82;"	d
+zhetrs_	controller/include/blas_redefines.h	81;"	d
+zlacpy_	controller/include/blas_redefines.h	148;"	d
+zpbsv_	controller/include/blas_redefines.h	126;"	d
+zpbtrf_	controller/include/blas_redefines.h	136;"	d
+zpbtrs_	controller/include/blas_redefines.h	144;"	d
+zposv_	controller/include/blas_redefines.h	73;"	d
+zpotrf_	controller/include/blas_redefines.h	69;"	d
+zpotri_	controller/include/blas_redefines.h	68;"	d
+zpotrs_	controller/include/blas_redefines.h	71;"	d
+zptsv_	controller/include/blas_redefines.h	128;"	d
+zpttrf_	controller/include/blas_redefines.h	142;"	d
+zpttrs_	controller/include/blas_redefines.h	146;"	d
+zscal_	controller/include/blas_redefines.h	6;"	d
+zswap_	controller/include/blas_redefines.h	4;"	d
+zsymm_	controller/include/blas_redefines.h	46;"	d
+zsymv_	controller/include/blas_redefines.h	24;"	d
+zsyr2k_	controller/include/blas_redefines.h	52;"	d
+zsyrk_	controller/include/blas_redefines.h	49;"	d
+zsysv_	controller/include/blas_redefines.h	84;"	d
+zsytrf_	controller/include/blas_redefines.h	75;"	d
+zsytri_	controller/include/blas_redefines.h	78;"	d
+zsytrs_	controller/include/blas_redefines.h	80;"	d
+ztbmv_	controller/include/blas_redefines.h	31;"	d
+ztbsv_	controller/include/blas_redefines.h	35;"	d
+ztbtrf_	controller/include/blas_redefines.h	140;"	d
+ztbtrs_	controller/include/blas_redefines.h	138;"	d
+ztrmm_	controller/include/blas_redefines.h	55;"	d
+ztrmv_	controller/include/blas_redefines.h	29;"	d
+ztrsm_	controller/include/blas_redefines.h	57;"	d
+ztrsv_	controller/include/blas_redefines.h	33;"	d
+ztrtri_	controller/include/blas_redefines.h	134;"	d
+ztrtrs_	controller/include/blas_redefines.h	116;"	d
+zunglq_	controller/include/blas_redefines.h	114;"	d
+zungqr_	controller/include/blas_redefines.h	108;"	d
+zunmlq_	controller/include/blas_redefines.h	112;"	d
+zunmqr_	controller/include/blas_redefines.h	106;"	d
+CCS_NCOLS	controller/include/cvxopt.h	150;"	d
+CCS_NNZ	controller/include/cvxopt.h	151;"	d
+CCS_NROWS	controller/include/cvxopt.h	149;"	d
+COMPLEX	controller/include/cvxopt.h	44;"	d
+DOUBLE	controller/include/cvxopt.h	43;"	d
+INT	controller/include/cvxopt.h	42;"	d
+MAT_BUF	controller/include/cvxopt.h	121;"	d
+MAT_BUFD	controller/include/cvxopt.h	123;"	d
+MAT_BUFI	controller/include/cvxopt.h	122;"	d
+MAT_BUFZ	controller/include/cvxopt.h	125;"	d
+MAT_BUFZ	controller/include/cvxopt.h	127;"	d
+MAT_BUFZ	controller/include/cvxopt.h	33;"	d
+MAT_BUFZ	controller/include/cvxopt.h	35;"	d
+MAT_ID	controller/include/cvxopt.h	132;"	d
+MAT_LGT	controller/include/cvxopt.h	131;"	d
+MAT_NCOLS	controller/include/cvxopt.h	130;"	d
+MAT_NROWS	controller/include/cvxopt.h	129;"	d
+Matrix_Check	controller/include/cvxopt.h	73;"	d
+Matrix_Check	controller/include/cvxopt.h	83;"	d
+Matrix_New	controller/include/cvxopt.h	80;"	d
+Matrix_NewFromList	controller/include/cvxopt.h	82;"	d
+Matrix_NewFromMatrix	controller/include/cvxopt.h	81;"	d
+SP_COL	controller/include/cvxopt.h	139;"	d
+SP_ID	controller/include/cvxopt.h	138;"	d
+SP_LGT	controller/include/cvxopt.h	136;"	d
+SP_NCOLS	controller/include/cvxopt.h	134;"	d
+SP_NNZ	controller/include/cvxopt.h	137;"	d
+SP_NROWS	controller/include/cvxopt.h	135;"	d
+SP_ROW	controller/include/cvxopt.h	140;"	d
+SP_VAL	controller/include/cvxopt.h	141;"	d
+SP_VALD	controller/include/cvxopt.h	142;"	d
+SP_VALZ	controller/include/cvxopt.h	144;"	d
+SP_VALZ	controller/include/cvxopt.h	146;"	d
+SpMatrix_Check	controller/include/cvxopt.h	74;"	d
+SpMatrix_Check	controller/include/cvxopt.h	91;"	d
+SpMatrix_New	controller/include/cvxopt.h	85;"	d
+SpMatrix_NewFromIJV	controller/include/cvxopt.h	88;"	d
+SpMatrix_NewFromSpMatrix	controller/include/cvxopt.h	86;"	d
+__CVXOPT__	controller/include/cvxopt.h	40;"	d
+buffer	controller/include/cvxopt.h	/^  void *buffer;          \/* in column-major-mode array of type 'id' *\/$/;"	m	struct:__anon4
+ccs	controller/include/cvxopt.h	/^} ccs;$/;"	t	typeref:struct:__anon5
+colptr	controller/include/cvxopt.h	/^  int_t *colptr;      \/* column pointer list *\/$/;"	m	struct:__anon5
+cvxopt_API	controller/include/cvxopt.h	/^static void **cvxopt_API;$/;"	v
+id	controller/include/cvxopt.h	/^  int   id;              \/* DOUBLE, INT, COMPLEX *\/$/;"	m	struct:__anon4
+id	controller/include/cvxopt.h	/^  int   id;           \/* DOUBLE, COMPLEX *\/$/;"	m	struct:__anon5
+import_cvxopt	controller/include/cvxopt.h	/^import_cvxopt(void)$/;"	f
+int_t	controller/include/cvxopt.h	46;"	d
+matrix	controller/include/cvxopt.h	/^} matrix;$/;"	t	typeref:struct:__anon4
+ncols	controller/include/cvxopt.h	/^  int nrows, ncols;      \/* number of rows and columns *\/$/;"	m	struct:__anon4
+ncols	controller/include/cvxopt.h	/^  int_t nrows, ncols; \/* number of rows and columns *\/$/;"	m	struct:__anon5
+nrows	controller/include/cvxopt.h	/^  int nrows, ncols;      \/* number of rows and columns *\/$/;"	m	struct:__anon4
+nrows	controller/include/cvxopt.h	/^  int_t nrows, ncols; \/* number of rows and columns *\/$/;"	m	struct:__anon5
+ob_exports	controller/include/cvxopt.h	/^  int_t ob_exports;$/;"	m	struct:__anon4
+obj	controller/include/cvxopt.h	/^  ccs *obj;$/;"	m	struct:__anon6
+rowind	controller/include/cvxopt.h	/^  int_t *rowind;      \/* row index list *\/$/;"	m	struct:__anon5
+shape	controller/include/cvxopt.h	/^  int_t shape[2];$/;"	m	struct:__anon4
+spmatrix	controller/include/cvxopt.h	/^} spmatrix;$/;"	t	typeref:struct:__anon6
+strides	controller/include/cvxopt.h	/^  int_t strides[2];$/;"	m	struct:__anon4
+values	controller/include/cvxopt.h	/^  void  *values;      \/* value list *\/$/;"	m	struct:__anon5
+acc2quaternion	controller/include/geometric_controller.cpp	/^Eigen::Vector4d geometricCtrl::acc2quaternion(Eigen::Vector3d vector_acc, double yaw) {$/;"	f	class:geometricCtrl
+attcontroller	controller/include/geometric_controller.cpp	/^Eigen::Vector4d geometricCtrl::attcontroller(Eigen::Vector4d &ref_att, Eigen::Vector3d &ref_acc, Eigen::Vector4d &curr_att){$/;"	f	class:geometricCtrl
+computeBodyRateCmd	controller/include/geometric_controller.cpp	/^void geometricCtrl::computeBodyRateCmd(int mode){$/;"	f	class:geometricCtrl
+disturbanceobserver	controller/include/geometric_controller.cpp	/^Eigen::Vector3d geometricCtrl::disturbanceobserver(Eigen::Vector3d pos_error, Eigen::Vector3d acc_setpoint){$/;"	f	class:geometricCtrl
+geometricCtrl	controller/include/geometric_controller.cpp	/^geometricCtrl::geometricCtrl():$/;"	f	class:geometricCtrl
+getStates	controller/include/geometric_controller.cpp	/^void geometricCtrl::getStates(Eigen::Vector3d &pos, Eigen::Vector4d &att, Eigen::Vector3d &vel, Eigen::Vector3d &angvel){$/;"	f	class:geometricCtrl
+quat2RotMatrix	controller/include/geometric_controller.cpp	/^Eigen::Matrix3d geometricCtrl::quat2RotMatrix(Eigen::Vector4d q){$/;"	f	class:geometricCtrl
+quatMultiplication	controller/include/geometric_controller.cpp	/^Eigen::Vector4d geometricCtrl::quatMultiplication(Eigen::Vector4d &q, Eigen::Vector4d &p) {$/;"	f	class:geometricCtrl
+rot2Quaternion	controller/include/geometric_controller.cpp	/^Eigen::Vector4d geometricCtrl::rot2Quaternion(Eigen::Matrix3d R){$/;"	f	class:geometricCtrl
+setBodyRateCommand	controller/include/geometric_controller.cpp	/^void geometricCtrl::setBodyRateCommand(Eigen::Vector4d bodyrate_command){$/;"	f	class:geometricCtrl
+setFeedthrough	controller/include/geometric_controller.cpp	/^void geometricCtrl::setFeedthrough(bool feed_through){$/;"	f	class:geometricCtrl
+set_cmd	controller/include/geometric_controller.cpp	/^void geometricCtrl::set_cmd(Eigen::Vector3d pos,Eigen::Vector3d vel, Eigen::Vector3d acc ){$/;"	f	class:geometricCtrl
+set_init	controller/include/geometric_controller.cpp	/^void geometricCtrl::set_init(){$/;"	f	class:geometricCtrl
+set_payload_info	controller/include/geometric_controller.cpp	/^void  geometricCtrl::set_payload_info(Eigen::Vector3d T ){$/;"	f	class:geometricCtrl
+set_pose	controller/include/geometric_controller.cpp	/^void geometricCtrl::set_pose(Eigen::Vector3d pose, Eigen::Vector4d ori, Eigen::Vector3d vel, Eigen::Vector3d ang){$/;"	f	class:geometricCtrl
+~geometricCtrl	controller/include/geometric_controller.cpp	/^geometricCtrl::~geometricCtrl() {$/;"	f	class:geometricCtrl
+D_	controller/include/geometric_controller.h	/^    Eigen::Vector3d Kpos_, Kvel_, D_;$/;"	m	class:geometricCtrl
+FlightState	controller/include/geometric_controller.h	/^    enum FlightState {$/;"	g	class:geometricCtrl
+GEOMETRIC_CONTROLLER_H	controller/include/geometric_controller.h	4;"	d
+Kpos_	controller/include/geometric_controller.h	/^    Eigen::Vector3d Kpos_, Kvel_, D_;$/;"	m	class:geometricCtrl
+Kpos_x_	controller/include/geometric_controller.h	/^    double Kpos_x_, Kpos_y_, Kpos_z_, Kvel_x_, Kvel_y_, Kvel_z_;$/;"	m	class:geometricCtrl
+Kpos_y_	controller/include/geometric_controller.h	/^    double Kpos_x_, Kpos_y_, Kpos_z_, Kvel_x_, Kvel_y_, Kvel_z_;$/;"	m	class:geometricCtrl
+Kpos_z_	controller/include/geometric_controller.h	/^    double Kpos_x_, Kpos_y_, Kpos_z_, Kvel_x_, Kvel_y_, Kvel_z_;$/;"	m	class:geometricCtrl
+Kvel_	controller/include/geometric_controller.h	/^    Eigen::Vector3d Kpos_, Kvel_, D_;$/;"	m	class:geometricCtrl
+Kvel_x_	controller/include/geometric_controller.h	/^    double Kpos_x_, Kpos_y_, Kpos_z_, Kvel_x_, Kvel_y_, Kvel_z_;$/;"	m	class:geometricCtrl
+Kvel_y_	controller/include/geometric_controller.h	/^    double Kpos_x_, Kpos_y_, Kpos_z_, Kvel_x_, Kvel_y_, Kvel_z_;$/;"	m	class:geometricCtrl
+Kvel_z_	controller/include/geometric_controller.h	/^    double Kpos_x_, Kpos_y_, Kpos_z_, Kvel_x_, Kvel_y_, Kvel_z_;$/;"	m	class:geometricCtrl
+LANDED	controller/include/geometric_controller.h	/^      WAITING_FOR_HOME_POSE, MISSION_EXECUTION, LANDING, LANDED$/;"	e	enum:geometricCtrl::FlightState
+LANDING	controller/include/geometric_controller.h	/^      WAITING_FOR_HOME_POSE, MISSION_EXECUTION, LANDING, LANDED$/;"	e	enum:geometricCtrl::FlightState
+MISSION_EXECUTION	controller/include/geometric_controller.h	/^      WAITING_FOR_HOME_POSE, MISSION_EXECUTION, LANDING, LANDED$/;"	e	enum:geometricCtrl::FlightState
+MODE_BODYRATE	controller/include/geometric_controller.h	34;"	d
+MODE_BODYTORQUE	controller/include/geometric_controller.h	35;"	d
+MODE_ROTORTHRUST	controller/include/geometric_controller.h	33;"	d
+WAITING_FOR_HOME_POSE	controller/include/geometric_controller.h	/^      WAITING_FOR_HOME_POSE, MISSION_EXECUTION, LANDING, LANDED$/;"	e	enum:geometricCtrl::FlightState
+a0	controller/include/geometric_controller.h	/^    Eigen::Vector3d a0, a1, tau;$/;"	m	class:geometricCtrl
+a0_x	controller/include/geometric_controller.h	/^    double a0_x, a0_y, a0_z, a1_x, a1_y, a1_z, tau_x, tau_y, tau_z;$/;"	m	class:geometricCtrl
+a0_y	controller/include/geometric_controller.h	/^    double a0_x, a0_y, a0_z, a1_x, a1_y, a1_z, tau_x, tau_y, tau_z;$/;"	m	class:geometricCtrl
+a0_z	controller/include/geometric_controller.h	/^    double a0_x, a0_y, a0_z, a1_x, a1_y, a1_z, tau_x, tau_y, tau_z;$/;"	m	class:geometricCtrl
+a1	controller/include/geometric_controller.h	/^    Eigen::Vector3d a0, a1, tau;$/;"	m	class:geometricCtrl
+a1_x	controller/include/geometric_controller.h	/^    double a0_x, a0_y, a0_z, a1_x, a1_y, a1_z, tau_x, tau_y, tau_z;$/;"	m	class:geometricCtrl
+a1_y	controller/include/geometric_controller.h	/^    double a0_x, a0_y, a0_z, a1_x, a1_y, a1_z, tau_x, tau_y, tau_z;$/;"	m	class:geometricCtrl
+a1_z	controller/include/geometric_controller.h	/^    double a0_x, a0_y, a0_z, a1_x, a1_y, a1_z, tau_x, tau_y, tau_z;$/;"	m	class:geometricCtrl
+a_des	controller/include/geometric_controller.h	/^    Eigen::Vector3d a_des, a_fb, a_ref, a_rd, a_dob, g_;$/;"	m	class:geometricCtrl
+a_dob	controller/include/geometric_controller.h	/^    Eigen::Vector3d a_des, a_fb, a_ref, a_rd, a_dob, g_;$/;"	m	class:geometricCtrl
+a_fb	controller/include/geometric_controller.h	/^    Eigen::Vector3d a_des, a_fb, a_ref, a_rd, a_dob, g_;$/;"	m	class:geometricCtrl
+a_rd	controller/include/geometric_controller.h	/^    Eigen::Vector3d a_des, a_fb, a_ref, a_rd, a_dob, g_;$/;"	m	class:geometricCtrl
+a_ref	controller/include/geometric_controller.h	/^    Eigen::Vector3d a_des, a_fb, a_ref, a_rd, a_dob, g_;$/;"	m	class:geometricCtrl
+angularVelMsg_	controller/include/geometric_controller.h	/^    mavros_msgs::AttitudeTarget angularVelMsg_;$/;"	m	class:geometricCtrl
+arm_cmd_	controller/include/geometric_controller.h	/^    mavros_msgs::CommandBool arm_cmd_;$/;"	m	class:geometricCtrl
+attctrl_tau_	controller/include/geometric_controller.h	/^    double attctrl_tau_;$/;"	m	class:geometricCtrl
+cmdBodyRate_	controller/include/geometric_controller.h	/^    Eigen::Vector4d cmdBodyRate_; \/\/{wx, wy, wz, Thrust}$/;"	m	class:geometricCtrl
+ctrl_enable_	controller/include/geometric_controller.h	/^    bool fail_detec_, ctrl_enable_, feedthrough_enable_;$/;"	m	class:geometricCtrl
+ctrl_mode_	controller/include/geometric_controller.h	/^    int ctrl_mode_;$/;"	m	class:geometricCtrl
+current_state_	controller/include/geometric_controller.h	/^    mavros_msgs::State current_state_;$/;"	m	class:geometricCtrl
+deafault_mass	controller/include/geometric_controller.h	36;"	d
+desired_force	controller/include/geometric_controller.h	/^    Eigen::Vector3d desired_force;$/;"	m	class:geometricCtrl
+dhat_max	controller/include/geometric_controller.h	/^    double dhat_max, dhat_min;$/;"	m	class:geometricCtrl
+dhat_min	controller/include/geometric_controller.h	/^    double dhat_max, dhat_min;$/;"	m	class:geometricCtrl
+dx_	controller/include/geometric_controller.h	/^    double dx_, dy_, dz_;$/;"	m	class:geometricCtrl
+dy_	controller/include/geometric_controller.h	/^    double dx_, dy_, dz_;$/;"	m	class:geometricCtrl
+dz_	controller/include/geometric_controller.h	/^    double dx_, dy_, dz_;$/;"	m	class:geometricCtrl
+fail_detec_	controller/include/geometric_controller.h	/^    bool fail_detec_, ctrl_enable_, feedthrough_enable_;$/;"	m	class:geometricCtrl
+feedthrough_enable_	controller/include/geometric_controller.h	/^    bool fail_detec_, ctrl_enable_, feedthrough_enable_;$/;"	m	class:geometricCtrl
+g_	controller/include/geometric_controller.h	/^    Eigen::Vector3d a_des, a_fb, a_ref, a_rd, a_dob, g_;$/;"	m	class:geometricCtrl
+geometricCtrl	controller/include/geometric_controller.h	/^class geometricCtrl$/;"	c
+home_pose_	controller/include/geometric_controller.h	/^    geometry_msgs::Pose home_pose_;$/;"	m	class:geometricCtrl
+kd_rot_	controller/include/geometric_controller.h	/^    double kp_rot_, kd_rot_;$/;"	m	class:geometricCtrl
+kp_rot_	controller/include/geometric_controller.h	/^    double kp_rot_, kd_rot_;$/;"	m	class:geometricCtrl
+landing_commanded_	controller/include/geometric_controller.h	/^    bool landing_commanded_;$/;"	m	class:geometricCtrl
+mass	controller/include/geometric_controller.h	/^    double mass;$/;"	m	class:geometricCtrl
+mavAtt_	controller/include/geometric_controller.h	/^    Eigen::Vector4d mavAtt_, q_ref, q_des;$/;"	m	class:geometricCtrl
+mavPos_	controller/include/geometric_controller.h	/^    Eigen::Vector3d mavPos_, mavVel_, mavRate_;$/;"	m	class:geometricCtrl
+mavRate_	controller/include/geometric_controller.h	/^    Eigen::Vector3d mavPos_, mavVel_, mavRate_;$/;"	m	class:geometricCtrl
+mavVel_	controller/include/geometric_controller.h	/^    Eigen::Vector3d mavPos_, mavVel_, mavRate_;$/;"	m	class:geometricCtrl
+mavYaw_	controller/include/geometric_controller.h	/^    double mavYaw_;$/;"	m	class:geometricCtrl
+mav_name_	controller/include/geometric_controller.h	/^    string mav_name_;$/;"	m	class:geometricCtrl
+max_fb_acc_	controller/include/geometric_controller.h	/^    double max_fb_acc_;$/;"	m	class:geometricCtrl
+nh_	controller/include/geometric_controller.h	/^    ros::NodeHandle nh_;$/;"	m	class:geometricCtrl
+nh_private_	controller/include/geometric_controller.h	/^    ros::NodeHandle nh_private_;$/;"	m	class:geometricCtrl
+node_state	controller/include/geometric_controller.h	/^    } node_state;$/;"	m	class:geometricCtrl	typeref:enum:geometricCtrl::FlightState
+norm_thrust_const_	controller/include/geometric_controller.h	/^    double norm_thrust_const_;$/;"	m	class:geometricCtrl
+offb_set_mode_	controller/include/geometric_controller.h	/^    mavros_msgs::SetMode offb_set_mode_;$/;"	m	class:geometricCtrl
+p_	controller/include/geometric_controller.h	/^    std::vector<Eigen::Vector2d> q_, p_;$/;"	m	class:geometricCtrl
+q_	controller/include/geometric_controller.h	/^    std::vector<Eigen::Vector2d> q_, p_;$/;"	m	class:geometricCtrl
+q_des	controller/include/geometric_controller.h	/^    Eigen::Vector4d mavAtt_, q_ref, q_des;$/;"	m	class:geometricCtrl
+q_ref	controller/include/geometric_controller.h	/^    Eigen::Vector4d mavAtt_, q_ref, q_des;$/;"	m	class:geometricCtrl
+received_home_pose	controller/include/geometric_controller.h	/^    bool received_home_pose;$/;"	m	class:geometricCtrl
+referencePoseMsg_	controller/include/geometric_controller.h	/^    geometry_msgs::PoseStamped referencePoseMsg_;$/;"	m	class:geometricCtrl
+reference_request_dt_	controller/include/geometric_controller.h	/^    double reference_request_dt_;$/;"	m	class:geometricCtrl
+sim_enable_	controller/include/geometric_controller.h	/^    bool sim_enable_, use_dob_;$/;"	m	class:geometricCtrl
+targetAcc_	controller/include/geometric_controller.h	/^    Eigen::Vector3d targetPos_, targetVel_, targetAcc_, targetJerk_, targetSnap_, targetPos_prev_, targetVel_prev_;$/;"	m	class:geometricCtrl
+targetJerk_	controller/include/geometric_controller.h	/^    Eigen::Vector3d targetPos_, targetVel_, targetAcc_, targetJerk_, targetSnap_, targetPos_prev_, targetVel_prev_;$/;"	m	class:geometricCtrl
+targetPos_	controller/include/geometric_controller.h	/^    Eigen::Vector3d targetPos_, targetVel_, targetAcc_, targetJerk_, targetSnap_, targetPos_prev_, targetVel_prev_;$/;"	m	class:geometricCtrl
+targetPos_prev_	controller/include/geometric_controller.h	/^    Eigen::Vector3d targetPos_, targetVel_, targetAcc_, targetJerk_, targetSnap_, targetPos_prev_, targetVel_prev_;$/;"	m	class:geometricCtrl
+targetSnap_	controller/include/geometric_controller.h	/^    Eigen::Vector3d targetPos_, targetVel_, targetAcc_, targetJerk_, targetSnap_, targetPos_prev_, targetVel_prev_;$/;"	m	class:geometricCtrl
+targetVel_	controller/include/geometric_controller.h	/^    Eigen::Vector3d targetPos_, targetVel_, targetAcc_, targetJerk_, targetSnap_, targetPos_prev_, targetVel_prev_;$/;"	m	class:geometricCtrl
+targetVel_prev_	controller/include/geometric_controller.h	/^    Eigen::Vector3d targetPos_, targetVel_, targetAcc_, targetJerk_, targetSnap_, targetPos_prev_, targetVel_prev_;$/;"	m	class:geometricCtrl
+tau	controller/include/geometric_controller.h	/^    Eigen::Vector3d a0, a1, tau;$/;"	m	class:geometricCtrl
+tau_x	controller/include/geometric_controller.h	/^    double a0_x, a0_y, a0_z, a1_x, a1_y, a1_z, tau_x, tau_y, tau_z;$/;"	m	class:geometricCtrl
+tau_y	controller/include/geometric_controller.h	/^    double a0_x, a0_y, a0_z, a1_x, a1_y, a1_z, tau_x, tau_y, tau_z;$/;"	m	class:geometricCtrl
+tau_z	controller/include/geometric_controller.h	/^    double a0_x, a0_y, a0_z, a1_x, a1_y, a1_z, tau_x, tau_y, tau_z;$/;"	m	class:geometricCtrl
+use_dob_	controller/include/geometric_controller.h	/^    bool sim_enable_, use_dob_;$/;"	m	class:geometricCtrl
+waitForPredicate	controller/include/geometric_controller.h	/^    void waitForPredicate(const T* pred, const std::string& msg, double hz = 2.0){$/;"	f	class:geometricCtrl
+adjust_time	controller/include/qptrajectory.cpp	/^std::vector<double> qptrajectory::adjust_time(Eigen::VectorXd waypointx,Eigen::VectorXd waypointy,int number, Eigen::VectorXd duration, int iteration, std::vector<double> polyx,std::vector<double> polyy){$/;"	f	class:qptrajectory
+compress_time	controller/include/qptrajectory.cpp	/^std::vector<double> qptrajectory::compress_time(Eigen::VectorXd waypointx,Eigen::VectorXd waypointy,int number, Eigen::VectorXd duration,std::vector<double> polyx,std::vector<double> polyy){$/;"	f	class:qptrajectory
+cpow	controller/include/qptrajectory.cpp	/^double cpow(double t,int times){$/;"	f
+endpoint_array4	controller/include/qptrajectory.cpp	/^Eigen::MatrixXd qptrajectory:: endpoint_array4( double t){$/;"	f	class:qptrajectory
+endpoint_array8	controller/include/qptrajectory.cpp	/^Eigen::MatrixXd qptrajectory:: endpoint_array8( double t){$/;"	f	class:qptrajectory
+get_profile	controller/include/qptrajectory.cpp	/^std::vector<trajectory_profile> qptrajectory::get_profile(std::vector<segments> seg , int number , double dt ){$/;"	f	class:qptrajectory
+polynomial	controller/include/qptrajectory.cpp	/^double qptrajectory::polynomial(std::vector<double> data ,double t){$/;"	f	class:qptrajectory
+polynomial_d1	controller/include/qptrajectory.cpp	/^double qptrajectory::polynomial_d1(std::vector<double> data ,double t){$/;"	f	class:qptrajectory
+polynomial_d2	controller/include/qptrajectory.cpp	/^double qptrajectory::polynomial_d2(std::vector<double> data ,double t){$/;"	f	class:qptrajectory
+polynomial_d3	controller/include/qptrajectory.cpp	/^double qptrajectory::polynomial_d3(std::vector<double> data ,double t){$/;"	f	class:qptrajectory
+qpsolve4	controller/include/qptrajectory.cpp	/^std::vector<double> qptrajectory::qpsolve4(Eigen::VectorXd waypoint, int number, Eigen::VectorXd duration){$/;"	f	class:qptrajectory
+qpsolve8	controller/include/qptrajectory.cpp	/^std::vector<double> qptrajectory::qpsolve8(Eigen::VectorXd waypoint, int number, Eigen::VectorXd duration){$/;"	f	class:qptrajectory
+qptrajectory	controller/include/qptrajectory.cpp	/^qptrajectory::qptrajectory(){$/;"	f	class:qptrajectory
+t4_array	controller/include/qptrajectory.cpp	/^Eigen::MatrixXd qptrajectory:: t4_array( double t){$/;"	f	class:qptrajectory
+t8_array	controller/include/qptrajectory.cpp	/^Eigen::MatrixXd qptrajectory:: t8_array( double t){$/;"	f	class:qptrajectory
+~qptrajectory	controller/include/qptrajectory.cpp	/^qptrajectory::~qptrajectory(){$/;"	f	class:qptrajectory
+V	controller/include/qptrajectory.h	/^    Eigen::Vector4d V;$/;"	m	class:profile
+acc	controller/include/qptrajectory.h	/^    Eigen::Vector3d acc;$/;"	m	class:trajectory_profile
+acceleration	controller/include/qptrajectory.h	/^    double acceleration;$/;"	m	class:profile
+b_c	controller/include/qptrajectory.h	/^trajectory_profile b_c;$/;"	m	class:segments
+jerk	controller/include/qptrajectory.h	/^    Eigen::Vector3d jerk;$/;"	m	class:trajectory_profile
+jerk	controller/include/qptrajectory.h	/^    double jerk;$/;"	m	class:profile
+path_def	controller/include/qptrajectory.h	/^typedef  std::vector<segments> path_def;$/;"	t
+pos	controller/include/qptrajectory.h	/^    Eigen::Vector3d pos;$/;"	m	class:trajectory_profile
+pos	controller/include/qptrajectory.h	/^    Eigen::Vector3d pos;$/;"	m	struct:position
+pose	controller/include/qptrajectory.h	/^    pose_type pose;$/;"	m	struct:waypoint
+pose_type	controller/include/qptrajectory.h	/^struct pose_type{$/;"	s
+position	controller/include/qptrajectory.h	/^    double position;$/;"	m	class:profile
+position	controller/include/qptrajectory.h	/^    position(double x , double y , double z)$/;"	f	struct:position
+position	controller/include/qptrajectory.h	/^    position_type position; \/\/ x y z$/;"	m	struct:pose_type
+position	controller/include/qptrajectory.h	/^typedef struct position{$/;"	s
+position_type	controller/include/qptrajectory.h	/^}position_type;$/;"	t	typeref:struct:position
+profile	controller/include/qptrajectory.h	/^    profile(){}$/;"	f	class:profile
+profile	controller/include/qptrajectory.h	/^    profile(double p , double v , double a , double j){$/;"	f	class:profile
+profile	controller/include/qptrajectory.h	/^class profile{$/;"	c
+qptrajectory	controller/include/qptrajectory.h	/^class qptrajectory{$/;"	c
+qptrajectory_H	controller/include/qptrajectory.h	2;"	d
+segments	controller/include/qptrajectory.h	/^    segments(){}$/;"	f	class:segments
+segments	controller/include/qptrajectory.h	/^    segments(trajectory_profile b_c_ ,trajectory_profile t_c_ ,double t )$/;"	f	class:segments
+segments	controller/include/qptrajectory.h	/^class segments{$/;"	c
+t_c	controller/include/qptrajectory.h	/^trajectory_profile t_c;$/;"	m	class:segments
+time	controller/include/qptrajectory.h	/^    double time;$/;"	m	class:trajectory_profile
+time	controller/include/qptrajectory.h	/^    double time;$/;"	m	struct:waypoint
+time_interval	controller/include/qptrajectory.h	/^double time_interval;$/;"	m	class:segments
+trajectory_profile	controller/include/qptrajectory.h	/^    trajectory_profile(){}$/;"	f	class:trajectory_profile
+trajectory_profile	controller/include/qptrajectory.h	/^    trajectory_profile(Eigen::Vector3d pos_,$/;"	f	class:trajectory_profile
+trajectory_profile	controller/include/qptrajectory.h	/^class trajectory_profile$/;"	c
+vel	controller/include/qptrajectory.h	/^    Eigen::Vector3d vel;$/;"	m	class:trajectory_profile
+velocity	controller/include/qptrajectory.h	/^    double velocity;$/;"	m	class:profile
+waypoint	controller/include/qptrajectory.h	/^struct waypoint{$/;"	s
+yaw	controller/include/qptrajectory.h	/^    double yaw;$/;"	m	class:trajectory_profile
+FL_des	controller/src/geo.cpp	/^Eigen::Vector3d FL_des;$/;"	v
+Izz	controller/src/geo.cpp	/^float mp = 0.5, L = 1.0, g = 9.8, Izz = mp*L*L\/12;$/;"	v
+L	controller/src/geo.cpp	/^float mp = 0.5, L = 1.0, g = 9.8, Izz = mp*L*L\/12;$/;"	v
+PI	controller/src/geo.cpp	18;"	d	file:
+R_pl_B	controller/src/geo.cpp	/^Eigen::Matrix3d R_pl_B;$/;"	v
+ax	controller/src/geo.cpp	/^float vir_x, vir_y, theta_r, vx, vy, ax, ay, jx, jy;$/;"	v
+ay	controller/src/geo.cpp	/^float vir_x, vir_y, theta_r, vx, vy, ax, ay, jx, jy;$/;"	v
+desired_pose	controller/src/geo.cpp	/^geometry_msgs::PoseStamped desired_pose;$/;"	v
+dt	controller/src/geo.cpp	/^float dt = 0.02;$/;"	v
+err_state	controller/src/geo.cpp	/^Eigen::Vector3d err_state;$/;"	v
+est_vel_cb	controller/src/geo.cpp	/^void est_vel_cb(const geometry_msgs::Point::ConstPtr& msg){$/;"	f
+eta_cb	controller/src/geo.cpp	/^void eta_cb(const geometry_msgs::Point::ConstPtr& msg){$/;"	f
+flag	controller/src/geo.cpp	/^bool flag = false;$/;"	v
+g	controller/src/geo.cpp	/^float mp = 0.5, L = 1.0, g = 9.8, Izz = mp*L*L\/12;$/;"	v
+imu1_cb	controller/src/geo.cpp	/^void imu1_cb(const sensor_msgs::Imu::ConstPtr& msg){$/;"	f
+imu_data	controller/src/geo.cpp	/^sensor_msgs::Imu imu_data;$/;"	v
+jx	controller/src/geo.cpp	/^float vir_x, vir_y, theta_r, vx, vy, ax, ay, jx, jy;$/;"	v
+jy	controller/src/geo.cpp	/^float vir_x, vir_y, theta_r, vx, vy, ax, ay, jx, jy;$/;"	v
+k1	controller/src/geo.cpp	/^float k1 = 1.0, k2 = 2.0, k3 = 1.0, kv = 2.5, kw = 7.0;$/;"	v
+k2	controller/src/geo.cpp	/^float k1 = 1.0, k2 = 2.0, k3 = 1.0, kv = 2.5, kw = 7.0;$/;"	v
+k3	controller/src/geo.cpp	/^float k1 = 1.0, k2 = 2.0, k3 = 1.0, kv = 2.5, kw = 7.0;$/;"	v
+kv	controller/src/geo.cpp	/^float k1 = 1.0, k2 = 2.0, k3 = 1.0, kv = 2.5, kw = 7.0;$/;"	v
+kw	controller/src/geo.cpp	/^float k1 = 1.0, k2 = 2.0, k3 = 1.0, kv = 2.5, kw = 7.0;$/;"	v
+last_pose	controller/src/geo.cpp	/^geometry_msgs::PoseStamped optitrack_data, last_pose;$/;"	v
+last_w	controller/src/geo.cpp	/^float last_w = 0.0;$/;"	v
+leader_vel	controller/src/geo.cpp	/^geometry_msgs::TwistStamped leader_vel;$/;"	v
+main	controller/src/geo.cpp	/^int main(int argc, char **argv){$/;"	f
+mp	controller/src/geo.cpp	/^float mp = 0.5, L = 1.0, g = 9.8, Izz = mp*L*L\/12;$/;"	v
+nonholonomic_output	controller/src/geo.cpp	/^Eigen::Vector3d nonholonomic_output(float x_r, float y_r, float theta_r, float v_r, float w_r){$/;"	f
+normal	controller/src/geo.cpp	17;"	d	file:
+optitrack_cb	controller/src/geo.cpp	/^void optitrack_cb(const geometry_msgs::PoseStamped::ConstPtr& msg){$/;"	f
+optitrack_data	controller/src/geo.cpp	/^geometry_msgs::PoseStamped optitrack_data, last_pose;$/;"	v
+payload_pitch	controller/src/geo.cpp	/^double payload_roll, payload_yaw, payload_pitch;$/;"	v
+payload_roll	controller/src/geo.cpp	/^double payload_roll, payload_yaw, payload_pitch;$/;"	v
+payload_yaw	controller/src/geo.cpp	/^double payload_roll, payload_yaw, payload_pitch;$/;"	v
+pc2_cb	controller/src/geo.cpp	/^void pc2_cb(const geometry_msgs::Point::ConstPtr& msg){$/;"	f
+pc2_est	controller/src/geo.cpp	/^Eigen::Vector3d pc2_est;$/;"	v
+pose	controller/src/geo.cpp	/^Eigen::Vector3d pose, vel;$/;"	v
+theta_e	controller/src/geo.cpp	/^float x_e, y_e, theta_e;$/;"	v
+theta_r	controller/src/geo.cpp	/^float vir_x, vir_y, theta_r, vx, vy, ax, ay, jx, jy;$/;"	v
+tick	controller/src/geo.cpp	/^unsigned int tick=0;$/;"	v
+uav_rotation	controller/src/geo.cpp	/^Eigen::Matrix3d uav_rotation;$/;"	v
+v_p	controller/src/geo.cpp	/^Eigen::Vector3d v_p;$/;"	v
+v_w_eta	controller/src/geo.cpp	/^Eigen::Vector3d v_w_eta;$/;"	v
+vel	controller/src/geo.cpp	/^Eigen::Vector3d pose, vel;$/;"	v
+vir_x	controller/src/geo.cpp	/^float vir_x, vir_y, theta_r, vx, vy, ax, ay, jx, jy;$/;"	v
+vir_y	controller/src/geo.cpp	/^float vir_x, vir_y, theta_r, vx, vy, ax, ay, jx, jy;$/;"	v
+vx	controller/src/geo.cpp	/^float vir_x, vir_y, theta_r, vx, vy, ax, ay, jx, jy;$/;"	v
+vy	controller/src/geo.cpp	/^float vir_x, vir_y, theta_r, vx, vy, ax, ay, jx, jy;$/;"	v
+w_	controller/src/geo.cpp	/^Eigen::Vector3d w_;$/;"	v
+x_e	controller/src/geo.cpp	/^float x_e, y_e, theta_e;$/;"	v
+y_e	controller/src/geo.cpp	/^float x_e, y_e, theta_e;$/;"	v
+FF_B	controller/src/geo2.cpp	/^Eigen::Vector3d FF_I, FF_B, vb;$/;"	v
+FF_I	controller/src/geo2.cpp	/^Eigen::Vector3d FF_I, FF_B, vb;$/;"	v
+Fn	controller/src/geo2.cpp	/^float r, Fn, an;$/;"	v
+Md	controller/src/geo2.cpp	/^float mp = 0.5, g = 9.8, kd = mp*g\/(2*length), bd = 2.0, mF = 1.0, Md = 1.5, kf1 = 2.0;$/;"	v
+PI	controller/src/geo2.cpp	26;"	d	file:
+an	controller/src/geo2.cpp	/^float r, Fn, an;$/;"	v
+bd	controller/src/geo2.cpp	/^float mp = 0.5, g = 9.8, kd = mp*g\/(2*length), bd = 2.0, mF = 1.0, Md = 1.5, kf1 = 2.0;$/;"	v
+coeff_x	controller/src/geo2.cpp	/^Eigen::VectorXd coeff_x, coeff_y;$/;"	v
+coeff_y	controller/src/geo2.cpp	/^Eigen::VectorXd coeff_x, coeff_y;$/;"	v
+command	controller/src/geo2.cpp	/^float command;$/;"	v
+count_	controller/src/geo2.cpp	/^int count_ = 0;$/;"	v
+desired_pose	controller/src/geo2.cpp	/^geometry_msgs::PoseStamped desired_pose;$/;"	v
+dt	controller/src/geo2.cpp	/^float dt = 0.02;$/;"	v
+est_force	controller/src/geo2.cpp	/^geometry_msgs::Point est_force;$/;"	v
+est_force_cb	controller/src/geo2.cpp	/^void est_force_cb(const geometry_msgs::Point::ConstPtr& msg){$/;"	f
+flag	controller/src/geo2.cpp	/^bool flag = false;$/;"	v
+force	controller/src/geo2.cpp	/^geometry_msgs::PoseStamped force;$/;"	v
+force_control	controller/src/geo2.cpp	/^bool force_control = false;$/;"	v
+g	controller/src/geo2.cpp	/^float mp = 0.5, g = 9.8, kd = mp*g\/(2*length), bd = 2.0, mF = 1.0, Md = 1.5, kf1 = 2.0;$/;"	v
+kd	controller/src/geo2.cpp	/^float mp = 0.5, g = 9.8, kd = mp*g\/(2*length), bd = 2.0, mF = 1.0, Md = 1.5, kf1 = 2.0;$/;"	v
+kf1	controller/src/geo2.cpp	/^float mp = 0.5, g = 9.8, kd = mp*g\/(2*length), bd = 2.0, mF = 1.0, Md = 1.5, kf1 = 2.0;$/;"	v
+last_pose	controller/src/geo2.cpp	/^geometry_msgs::PoseStamped optitrack_data, last_pose;$/;"	v
+last_time	controller/src/geo2.cpp	/^float last_time = 0;$/;"	v
+last_tmp_x	controller/src/geo2.cpp	/^float last_tmp_x = 0, last_tmp_y = 0;$/;"	v
+last_tmp_y	controller/src/geo2.cpp	/^float last_tmp_x = 0, last_tmp_y = 0;$/;"	v
+last_vec_x	controller/src/geo2.cpp	/^float last_vec_x = 0, last_vec_y = 0, last_vx = 0, last_vy = 0;$/;"	v
+last_vec_y	controller/src/geo2.cpp	/^float last_vec_x = 0, last_vec_y = 0, last_vx = 0, last_vy = 0;$/;"	v
+last_vx	controller/src/geo2.cpp	/^float last_vec_x = 0, last_vec_y = 0, last_vx = 0, last_vy = 0;$/;"	v
+last_vy	controller/src/geo2.cpp	/^float last_vec_x = 0, last_vec_y = 0, last_vx = 0, last_vy = 0;$/;"	v
+length	controller/src/geo2.cpp	25;"	d	file:
+mF	controller/src/geo2.cpp	/^float mp = 0.5, g = 9.8, kd = mp*g\/(2*length), bd = 2.0, mF = 1.0, Md = 1.5, kf1 = 2.0;$/;"	v
+main	controller/src/geo2.cpp	/^int main(int argc, char **argv){$/;"	f
+mp	controller/src/geo2.cpp	/^float mp = 0.5, g = 9.8, kd = mp*g\/(2*length), bd = 2.0, mF = 1.0, Md = 1.5, kf1 = 2.0;$/;"	v
+optitrack_cb	controller/src/geo2.cpp	/^void optitrack_cb(const geometry_msgs::PoseStamped::ConstPtr& msg){$/;"	f
+optitrack_data	controller/src/geo2.cpp	/^geometry_msgs::PoseStamped optitrack_data, last_pose;$/;"	v
+p_F_c2	controller/src/geo2.cpp	/^Eigen::Vector3d p_F_c2;$/;"	v
+p_c2	controller/src/geo2.cpp	/^Eigen::Vector3d p_c2;$/;"	v
+payload_Rotation	controller/src/geo2.cpp	/^Eigen::Matrix3d payload_Rotation;$/;"	v
+payload_rotation_truth	controller/src/geo2.cpp	/^Eigen::Matrix3d payload_rotation_truth;$/;"	v
+payload_yaw	controller/src/geo2.cpp	/^float payload_yaw;$/;"	v
+poly_t	controller/src/geo2.cpp	/^Eigen::VectorXd poly_t(float t){$/;"	f
+pos_x_buffer	controller/src/geo2.cpp	/^std::queue<float> pos_x_buffer;$/;"	v
+pos_y_buffer	controller/src/geo2.cpp	/^std::queue<float> pos_y_buffer;$/;"	v
+pose	controller/src/geo2.cpp	/^Eigen::Vector3d pose, vel;$/;"	v
+r	controller/src/geo2.cpp	/^float r, Fn, an;$/;"	v
+tmpx	controller/src/geo2.cpp	/^float tmpx = 0, tmpy = 0;$/;"	v
+tmpy	controller/src/geo2.cpp	/^float tmpx = 0, tmpy = 0;$/;"	v
+triggered	controller/src/geo2.cpp	/^bool triggered;$/;"	v
+uav_rotation	controller/src/geo2.cpp	/^Eigen::Matrix3d uav_rotation;$/;"	v
+vb	controller/src/geo2.cpp	/^Eigen::Vector3d FF_I, FF_B, vb;$/;"	v
+vel	controller/src/geo2.cpp	/^Eigen::Vector3d pose, vel;$/;"	v
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+ARCHITECTURE_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	416;"	d	file:
+ARCHITECTURE_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	419;"	d	file:
+ARCHITECTURE_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	422;"	d	file:
+ARCHITECTURE_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	425;"	d	file:
+ARCHITECTURE_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	429;"	d	file:
+ARCHITECTURE_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	431;"	d	file:
+ARCHITECTURE_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	433;"	d	file:
+ARCHITECTURE_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	437;"	d	file:
+ARCHITECTURE_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	440;"	d	file:
+ARCHITECTURE_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	443;"	d	file:
+ARCHITECTURE_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	448;"	d	file:
+ARCHITECTURE_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	451;"	d	file:
+ARCHITECTURE_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	454;"	d	file:
+ARCHITECTURE_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	459;"	d	file:
+ARCHITECTURE_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	462;"	d	file:
+ARCHITECTURE_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	465;"	d	file:
+ARCHITECTURE_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	468;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	101;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	108;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	115;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	122;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	129;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	137;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	142;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	149;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	152;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	155;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	158;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	161;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	176;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	190;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	19;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	200;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	218;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	227;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	236;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	251;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	264;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	282;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	285;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	288;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	42;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	50;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	56;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	62;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	71;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	80;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	94;"	d	file:
+COMPILER_VERSION_INTERNAL	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	232;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	103;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	110;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	117;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	124;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	130;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	138;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	144;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	165;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	180;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	191;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	202;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	221;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	229;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	239;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	244;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	24;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	253;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	258;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	267;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	272;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	43;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	51;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	58;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	64;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	73;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	83;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	88;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	96;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	104;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	111;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	118;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	125;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	131;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	139;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	145;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	166;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	181;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	193;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	203;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	222;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	230;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	240;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	245;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	254;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	259;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	25;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	268;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	273;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	44;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	52;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	59;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	65;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	74;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	84;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	89;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	97;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	105;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	112;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	119;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	126;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	133;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	146;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	167;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	182;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	196;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	207;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	210;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	223;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	231;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	241;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	246;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	255;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	260;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	269;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	274;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	27;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	29;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	46;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	53;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	67;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	76;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	85;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	90;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	98;"	d	file:
+COMPILER_VERSION_TWEAK	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	173;"	d	file:
+COMPILER_VERSION_TWEAK	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	214;"	d	file:
+COMPILER_VERSION_TWEAK	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	33;"	d	file:
+C_DIALECT	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	550;"	d	file:
+C_DIALECT	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	552;"	d	file:
+C_DIALECT	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	555;"	d	file:
+C_DIALECT	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	557;"	d	file:
+C_DIALECT	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	559;"	d	file:
+DEC	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	472;"	d	file:
+HEX	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	483;"	d	file:
+ID_VOID_MAIN	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	6;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	313;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	316;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	319;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	322;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	325;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	328;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	331;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	334;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	337;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	340;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	343;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	346;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	349;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	352;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	355;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	358;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	361;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	364;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	367;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	370;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	373;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	376;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	379;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	382;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	385;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	389;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	392;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	395;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	398;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	401;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	405;"	d	file:
+SIMULATE_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	163;"	d	file:
+SIMULATE_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	178;"	d	file:
+SIMULATE_ID	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	21;"	d	file:
+SIMULATE_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	170;"	d	file:
+SIMULATE_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	185;"	d	file:
+SIMULATE_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	37;"	d	file:
+SIMULATE_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	171;"	d	file:
+SIMULATE_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	186;"	d	file:
+SIMULATE_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	38;"	d	file:
+STRINGIFY	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	309;"	d	file:
+STRINGIFY_HELPER	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	308;"	d	file:
+const	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	10;"	d	file:
+info_arch	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v
+info_compiler	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	/^char const* info_compiler = "INFO" ":" "compiler[" COMPILER_ID "]";$/;"	v
+info_cray	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	/^char const *info_cray = "INFO" ":" "compiler_wrapper[CrayPrgEnv]";$/;"	v
+info_language_dialect_default	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	/^const char* info_language_dialect_default =$/;"	v
+info_platform	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	/^char const* info_platform = "INFO" ":" "platform[" PLATFORM_ID "]";$/;"	v
+info_simulate	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	/^char const* info_simulate = "INFO" ":" "simulate[" SIMULATE_ID "]";$/;"	v
+info_simulate_version	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	/^char const info_simulate_version[] = {$/;"	v
+info_version	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	/^char const info_version[] = {$/;"	v
+info_version_internal	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	/^char const info_version_internal[] = {$/;"	v
+main	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	/^int main(argc, argv) int argc; char *argv[];$/;"	f
+main	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	/^void main() {}$/;"	f
+qnxnto	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v
+volatile	leader/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c	11;"	d	file:
+ARCHITECTURE_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	401;"	d	file:
+ARCHITECTURE_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	404;"	d	file:
+ARCHITECTURE_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	407;"	d	file:
+ARCHITECTURE_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	410;"	d	file:
+ARCHITECTURE_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	414;"	d	file:
+ARCHITECTURE_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	416;"	d	file:
+ARCHITECTURE_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	418;"	d	file:
+ARCHITECTURE_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	422;"	d	file:
+ARCHITECTURE_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	425;"	d	file:
+ARCHITECTURE_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	428;"	d	file:
+ARCHITECTURE_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	433;"	d	file:
+ARCHITECTURE_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	436;"	d	file:
+ARCHITECTURE_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	439;"	d	file:
+ARCHITECTURE_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	444;"	d	file:
+ARCHITECTURE_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	447;"	d	file:
+ARCHITECTURE_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	450;"	d	file:
+ARCHITECTURE_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	453;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	101;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	108;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	115;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	122;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	129;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	137;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	13;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	142;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	149;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	152;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	155;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	170;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	184;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	198;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	19;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	216;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	225;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	234;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	249;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	267;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	270;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	273;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	42;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	50;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	56;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	62;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	71;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	80;"	d	file:
+COMPILER_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	94;"	d	file:
+COMPILER_VERSION_INTERNAL	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	230;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	103;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	110;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	117;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	124;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	130;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	138;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	144;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	159;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	15;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	174;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	186;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	188;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	200;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	219;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	227;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	237;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	242;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	24;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	252;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	257;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	43;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	51;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	58;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	64;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	73;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	83;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	88;"	d	file:
+COMPILER_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	96;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	104;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	111;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	118;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	125;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	131;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	139;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	145;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	160;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	16;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	175;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	191;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	201;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	220;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	228;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	238;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	243;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	253;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	258;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	25;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	44;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	52;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	59;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	65;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	74;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	84;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	89;"	d	file:
+COMPILER_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	97;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	105;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	112;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	119;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	126;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	133;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	146;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	161;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	176;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	194;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	205;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	208;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	221;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	229;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	239;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	244;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	254;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	259;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	27;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	29;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	46;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	53;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	67;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	76;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	85;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	90;"	d	file:
+COMPILER_VERSION_PATCH	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	98;"	d	file:
+COMPILER_VERSION_TWEAK	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	167;"	d	file:
+COMPILER_VERSION_TWEAK	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	212;"	d	file:
+COMPILER_VERSION_TWEAK	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	33;"	d	file:
+CXX_STD	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	534;"	d	file:
+CXX_STD	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	536;"	d	file:
+DEC	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	457;"	d	file:
+HEX	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	468;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	298;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	301;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	304;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	307;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	310;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	313;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	316;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	319;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	322;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	325;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	328;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	331;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	334;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	337;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	340;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	343;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	346;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	349;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	352;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	355;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	358;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	361;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	364;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	367;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	370;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	374;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	377;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	380;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	383;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	386;"	d	file:
+PLATFORM_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	390;"	d	file:
+SIMULATE_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	157;"	d	file:
+SIMULATE_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	172;"	d	file:
+SIMULATE_ID	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	21;"	d	file:
+SIMULATE_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	164;"	d	file:
+SIMULATE_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	179;"	d	file:
+SIMULATE_VERSION_MAJOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	37;"	d	file:
+SIMULATE_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	165;"	d	file:
+SIMULATE_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	180;"	d	file:
+SIMULATE_VERSION_MINOR	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	38;"	d	file:
+STRINGIFY	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	294;"	d	file:
+STRINGIFY_HELPER	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	293;"	d	file:
+info_arch	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v
+info_compiler	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_compiler = "INFO" ":" "compiler[" COMPILER_ID "]";$/;"	v
+info_cray	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const *info_cray = "INFO" ":" "compiler_wrapper[CrayPrgEnv]";$/;"	v
+info_language_dialect_default	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^const char* info_language_dialect_default = "INFO" ":" "dialect_default["$/;"	v
+info_platform	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_platform = "INFO" ":" "platform[" PLATFORM_ID "]";$/;"	v
+info_simulate	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_simulate = "INFO" ":" "simulate[" SIMULATE_ID "]";$/;"	v
+info_simulate_version	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const info_simulate_version[] = {$/;"	v
+info_version	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const info_version[] = {$/;"	v
+info_version_internal	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const info_version_internal[] = {$/;"	v
+main	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^int main(int argc, char* argv[])$/;"	f
+qnxnto	leader/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v
+features	leader/build/CMakeFiles/feature_tests.c	/^  const char features[] = {"\\n"$/;"	v
+main	leader/build/CMakeFiles/feature_tests.c	/^int main(int argc, char** argv) { (void)argv; return features[argc]; }$/;"	f
+features	leader/build/CMakeFiles/feature_tests.cxx	/^  const char features[] = {"\\n"$/;"	v
+main	leader/build/CMakeFiles/feature_tests.cxx	/^int main(int argc, char** argv) { (void)argv; return features[argc]; }$/;"	f
+CMAKE_BINARY_DIR	leader/build/Makefile	/^CMAKE_BINARY_DIR = \/home\/liu\/ROS\/catkin_ws\/src\/transportation_exp\/qp_trajectory\/build$/;"	m
+CMAKE_COMMAND	leader/build/Makefile	/^CMAKE_COMMAND = \/usr\/bin\/cmake$/;"	m
+CMAKE_SOURCE_DIR	leader/build/Makefile	/^CMAKE_SOURCE_DIR = \/home\/liu\/ROS\/catkin_ws\/src\/transportation_exp\/qp_trajectory\/src$/;"	m
+EQUALS	leader/build/Makefile	/^EQUALS = =$/;"	m
+RM	leader/build/Makefile	/^RM = \/usr\/bin\/cmake -E remove -f$/;"	m
+SHELL	leader/build/Makefile	/^SHELL = \/bin\/sh$/;"	m
+SUFFIXES	leader/build/Makefile	/^SUFFIXES =$/;"	m
+CATKIN_MARKER_FILE	leader/build/atomic_configure/_setup_util.py	/^CATKIN_MARKER_FILE = '.catkin'$/;"	v
+CMAKE_PREFIX_PATH	leader/build/atomic_configure/_setup_util.py	/^            CMAKE_PREFIX_PATH = []$/;"	v
+CMAKE_PREFIX_PATH	leader/build/atomic_configure/_setup_util.py	/^            CMAKE_PREFIX_PATH = r'\/home\/liu\/ROS\/catkin_ws\/devel;\/home\/liu\/ROS\/UCT_workspace\/devel;\/opt\/ros\/melodic'.split(';')$/;"	v
+CMAKE_PREFIX_PATH	leader/build/atomic_configure/_setup_util.py	/^        CMAKE_PREFIX_PATH = os.pathsep.join(CMAKE_PREFIX_PATH)$/;"	v
+ENV_VAR_SUBFOLDERS	leader/build/atomic_configure/_setup_util.py	/^ENV_VAR_SUBFOLDERS = {$/;"	v
+IS_DARWIN	leader/build/atomic_configure/_setup_util.py	/^IS_DARWIN = (system == 'Darwin')$/;"	v
+IS_WINDOWS	leader/build/atomic_configure/_setup_util.py	/^IS_WINDOWS = (system == 'Windows')$/;"	v
+PATH_TO_ADD_SUFFIX	leader/build/atomic_configure/_setup_util.py	/^PATH_TO_ADD_SUFFIX = ['bin']$/;"	v
+_get_workspaces	leader/build/atomic_configure/_setup_util.py	/^def _get_workspaces(environ, include_fuerte=False, include_non_existing=False):$/;"	f
+_parse_arguments	leader/build/atomic_configure/_setup_util.py	/^def _parse_arguments(args=None):$/;"	f
+_prefix_env_variable	leader/build/atomic_configure/_setup_util.py	/^def _prefix_env_variable(environ, name, paths, subfolders):$/;"	f
+_rollback_env_variable	leader/build/atomic_configure/_setup_util.py	/^def _rollback_env_variable(environ, name, subfolders):$/;"	f
+args	leader/build/atomic_configure/_setup_util.py	/^            args = _parse_arguments()$/;"	v
+assignment	leader/build/atomic_configure/_setup_util.py	/^def assignment(key, value):$/;"	f
+base_path	leader/build/atomic_configure/_setup_util.py	/^            base_path = base_path.replace(os.path.sep, '\/')$/;"	v
+base_path	leader/build/atomic_configure/_setup_util.py	/^        base_path = os.path.dirname(__file__)$/;"	v
+comment	leader/build/atomic_configure/_setup_util.py	/^def comment(msg):$/;"	f
+environ	leader/build/atomic_configure/_setup_util.py	/^        environ = dict(os.environ)$/;"	v
+find_env_hooks	leader/build/atomic_configure/_setup_util.py	/^def find_env_hooks(environ, cmake_prefix_path):$/;"	f
+lines	leader/build/atomic_configure/_setup_util.py	/^        lines = []$/;"	v
+prepend	leader/build/atomic_configure/_setup_util.py	/^def prepend(environ, key, prefix):$/;"	f
+prepend_env_variables	leader/build/atomic_configure/_setup_util.py	/^def prepend_env_variables(environ, env_var_subfolders, workspaces):$/;"	f
+rollback_env_variables	leader/build/atomic_configure/_setup_util.py	/^def rollback_env_variables(environ, env_var_subfolders):$/;"	f
+system	leader/build/atomic_configure/_setup_util.py	/^system = platform.system()$/;"	v
+code	leader/build/catkin_generated/generate_cached_setup.py	/^code = generate_environment_script('\/home\/liu\/ROS\/catkin_ws\/src\/transportation_exp\/qp_trajectory\/devel\/env.sh')$/;"	v
+mode	leader/build/catkin_generated/generate_cached_setup.py	/^mode = os.stat(output_filename).st_mode$/;"	v
+output_filename	leader/build/catkin_generated/generate_cached_setup.py	/^output_filename = '\/home\/liu\/ROS\/catkin_ws\/src\/transportation_exp\/qp_trajectory\/build\/catkin_generated\/setup_cached.sh'$/;"	v
+python_path	leader/build/catkin_generated/generate_cached_setup.py	/^        python_path = os.path.join(workspace, 'lib\/python2.7\/dist-packages')$/;"	v
+CATKIN_MARKER_FILE	leader/build/catkin_generated/installspace/_setup_util.py	/^CATKIN_MARKER_FILE = '.catkin'$/;"	v
+CMAKE_PREFIX_PATH	leader/build/catkin_generated/installspace/_setup_util.py	/^            CMAKE_PREFIX_PATH = []$/;"	v
+CMAKE_PREFIX_PATH	leader/build/catkin_generated/installspace/_setup_util.py	/^            CMAKE_PREFIX_PATH = r'\/home\/liu\/ROS\/catkin_ws\/devel;\/home\/liu\/ROS\/UCT_workspace\/devel;\/opt\/ros\/melodic'.split(';')$/;"	v
+CMAKE_PREFIX_PATH	leader/build/catkin_generated/installspace/_setup_util.py	/^        CMAKE_PREFIX_PATH = os.pathsep.join(CMAKE_PREFIX_PATH)$/;"	v
+ENV_VAR_SUBFOLDERS	leader/build/catkin_generated/installspace/_setup_util.py	/^ENV_VAR_SUBFOLDERS = {$/;"	v
+IS_DARWIN	leader/build/catkin_generated/installspace/_setup_util.py	/^IS_DARWIN = (system == 'Darwin')$/;"	v
+IS_WINDOWS	leader/build/catkin_generated/installspace/_setup_util.py	/^IS_WINDOWS = (system == 'Windows')$/;"	v
+PATH_TO_ADD_SUFFIX	leader/build/catkin_generated/installspace/_setup_util.py	/^PATH_TO_ADD_SUFFIX = ['bin']$/;"	v
+_get_workspaces	leader/build/catkin_generated/installspace/_setup_util.py	/^def _get_workspaces(environ, include_fuerte=False, include_non_existing=False):$/;"	f
+_parse_arguments	leader/build/catkin_generated/installspace/_setup_util.py	/^def _parse_arguments(args=None):$/;"	f
+_prefix_env_variable	leader/build/catkin_generated/installspace/_setup_util.py	/^def _prefix_env_variable(environ, name, paths, subfolders):$/;"	f
+_rollback_env_variable	leader/build/catkin_generated/installspace/_setup_util.py	/^def _rollback_env_variable(environ, name, subfolders):$/;"	f
+args	leader/build/catkin_generated/installspace/_setup_util.py	/^            args = _parse_arguments()$/;"	v
+assignment	leader/build/catkin_generated/installspace/_setup_util.py	/^def assignment(key, value):$/;"	f
+base_path	leader/build/catkin_generated/installspace/_setup_util.py	/^            base_path = base_path.replace(os.path.sep, '\/')$/;"	v
+base_path	leader/build/catkin_generated/installspace/_setup_util.py	/^        base_path = os.path.dirname(__file__)$/;"	v
+comment	leader/build/catkin_generated/installspace/_setup_util.py	/^def comment(msg):$/;"	f
+environ	leader/build/catkin_generated/installspace/_setup_util.py	/^        environ = dict(os.environ)$/;"	v
+find_env_hooks	leader/build/catkin_generated/installspace/_setup_util.py	/^def find_env_hooks(environ, cmake_prefix_path):$/;"	f
+lines	leader/build/catkin_generated/installspace/_setup_util.py	/^        lines = []$/;"	v
+prepend	leader/build/catkin_generated/installspace/_setup_util.py	/^def prepend(environ, key, prefix):$/;"	f
+prepend_env_variables	leader/build/catkin_generated/installspace/_setup_util.py	/^def prepend_env_variables(environ, env_var_subfolders, workspaces):$/;"	f
+rollback_env_variables	leader/build/catkin_generated/installspace/_setup_util.py	/^def rollback_env_variables(environ, env_var_subfolders):$/;"	f
+system	leader/build/catkin_generated/installspace/_setup_util.py	/^system = platform.system()$/;"	v
+blacklisted_packages	leader/build/catkin_generated/order_packages.py	/^blacklisted_packages = ''.split(';') if '' != '' else []$/;"	v
+source_root_dir	leader/build/catkin_generated/order_packages.py	/^source_root_dir = '\/home\/liu\/ROS\/catkin_ws\/src\/transportation_exp\/qp_trajectory\/src'$/;"	v
+underlay_workspaces	leader/build/catkin_generated/order_packages.py	/^underlay_workspaces = '\/home\/liu\/ROS\/catkin_ws\/devel;\/home\/liu\/ROS\/UCT_workspace\/devel;\/opt\/ros\/melodic'.split(';') if '\/home\/liu\/ROS\/catkin_ws\/devel;\/home\/liu\/ROS\/UCT_workspace\/devel;\/opt\/ros\/melodic' != '' else []$/;"	v
+whitelisted_packages	leader/build/catkin_generated/order_packages.py	/^whitelisted_packages = ''.split(';') if '' != '' else []$/;"	v
+CMAKE_BINARY_DIR	leader/build/gtest/Makefile	/^CMAKE_BINARY_DIR = \/home\/liu\/ROS\/catkin_ws\/src\/transportation_exp\/qp_trajectory\/build$/;"	m
+CMAKE_COMMAND	leader/build/gtest/Makefile	/^CMAKE_COMMAND = \/usr\/bin\/cmake$/;"	m
+CMAKE_SOURCE_DIR	leader/build/gtest/Makefile	/^CMAKE_SOURCE_DIR = \/home\/liu\/ROS\/catkin_ws\/src\/transportation_exp\/qp_trajectory\/src$/;"	m
+EQUALS	leader/build/gtest/Makefile	/^EQUALS = =$/;"	m
+RM	leader/build/gtest/Makefile	/^RM = \/usr\/bin\/cmake -E remove -f$/;"	m
+SHELL	leader/build/gtest/Makefile	/^SHELL = \/bin\/sh$/;"	m
+SUFFIXES	leader/build/gtest/Makefile	/^SUFFIXES =$/;"	m
+CMAKE_BINARY_DIR	leader/build/gtest/googlemock/Makefile	/^CMAKE_BINARY_DIR = \/home\/liu\/ROS\/catkin_ws\/src\/transportation_exp\/qp_trajectory\/build$/;"	m
+CMAKE_COMMAND	leader/build/gtest/googlemock/Makefile	/^CMAKE_COMMAND = \/usr\/bin\/cmake$/;"	m
+CMAKE_SOURCE_DIR	leader/build/gtest/googlemock/Makefile	/^CMAKE_SOURCE_DIR = \/home\/liu\/ROS\/catkin_ws\/src\/transportation_exp\/qp_trajectory\/src$/;"	m
+EQUALS	leader/build/gtest/googlemock/Makefile	/^EQUALS = =$/;"	m
+RM	leader/build/gtest/googlemock/Makefile	/^RM = \/usr\/bin\/cmake -E remove -f$/;"	m
+SHELL	leader/build/gtest/googlemock/Makefile	/^SHELL = \/bin\/sh$/;"	m
+SUFFIXES	leader/build/gtest/googlemock/Makefile	/^SUFFIXES =$/;"	m
+CMAKE_BINARY_DIR	leader/build/gtest/googlemock/gtest/Makefile	/^CMAKE_BINARY_DIR = \/home\/liu\/ROS\/catkin_ws\/src\/transportation_exp\/qp_trajectory\/build$/;"	m
+CMAKE_COMMAND	leader/build/gtest/googlemock/gtest/Makefile	/^CMAKE_COMMAND = \/usr\/bin\/cmake$/;"	m
+CMAKE_SOURCE_DIR	leader/build/gtest/googlemock/gtest/Makefile	/^CMAKE_SOURCE_DIR = \/home\/liu\/ROS\/catkin_ws\/src\/transportation_exp\/qp_trajectory\/src$/;"	m
+EQUALS	leader/build/gtest/googlemock/gtest/Makefile	/^EQUALS = =$/;"	m
+RM	leader/build/gtest/googlemock/gtest/Makefile	/^RM = \/usr\/bin\/cmake -E remove -f$/;"	m
+SHELL	leader/build/gtest/googlemock/gtest/Makefile	/^SHELL = \/bin\/sh$/;"	m
+SUFFIXES	leader/build/gtest/googlemock/gtest/Makefile	/^SUFFIXES =$/;"	m
+CATKIN_MARKER_FILE	leader/devel/_setup_util.py	/^CATKIN_MARKER_FILE = '.catkin'$/;"	v
+CMAKE_PREFIX_PATH	leader/devel/_setup_util.py	/^            CMAKE_PREFIX_PATH = []$/;"	v
+CMAKE_PREFIX_PATH	leader/devel/_setup_util.py	/^            CMAKE_PREFIX_PATH = r'\/home\/liu\/ROS\/catkin_ws\/devel;\/home\/liu\/ROS\/UCT_workspace\/devel;\/opt\/ros\/melodic'.split(';')$/;"	v
+CMAKE_PREFIX_PATH	leader/devel/_setup_util.py	/^        CMAKE_PREFIX_PATH = os.pathsep.join(CMAKE_PREFIX_PATH)$/;"	v
+ENV_VAR_SUBFOLDERS	leader/devel/_setup_util.py	/^ENV_VAR_SUBFOLDERS = {$/;"	v
+IS_DARWIN	leader/devel/_setup_util.py	/^IS_DARWIN = (system == 'Darwin')$/;"	v
+IS_WINDOWS	leader/devel/_setup_util.py	/^IS_WINDOWS = (system == 'Windows')$/;"	v
+PATH_TO_ADD_SUFFIX	leader/devel/_setup_util.py	/^PATH_TO_ADD_SUFFIX = ['bin']$/;"	v
+_get_workspaces	leader/devel/_setup_util.py	/^def _get_workspaces(environ, include_fuerte=False, include_non_existing=False):$/;"	f
+_parse_arguments	leader/devel/_setup_util.py	/^def _parse_arguments(args=None):$/;"	f
+_prefix_env_variable	leader/devel/_setup_util.py	/^def _prefix_env_variable(environ, name, paths, subfolders):$/;"	f
+_rollback_env_variable	leader/devel/_setup_util.py	/^def _rollback_env_variable(environ, name, subfolders):$/;"	f
+args	leader/devel/_setup_util.py	/^            args = _parse_arguments()$/;"	v
+assignment	leader/devel/_setup_util.py	/^def assignment(key, value):$/;"	f
+base_path	leader/devel/_setup_util.py	/^            base_path = base_path.replace(os.path.sep, '\/')$/;"	v
+base_path	leader/devel/_setup_util.py	/^        base_path = os.path.dirname(__file__)$/;"	v
+comment	leader/devel/_setup_util.py	/^def comment(msg):$/;"	f
+environ	leader/devel/_setup_util.py	/^        environ = dict(os.environ)$/;"	v
+find_env_hooks	leader/devel/_setup_util.py	/^def find_env_hooks(environ, cmake_prefix_path):$/;"	f
+lines	leader/devel/_setup_util.py	/^        lines = []$/;"	v
+prepend	leader/devel/_setup_util.py	/^def prepend(environ, key, prefix):$/;"	f
+prepend_env_variables	leader/devel/_setup_util.py	/^def prepend_env_variables(environ, env_var_subfolders, workspaces):$/;"	f
+rollback_env_variables	leader/devel/_setup_util.py	/^def rollback_env_variables(environ, env_var_subfolders):$/;"	f
+system	leader/devel/_setup_util.py	/^system = platform.system()$/;"	v
+dasum_	leader/include/blas_redefines.h	15;"	d
+daxpy_	leader/include/blas_redefines.h	10;"	d
+dcopy_	leader/include/blas_redefines.h	8;"	d
+ddot_	leader/include/blas_redefines.h	12;"	d
+dgbmv_	leader/include/blas_redefines.h	21;"	d
+dgbsv_	leader/include/blas_redefines.h	121;"	d
+dgbtrf_	leader/include/blas_redefines.h	117;"	d
+dgbtrs_	leader/include/blas_redefines.h	119;"	d
+dgees_	leader/include/blas_redefines.h	149;"	d
+dgelqf_	leader/include/blas_redefines.h	109;"	d
+dgels_	leader/include/blas_redefines.h	87;"	d
+dgemm_	leader/include/blas_redefines.h	43;"	d
+dgemv_	leader/include/blas_redefines.h	19;"	d
+dgeqp3_	leader/include/blas_redefines.h	153;"	d
+dgeqrf_	leader/include/blas_redefines.h	103;"	d
+dger_	leader/include/blas_redefines.h	36;"	d
+dgesdd_	leader/include/blas_redefines.h	101;"	d
+dgesv_	leader/include/blas_redefines.h	64;"	d
+dgesvd_	leader/include/blas_redefines.h	99;"	d
+dgetrf_	leader/include/blas_redefines.h	58;"	d
+dgetri_	leader/include/blas_redefines.h	62;"	d
+dgetrs_	leader/include/blas_redefines.h	60;"	d
+dgges_	leader/include/blas_redefines.h	151;"	d
+dgtsv_	leader/include/blas_redefines.h	123;"	d
+dgttrf_	leader/include/blas_redefines.h	129;"	d
+dgttrs_	leader/include/blas_redefines.h	131;"	d
+dlacpy_	leader/include/blas_redefines.h	147;"	d
+dnrm2_	leader/include/blas_redefines.h	13;"	d
+dorglq_	leader/include/blas_redefines.h	113;"	d
+dorgqr_	leader/include/blas_redefines.h	107;"	d
+dormlq_	leader/include/blas_redefines.h	111;"	d
+dormqr_	leader/include/blas_redefines.h	105;"	d
+dpbsv_	leader/include/blas_redefines.h	125;"	d
+dpbtrf_	leader/include/blas_redefines.h	135;"	d
+dpbtrs_	leader/include/blas_redefines.h	143;"	d
+dposv_	leader/include/blas_redefines.h	72;"	d
+dpotrf_	leader/include/blas_redefines.h	66;"	d
+dpotri_	leader/include/blas_redefines.h	67;"	d
+dpotrs_	leader/include/blas_redefines.h	70;"	d
+dptsv_	leader/include/blas_redefines.h	127;"	d
+dpttrf_	leader/include/blas_redefines.h	141;"	d
+dpttrs_	leader/include/blas_redefines.h	145;"	d
+dsbmv_	leader/include/blas_redefines.h	26;"	d
+dscal_	leader/include/blas_redefines.h	5;"	d
+dswap_	leader/include/blas_redefines.h	3;"	d
+dsyev_	leader/include/blas_redefines.h	89;"	d
+dsyevd_	leader/include/blas_redefines.h	93;"	d
+dsyevr_	leader/include/blas_redefines.h	95;"	d
+dsyevx_	leader/include/blas_redefines.h	91;"	d
+dsygv_	leader/include/blas_redefines.h	85;"	d
+dsymm_	leader/include/blas_redefines.h	45;"	d
+dsymv_	leader/include/blas_redefines.h	23;"	d
+dsyr2_	leader/include/blas_redefines.h	41;"	d
+dsyr2k_	leader/include/blas_redefines.h	51;"	d
+dsyr_	leader/include/blas_redefines.h	39;"	d
+dsyrk_	leader/include/blas_redefines.h	48;"	d
+dsysv_	leader/include/blas_redefines.h	83;"	d
+dsytrf_	leader/include/blas_redefines.h	74;"	d
+dsytri_	leader/include/blas_redefines.h	77;"	d
+dsytrs_	leader/include/blas_redefines.h	79;"	d
+dtbmv_	leader/include/blas_redefines.h	30;"	d
+dtbsv_	leader/include/blas_redefines.h	34;"	d
+dtbtrf_	leader/include/blas_redefines.h	139;"	d
+dtbtrs_	leader/include/blas_redefines.h	137;"	d
+dtrmm_	leader/include/blas_redefines.h	54;"	d
+dtrmv_	leader/include/blas_redefines.h	28;"	d
+dtrsm_	leader/include/blas_redefines.h	56;"	d
+dtrsv_	leader/include/blas_redefines.h	32;"	d
+dtrtri_	leader/include/blas_redefines.h	133;"	d
+dtrtrs_	leader/include/blas_redefines.h	115;"	d
+dzasum_	leader/include/blas_redefines.h	16;"	d
+dznrm2_	leader/include/blas_redefines.h	14;"	d
+idamax_	leader/include/blas_redefines.h	17;"	d
+ilaenv_	leader/include/blas_redefines.h	97;"	d
+izamax_	leader/include/blas_redefines.h	18;"	d
+zaxpy_	leader/include/blas_redefines.h	11;"	d
+zcopy_	leader/include/blas_redefines.h	9;"	d
+zdscal_	leader/include/blas_redefines.h	7;"	d
+zgbmv_	leader/include/blas_redefines.h	22;"	d
+zgbsv_	leader/include/blas_redefines.h	122;"	d
+zgbtrf_	leader/include/blas_redefines.h	118;"	d
+zgbtrs_	leader/include/blas_redefines.h	120;"	d
+zgees_	leader/include/blas_redefines.h	150;"	d
+zgelqf_	leader/include/blas_redefines.h	110;"	d
+zgels_	leader/include/blas_redefines.h	88;"	d
+zgemm_	leader/include/blas_redefines.h	44;"	d
+zgemv_	leader/include/blas_redefines.h	20;"	d
+zgeqp3_	leader/include/blas_redefines.h	154;"	d
+zgeqrf_	leader/include/blas_redefines.h	104;"	d
+zgerc_	leader/include/blas_redefines.h	37;"	d
+zgeru_	leader/include/blas_redefines.h	38;"	d
+zgesdd_	leader/include/blas_redefines.h	102;"	d
+zgesv_	leader/include/blas_redefines.h	65;"	d
+zgesvd_	leader/include/blas_redefines.h	100;"	d
+zgetrf_	leader/include/blas_redefines.h	59;"	d
+zgetri_	leader/include/blas_redefines.h	63;"	d
+zgetrs_	leader/include/blas_redefines.h	61;"	d
+zgges_	leader/include/blas_redefines.h	152;"	d
+zgtsv_	leader/include/blas_redefines.h	124;"	d
+zgttrf_	leader/include/blas_redefines.h	130;"	d
+zgttrs_	leader/include/blas_redefines.h	132;"	d
+zhbmv_	leader/include/blas_redefines.h	27;"	d
+zheev_	leader/include/blas_redefines.h	90;"	d
+zheevd_	leader/include/blas_redefines.h	94;"	d
+zheevr_	leader/include/blas_redefines.h	96;"	d
+zheevx_	leader/include/blas_redefines.h	92;"	d
+zhegv_	leader/include/blas_redefines.h	98;"	d
+zhemm_	leader/include/blas_redefines.h	47;"	d
+zhemv_	leader/include/blas_redefines.h	25;"	d
+zher2_	leader/include/blas_redefines.h	42;"	d
+zher2k_	leader/include/blas_redefines.h	53;"	d
+zher_	leader/include/blas_redefines.h	40;"	d
+zherk_	leader/include/blas_redefines.h	50;"	d
+zhesv_	leader/include/blas_redefines.h	86;"	d
+zhetrf_	leader/include/blas_redefines.h	76;"	d
+zhetri_	leader/include/blas_redefines.h	82;"	d
+zhetrs_	leader/include/blas_redefines.h	81;"	d
+zlacpy_	leader/include/blas_redefines.h	148;"	d
+zpbsv_	leader/include/blas_redefines.h	126;"	d
+zpbtrf_	leader/include/blas_redefines.h	136;"	d
+zpbtrs_	leader/include/blas_redefines.h	144;"	d
+zposv_	leader/include/blas_redefines.h	73;"	d
+zpotrf_	leader/include/blas_redefines.h	69;"	d
+zpotri_	leader/include/blas_redefines.h	68;"	d
+zpotrs_	leader/include/blas_redefines.h	71;"	d
+zptsv_	leader/include/blas_redefines.h	128;"	d
+zpttrf_	leader/include/blas_redefines.h	142;"	d
+zpttrs_	leader/include/blas_redefines.h	146;"	d
+zscal_	leader/include/blas_redefines.h	6;"	d
+zswap_	leader/include/blas_redefines.h	4;"	d
+zsymm_	leader/include/blas_redefines.h	46;"	d
+zsymv_	leader/include/blas_redefines.h	24;"	d
+zsyr2k_	leader/include/blas_redefines.h	52;"	d
+zsyrk_	leader/include/blas_redefines.h	49;"	d
+zsysv_	leader/include/blas_redefines.h	84;"	d
+zsytrf_	leader/include/blas_redefines.h	75;"	d
+zsytri_	leader/include/blas_redefines.h	78;"	d
+zsytrs_	leader/include/blas_redefines.h	80;"	d
+ztbmv_	leader/include/blas_redefines.h	31;"	d
+ztbsv_	leader/include/blas_redefines.h	35;"	d
+ztbtrf_	leader/include/blas_redefines.h	140;"	d
+ztbtrs_	leader/include/blas_redefines.h	138;"	d
+ztrmm_	leader/include/blas_redefines.h	55;"	d
+ztrmv_	leader/include/blas_redefines.h	29;"	d
+ztrsm_	leader/include/blas_redefines.h	57;"	d
+ztrsv_	leader/include/blas_redefines.h	33;"	d
+ztrtri_	leader/include/blas_redefines.h	134;"	d
+ztrtrs_	leader/include/blas_redefines.h	116;"	d
+zunglq_	leader/include/blas_redefines.h	114;"	d
+zungqr_	leader/include/blas_redefines.h	108;"	d
+zunmlq_	leader/include/blas_redefines.h	112;"	d
+zunmqr_	leader/include/blas_redefines.h	106;"	d
+CCS_NCOLS	leader/include/cvxopt.h	150;"	d
+CCS_NNZ	leader/include/cvxopt.h	151;"	d
+CCS_NROWS	leader/include/cvxopt.h	149;"	d
+COMPLEX	leader/include/cvxopt.h	44;"	d
+DOUBLE	leader/include/cvxopt.h	43;"	d
+INT	leader/include/cvxopt.h	42;"	d
+MAT_BUF	leader/include/cvxopt.h	121;"	d
+MAT_BUFD	leader/include/cvxopt.h	123;"	d
+MAT_BUFI	leader/include/cvxopt.h	122;"	d
+MAT_BUFZ	leader/include/cvxopt.h	125;"	d
+MAT_BUFZ	leader/include/cvxopt.h	127;"	d
+MAT_BUFZ	leader/include/cvxopt.h	33;"	d
+MAT_BUFZ	leader/include/cvxopt.h	35;"	d
+MAT_ID	leader/include/cvxopt.h	132;"	d
+MAT_LGT	leader/include/cvxopt.h	131;"	d
+MAT_NCOLS	leader/include/cvxopt.h	130;"	d
+MAT_NROWS	leader/include/cvxopt.h	129;"	d
+Matrix_Check	leader/include/cvxopt.h	73;"	d
+Matrix_Check	leader/include/cvxopt.h	83;"	d
+Matrix_New	leader/include/cvxopt.h	80;"	d
+Matrix_NewFromList	leader/include/cvxopt.h	82;"	d
+Matrix_NewFromMatrix	leader/include/cvxopt.h	81;"	d
+SP_COL	leader/include/cvxopt.h	139;"	d
+SP_ID	leader/include/cvxopt.h	138;"	d
+SP_LGT	leader/include/cvxopt.h	136;"	d
+SP_NCOLS	leader/include/cvxopt.h	134;"	d
+SP_NNZ	leader/include/cvxopt.h	137;"	d
+SP_NROWS	leader/include/cvxopt.h	135;"	d
+SP_ROW	leader/include/cvxopt.h	140;"	d
+SP_VAL	leader/include/cvxopt.h	141;"	d
+SP_VALD	leader/include/cvxopt.h	142;"	d
+SP_VALZ	leader/include/cvxopt.h	144;"	d
+SP_VALZ	leader/include/cvxopt.h	146;"	d
+SpMatrix_Check	leader/include/cvxopt.h	74;"	d
+SpMatrix_Check	leader/include/cvxopt.h	91;"	d
+SpMatrix_New	leader/include/cvxopt.h	85;"	d
+SpMatrix_NewFromIJV	leader/include/cvxopt.h	88;"	d
+SpMatrix_NewFromSpMatrix	leader/include/cvxopt.h	86;"	d
+__CVXOPT__	leader/include/cvxopt.h	40;"	d
+buffer	leader/include/cvxopt.h	/^  void *buffer;          \/* in column-major-mode array of type 'id' *\/$/;"	m	struct:__anon1
+ccs	leader/include/cvxopt.h	/^} ccs;$/;"	t	typeref:struct:__anon2
+colptr	leader/include/cvxopt.h	/^  int_t *colptr;      \/* column pointer list *\/$/;"	m	struct:__anon2
+cvxopt_API	leader/include/cvxopt.h	/^static void **cvxopt_API;$/;"	v
+id	leader/include/cvxopt.h	/^  int   id;              \/* DOUBLE, INT, COMPLEX *\/$/;"	m	struct:__anon1
+id	leader/include/cvxopt.h	/^  int   id;           \/* DOUBLE, COMPLEX *\/$/;"	m	struct:__anon2
+import_cvxopt	leader/include/cvxopt.h	/^import_cvxopt(void)$/;"	f
+int_t	leader/include/cvxopt.h	46;"	d
+matrix	leader/include/cvxopt.h	/^} matrix;$/;"	t	typeref:struct:__anon1
+ncols	leader/include/cvxopt.h	/^  int nrows, ncols;      \/* number of rows and columns *\/$/;"	m	struct:__anon1
+ncols	leader/include/cvxopt.h	/^  int_t nrows, ncols; \/* number of rows and columns *\/$/;"	m	struct:__anon2
+nrows	leader/include/cvxopt.h	/^  int nrows, ncols;      \/* number of rows and columns *\/$/;"	m	struct:__anon1
+nrows	leader/include/cvxopt.h	/^  int_t nrows, ncols; \/* number of rows and columns *\/$/;"	m	struct:__anon2
+ob_exports	leader/include/cvxopt.h	/^  int_t ob_exports;$/;"	m	struct:__anon1
+obj	leader/include/cvxopt.h	/^  ccs *obj;$/;"	m	struct:__anon3
+rowind	leader/include/cvxopt.h	/^  int_t *rowind;      \/* row index list *\/$/;"	m	struct:__anon2
+shape	leader/include/cvxopt.h	/^  int_t shape[2];$/;"	m	struct:__anon1
+spmatrix	leader/include/cvxopt.h	/^} spmatrix;$/;"	t	typeref:struct:__anon3
+strides	leader/include/cvxopt.h	/^  int_t strides[2];$/;"	m	struct:__anon1
+values	leader/include/cvxopt.h	/^  void  *values;      \/* value list *\/$/;"	m	struct:__anon2
+adjust_time	leader/include/qptrajectory.cpp	/^std::vector<double> qptrajectory::adjust_time(Eigen::VectorXd waypointx,Eigen::VectorXd waypointy,int number, Eigen::VectorXd duration, int iteration, std::vector<double> polyx,std::vector<double> polyy){$/;"	f	class:qptrajectory
+compress_time	leader/include/qptrajectory.cpp	/^std::vector<double> qptrajectory::compress_time(Eigen::VectorXd waypointx,Eigen::VectorXd waypointy,int number, Eigen::VectorXd duration,std::vector<double> polyx,std::vector<double> polyy){$/;"	f	class:qptrajectory
+cpow	leader/include/qptrajectory.cpp	/^double cpow(double t,int times){$/;"	f
+endpoint_array4	leader/include/qptrajectory.cpp	/^Eigen::MatrixXd qptrajectory:: endpoint_array4( double t){$/;"	f	class:qptrajectory
+endpoint_array8	leader/include/qptrajectory.cpp	/^Eigen::MatrixXd qptrajectory:: endpoint_array8( double t){$/;"	f	class:qptrajectory
+get_profile	leader/include/qptrajectory.cpp	/^std::vector<trajectory_profile> qptrajectory::get_profile(std::vector<segments> seg , int number , double dt ){$/;"	f	class:qptrajectory
+polynomial	leader/include/qptrajectory.cpp	/^double qptrajectory::polynomial(std::vector<double> data ,double t){$/;"	f	class:qptrajectory
+polynomial_d1	leader/include/qptrajectory.cpp	/^double qptrajectory::polynomial_d1(std::vector<double> data ,double t){$/;"	f	class:qptrajectory
+polynomial_d2	leader/include/qptrajectory.cpp	/^double qptrajectory::polynomial_d2(std::vector<double> data ,double t){$/;"	f	class:qptrajectory
+polynomial_d3	leader/include/qptrajectory.cpp	/^double qptrajectory::polynomial_d3(std::vector<double> data ,double t){$/;"	f	class:qptrajectory
+qpsolve4	leader/include/qptrajectory.cpp	/^std::vector<double> qptrajectory::qpsolve4(Eigen::VectorXd waypoint, int number, Eigen::VectorXd duration){$/;"	f	class:qptrajectory
+qpsolve8	leader/include/qptrajectory.cpp	/^std::vector<double> qptrajectory::qpsolve8(Eigen::VectorXd waypoint, int number, Eigen::VectorXd duration){$/;"	f	class:qptrajectory
+qptrajectory	leader/include/qptrajectory.cpp	/^qptrajectory::qptrajectory(){$/;"	f	class:qptrajectory
+t4_array	leader/include/qptrajectory.cpp	/^Eigen::MatrixXd qptrajectory:: t4_array( double t){$/;"	f	class:qptrajectory
+t8_array	leader/include/qptrajectory.cpp	/^Eigen::MatrixXd qptrajectory:: t8_array( double t){$/;"	f	class:qptrajectory
+~qptrajectory	leader/include/qptrajectory.cpp	/^qptrajectory::~qptrajectory(){$/;"	f	class:qptrajectory
+V	leader/include/qptrajectory.h	/^    Eigen::Vector4d V;$/;"	m	class:profile
+acc	leader/include/qptrajectory.h	/^    Eigen::Vector3d acc;$/;"	m	class:trajectory_profile
+acceleration	leader/include/qptrajectory.h	/^    double acceleration;$/;"	m	class:profile
+b_c	leader/include/qptrajectory.h	/^trajectory_profile b_c;$/;"	m	class:segments
+jerk	leader/include/qptrajectory.h	/^    Eigen::Vector3d jerk;$/;"	m	class:trajectory_profile
+jerk	leader/include/qptrajectory.h	/^    double jerk;$/;"	m	class:profile
+path_def	leader/include/qptrajectory.h	/^typedef  std::vector<segments> path_def;$/;"	t
+pos	leader/include/qptrajectory.h	/^    Eigen::Vector3d pos;$/;"	m	class:trajectory_profile
+pos	leader/include/qptrajectory.h	/^    Eigen::Vector3d pos;$/;"	m	struct:position
+pose	leader/include/qptrajectory.h	/^    pose_type pose;$/;"	m	struct:waypoint
+pose_type	leader/include/qptrajectory.h	/^struct pose_type{$/;"	s
+position	leader/include/qptrajectory.h	/^    double position;$/;"	m	class:profile
+position	leader/include/qptrajectory.h	/^    position(double x , double y , double z)$/;"	f	struct:position
+position	leader/include/qptrajectory.h	/^    position_type position; \/\/ x y z$/;"	m	struct:pose_type
+position	leader/include/qptrajectory.h	/^typedef struct position{$/;"	s
+position_type	leader/include/qptrajectory.h	/^}position_type;$/;"	t	typeref:struct:position
+profile	leader/include/qptrajectory.h	/^    profile(){}$/;"	f	class:profile
+profile	leader/include/qptrajectory.h	/^    profile(double p , double v , double a , double j){$/;"	f	class:profile
+profile	leader/include/qptrajectory.h	/^class profile{$/;"	c
+qptrajectory	leader/include/qptrajectory.h	/^class qptrajectory{$/;"	c
+qptrajectory_H	leader/include/qptrajectory.h	2;"	d
+segments	leader/include/qptrajectory.h	/^    segments(){}$/;"	f	class:segments
+segments	leader/include/qptrajectory.h	/^    segments(trajectory_profile b_c_ ,trajectory_profile t_c_ ,double t )$/;"	f	class:segments
+segments	leader/include/qptrajectory.h	/^class segments{$/;"	c
+t_c	leader/include/qptrajectory.h	/^trajectory_profile t_c;$/;"	m	class:segments
+time	leader/include/qptrajectory.h	/^    double time;$/;"	m	class:trajectory_profile
+time	leader/include/qptrajectory.h	/^    double time;$/;"	m	struct:waypoint
+time_interval	leader/include/qptrajectory.h	/^double time_interval;$/;"	m	class:segments
+trajectory_profile	leader/include/qptrajectory.h	/^    trajectory_profile(){}$/;"	f	class:trajectory_profile
+trajectory_profile	leader/include/qptrajectory.h	/^    trajectory_profile(Eigen::Vector3d pos_,$/;"	f	class:trajectory_profile
+trajectory_profile	leader/include/qptrajectory.h	/^class trajectory_profile$/;"	c
+vel	leader/include/qptrajectory.h	/^    Eigen::Vector3d vel;$/;"	m	class:trajectory_profile
+velocity	leader/include/qptrajectory.h	/^    double velocity;$/;"	m	class:profile
+waypoint	leader/include/qptrajectory.h	/^struct waypoint{$/;"	s
+yaw	leader/include/qptrajectory.h	/^    double yaw;$/;"	m	class:trajectory_profile
+Izz	leader/src/leader_controller.cpp	/^double mp = 0.5,  g = 9.8, Izz = mp * PAYLOAD_LENGTH * PAYLOAD_LENGTH \/ 12;$/;"	v
+PAYLOAD_LENGTH	leader/src/leader_controller.cpp	19;"	d	file:
+PI	leader/src/leader_controller.cpp	21;"	d	file:
+R_pl_B	leader/src/leader_controller.cpp	/^Eigen::Matrix3d R_pl_B;$/;"	v
+ax	leader/src/leader_controller.cpp	/^double vir_x, vir_y, theta_r, vx, vy, ax, ay, jx, jy;$/;"	v
+ay	leader/src/leader_controller.cpp	/^double vir_x, vir_y, theta_r, vx, vy, ax, ay, jx, jy;$/;"	v
+controller_force	leader/src/leader_controller.cpp	/^geometry_msgs::Point controller_force;$/;"	v
+debug_msg	leader/src/leader_controller.cpp	/^geometry_msgs::Point debug_msg;$/;"	v
+desired_pose	leader/src/leader_controller.cpp	/^geometry_msgs::PoseStamped desired_pose;$/;"	v
+err_state	leader/src/leader_controller.cpp	/^Eigen::Vector3d err_state;$/;"	v
+est_vel_cb	leader/src/leader_controller.cpp	/^void est_vel_cb(const geometry_msgs::Point::ConstPtr& msg){$/;"	f
+eta_cb	leader/src/leader_controller.cpp	/^void eta_cb(const geometry_msgs::Point::ConstPtr& msg){$/;"	f
+flag	leader/src/leader_controller.cpp	/^bool flag = false;$/;"	v
+g	leader/src/leader_controller.cpp	/^double mp = 0.5,  g = 9.8, Izz = mp * PAYLOAD_LENGTH * PAYLOAD_LENGTH \/ 12;$/;"	v
+imu_data	leader/src/leader_controller.cpp	/^sensor_msgs::Imu imu_data;$/;"	v
+jx	leader/src/leader_controller.cpp	/^double vir_x, vir_y, theta_r, vx, vy, ax, ay, jx, jy;$/;"	v
+jy	leader/src/leader_controller.cpp	/^double vir_x, vir_y, theta_r, vx, vy, ax, ay, jx, jy;$/;"	v
+k1	leader/src/leader_controller.cpp	/^double k1 = 1.0, k2 = 1.0, k3 = 1.0, kv = 1.0, kw = 6.0;$/;"	v
+k2	leader/src/leader_controller.cpp	/^double k1 = 1.0, k2 = 1.0, k3 = 1.0, kv = 1.0, kw = 6.0;$/;"	v
+k3	leader/src/leader_controller.cpp	/^double k1 = 1.0, k2 = 1.0, k3 = 1.0, kv = 1.0, kw = 6.0;$/;"	v
+kv	leader/src/leader_controller.cpp	/^double k1 = 1.0, k2 = 1.0, k3 = 1.0, kv = 1.0, kw = 6.0;$/;"	v
+kw	leader/src/leader_controller.cpp	/^double k1 = 1.0, k2 = 1.0, k3 = 1.0, kv = 1.0, kw = 6.0;$/;"	v
+last_w	leader/src/leader_controller.cpp	/^double last_w = 0.0;$/;"	v
+main	leader/src/leader_controller.cpp	/^int main(int argc, char **argv){$/;"	f
+mp	leader/src/leader_controller.cpp	/^double mp = 0.5,  g = 9.8, Izz = mp * PAYLOAD_LENGTH * PAYLOAD_LENGTH \/ 12;$/;"	v
+nonholonomic_output	leader/src/leader_controller.cpp	/^Eigen::Vector3d nonholonomic_output(double x_r, double y_r, double theta_r, double v_r, double w_r){$/;"	f
+nonlinear	leader/src/leader_controller.cpp	/^float nonlinear, vd_dot_debug;$/;"	v
+normal	leader/src/leader_controller.cpp	20;"	d	file:
+optitrack_payload_yaw_callback	leader/src/leader_controller.cpp	/^void optitrack_payload_yaw_callback(const geometry_msgs::Pose2D::ConstPtr& msg){$/;"	f
+path_plot	leader/src/leader_controller.cpp	/^geometry_msgs::Point path_plot;$/;"	v
+payload_imu_callback	leader/src/leader_controller.cpp	/^void payload_imu_callback(const sensor_msgs::Imu::ConstPtr& msg){$/;"	f
+payload_yaw	leader/src/leader_controller.cpp	/^float payload_yaw;$/;"	v
+pc2_cb	leader/src/leader_controller.cpp	/^void pc2_cb(const geometry_msgs::Point::ConstPtr& msg){$/;"	f
+pc2_est	leader/src/leader_controller.cpp	/^Eigen::Vector3d pc2_est;$/;"	v
+pose	leader/src/leader_controller.cpp	/^Eigen::Vector3d pose, vel;$/;"	v
+theta_e	leader/src/leader_controller.cpp	/^double x_e, y_e, theta_e;$/;"	v
+theta_r	leader/src/leader_controller.cpp	/^double vir_x, vir_y, theta_r, vx, vy, ax, ay, jx, jy;$/;"	v
+tick	leader/src/leader_controller.cpp	/^unsigned int tick = 0;$/;"	v
+v_p	leader/src/leader_controller.cpp	/^Eigen::Vector3d v_p;$/;"	v
+v_w_eta	leader/src/leader_controller.cpp	/^Eigen::Vector3d v_w_eta;$/;"	v
+vd_dot_debug	leader/src/leader_controller.cpp	/^float nonlinear, vd_dot_debug;$/;"	v
+vel	leader/src/leader_controller.cpp	/^Eigen::Vector3d pose, vel;$/;"	v
+vir_x	leader/src/leader_controller.cpp	/^double vir_x, vir_y, theta_r, vx, vy, ax, ay, jx, jy;$/;"	v
+vir_y	leader/src/leader_controller.cpp	/^double vir_x, vir_y, theta_r, vx, vy, ax, ay, jx, jy;$/;"	v
+vx	leader/src/leader_controller.cpp	/^double vir_x, vir_y, theta_r, vx, vy, ax, ay, jx, jy;$/;"	v
+vy	leader/src/leader_controller.cpp	/^double vir_x, vir_y, theta_r, vx, vy, ax, ay, jx, jy;$/;"	v
+w_	leader/src/leader_controller.cpp	/^Eigen::Vector3d w_;$/;"	v
+x_e	leader/src/leader_controller.cpp	/^double x_e, y_e, theta_e;$/;"	v
+y_e	leader/src/leader_controller.cpp	/^double x_e, y_e, theta_e;$/;"	v
+MAV_MSGS_COMMON_H	mav_comm/mav_msgs/include/mav_msgs/common.h	24;"	d
+MagnitudeOfGravity	mav_comm/mav_msgs/include/mav_msgs/common.h	/^inline double MagnitudeOfGravity(const double height,$/;"	f	namespace:mav_msgs
+getEulerAnglesFromQuaternion	mav_comm/mav_msgs/include/mav_msgs/common.h	/^inline void getEulerAnglesFromQuaternion(const Eigen::Quaternion<double>& q,$/;"	f	namespace:mav_msgs
+getSquaredRotorSpeedsFromAllocationAndState	mav_comm/mav_msgs/include/mav_msgs/common.h	/^inline void getSquaredRotorSpeedsFromAllocationAndState($/;"	f	namespace:mav_msgs
+kNumNanosecondsPerSecond	mav_comm/mav_msgs/include/mav_msgs/common.h	/^const double kNumNanosecondsPerSecond = 1.e9;$/;"	m	namespace:mav_msgs
+mav_msgs	mav_comm/mav_msgs/include/mav_msgs/common.h	/^namespace mav_msgs {$/;"	n
+nanosecondsToSeconds	mav_comm/mav_msgs/include/mav_msgs/common.h	/^inline double nanosecondsToSeconds(int64_t nanoseconds) {$/;"	f	namespace:mav_msgs
+pointEigenToMsg	mav_comm/mav_msgs/include/mav_msgs/common.h	/^inline void pointEigenToMsg(const Eigen::Vector3d& eigen,$/;"	f	namespace:mav_msgs
+quaternionEigenToMsg	mav_comm/mav_msgs/include/mav_msgs/common.h	/^inline void quaternionEigenToMsg(const Eigen::Quaterniond& eigen,$/;"	f	namespace:mav_msgs
+quaternionFromMsg	mav_comm/mav_msgs/include/mav_msgs/common.h	/^inline Eigen::Quaterniond quaternionFromMsg($/;"	f	namespace:mav_msgs
+quaternionFromYaw	mav_comm/mav_msgs/include/mav_msgs/common.h	/^inline Eigen::Quaterniond quaternionFromYaw(double yaw) {$/;"	f	namespace:mav_msgs
+secondsToNanoseconds	mav_comm/mav_msgs/include/mav_msgs/common.h	/^inline int64_t secondsToNanoseconds(double seconds) {$/;"	f	namespace:mav_msgs
+setAngularVelocityMsgFromYawRate	mav_comm/mav_msgs/include/mav_msgs/common.h	/^inline void setAngularVelocityMsgFromYawRate(double yaw_rate,$/;"	f	namespace:mav_msgs
+setQuaternionMsgFromYaw	mav_comm/mav_msgs/include/mav_msgs/common.h	/^inline void setQuaternionMsgFromYaw(double yaw,$/;"	f	namespace:mav_msgs
+vector3FromMsg	mav_comm/mav_msgs/include/mav_msgs/common.h	/^inline Eigen::Vector3d vector3FromMsg(const geometry_msgs::Vector3& msg) {$/;"	f	namespace:mav_msgs
+vector3FromPointMsg	mav_comm/mav_msgs/include/mav_msgs/common.h	/^inline Eigen::Vector3d vector3FromPointMsg(const geometry_msgs::Point& msg) {$/;"	f	namespace:mav_msgs
+vectorEigenToMsg	mav_comm/mav_msgs/include/mav_msgs/common.h	/^inline void vectorEigenToMsg(const Eigen::Vector3d& eigen,$/;"	f	namespace:mav_msgs
+yawFromQuaternion	mav_comm/mav_msgs/include/mav_msgs/common.h	/^inline double yawFromQuaternion(const Eigen::Quaterniond& q) {$/;"	f	namespace:mav_msgs
+EigenMavStateFromEigenTrajectoryPoint	mav_comm/mav_msgs/include/mav_msgs/conversions.h	/^inline void EigenMavStateFromEigenTrajectoryPoint($/;"	f	namespace:mav_msgs
+MAV_MSGS_CONVERSIONS_H	mav_comm/mav_msgs/include/mav_msgs/conversions.h	24;"	d
+eigenActuatorsFromMsg	mav_comm/mav_msgs/include/mav_msgs/conversions.h	/^inline void eigenActuatorsFromMsg(const Actuators& msg,$/;"	f	namespace:mav_msgs
+eigenAttitudeThrustFromMsg	mav_comm/mav_msgs/include/mav_msgs/conversions.h	/^inline void eigenAttitudeThrustFromMsg(const AttitudeThrust& msg,$/;"	f	namespace:mav_msgs
+eigenOdometryFromMsg	mav_comm/mav_msgs/include/mav_msgs/conversions.h	/^inline void eigenOdometryFromMsg(const nav_msgs::Odometry& msg,$/;"	f	namespace:mav_msgs
+eigenRateThrustFromMsg	mav_comm/mav_msgs/include/mav_msgs/conversions.h	/^inline void eigenRateThrustFromMsg(const RateThrust& msg,$/;"	f	namespace:mav_msgs
+eigenRollPitchYawrateThrustFromMsg	mav_comm/mav_msgs/include/mav_msgs/conversions.h	/^inline void eigenRollPitchYawrateThrustFromMsg($/;"	f	namespace:mav_msgs
+eigenTorqueThrustFromMsg	mav_comm/mav_msgs/include/mav_msgs/conversions.h	/^inline void eigenTorqueThrustFromMsg(const TorqueThrust& msg,$/;"	f	namespace:mav_msgs
+eigenTrajectoryPointDequeFromMsg	mav_comm/mav_msgs/include/mav_msgs/conversions.h	/^inline void eigenTrajectoryPointDequeFromMsg($/;"	f	namespace:mav_msgs
+eigenTrajectoryPointFromMsg	mav_comm/mav_msgs/include/mav_msgs/conversions.h	/^inline void eigenTrajectoryPointFromMsg($/;"	f	namespace:mav_msgs
+eigenTrajectoryPointFromPoseMsg	mav_comm/mav_msgs/include/mav_msgs/conversions.h	/^inline void eigenTrajectoryPointFromPoseMsg($/;"	f	namespace:mav_msgs
+eigenTrajectoryPointFromTransformMsg	mav_comm/mav_msgs/include/mav_msgs/conversions.h	/^inline void eigenTrajectoryPointFromTransformMsg($/;"	f	namespace:mav_msgs
+eigenTrajectoryPointVectorFromMsg	mav_comm/mav_msgs/include/mav_msgs/conversions.h	/^inline void eigenTrajectoryPointVectorFromMsg($/;"	f	namespace:mav_msgs
+mav_msgs	mav_comm/mav_msgs/include/mav_msgs/conversions.h	/^namespace mav_msgs {$/;"	n
+msgActuatorsFromEigen	mav_comm/mav_msgs/include/mav_msgs/conversions.h	/^inline void msgActuatorsFromEigen(const EigenActuators& actuators,$/;"	f	namespace:mav_msgs
+msgAttitudeThrustFromEigen	mav_comm/mav_msgs/include/mav_msgs/conversions.h	/^inline void msgAttitudeThrustFromEigen($/;"	f	namespace:mav_msgs
+msgMultiDofJointTrajectoryFromEigen	mav_comm/mav_msgs/include/mav_msgs/conversions.h	/^inline void msgMultiDofJointTrajectoryFromEigen($/;"	f	namespace:mav_msgs
+msgMultiDofJointTrajectoryFromPositionYaw	mav_comm/mav_msgs/include/mav_msgs/conversions.h	/^inline void msgMultiDofJointTrajectoryFromPositionYaw($/;"	f	namespace:mav_msgs
+msgMultiDofJointTrajectoryPointFromEigen	mav_comm/mav_msgs/include/mav_msgs/conversions.h	/^inline void msgMultiDofJointTrajectoryPointFromEigen($/;"	f	namespace:mav_msgs
+msgOdometryFromEigen	mav_comm/mav_msgs/include/mav_msgs/conversions.h	/^inline void msgOdometryFromEigen(const EigenOdometry& odometry,$/;"	f	namespace:mav_msgs
+msgPoseStampedFromEigenTrajectoryPoint	mav_comm/mav_msgs/include/mav_msgs/conversions.h	/^inline void msgPoseStampedFromEigenTrajectoryPoint($/;"	f	namespace:mav_msgs
+msgRateThrustFromEigen	mav_comm/mav_msgs/include/mav_msgs/conversions.h	/^inline void msgRateThrustFromEigen(EigenRateThrust& rate_thrust,$/;"	f	namespace:mav_msgs
+msgRollPitchYawrateThrustFromEigen	mav_comm/mav_msgs/include/mav_msgs/conversions.h	/^inline void msgRollPitchYawrateThrustFromEigen($/;"	f	namespace:mav_msgs
+msgTorqueThrustFromEigen	mav_comm/mav_msgs/include/mav_msgs/conversions.h	/^inline void msgTorqueThrustFromEigen(EigenTorqueThrust& torque_thrust,$/;"	f	namespace:mav_msgs
+AIR_SPEED	mav_comm/mav_msgs/include/mav_msgs/default_topics.h	/^static constexpr char AIR_SPEED[] = "air_speed";$/;"	m	namespace:mav_msgs::default_topics
+COMMAND_ACTUATORS	mav_comm/mav_msgs/include/mav_msgs/default_topics.h	/^static constexpr char COMMAND_ACTUATORS[] = "command\/motor_speed";$/;"	m	namespace:mav_msgs::default_topics
+COMMAND_ATTITUDE_THRUST	mav_comm/mav_msgs/include/mav_msgs/default_topics.h	/^static constexpr char COMMAND_ATTITUDE_THRUST[] = "command\/attitude_thrust";$/;"	m	namespace:mav_msgs::default_topics
+COMMAND_GPS_WAYPOINT	mav_comm/mav_msgs/include/mav_msgs/default_topics.h	/^static constexpr char COMMAND_GPS_WAYPOINT[] = "command\/gps_waypoint";$/;"	m	namespace:mav_msgs::default_topics
+COMMAND_POSE	mav_comm/mav_msgs/include/mav_msgs/default_topics.h	/^static constexpr char COMMAND_POSE[] = "command\/pose";$/;"	m	namespace:mav_msgs::default_topics
+COMMAND_RATE_THRUST	mav_comm/mav_msgs/include/mav_msgs/default_topics.h	/^static constexpr char COMMAND_RATE_THRUST[] = "command\/rate_thrust";$/;"	m	namespace:mav_msgs::default_topics
+COMMAND_ROLL_PITCH_YAWRATE_THRUST	mav_comm/mav_msgs/include/mav_msgs/default_topics.h	/^static constexpr char COMMAND_ROLL_PITCH_YAWRATE_THRUST[] =$/;"	m	namespace:mav_msgs::default_topics
+COMMAND_TRAJECTORY	mav_comm/mav_msgs/include/mav_msgs/default_topics.h	/^static constexpr char COMMAND_TRAJECTORY[] = "command\/trajectory";$/;"	m	namespace:mav_msgs::default_topics
+DEFAULT_TOPICS_H_	mav_comm/mav_msgs/include/mav_msgs/default_topics.h	22;"	d
+EXTERNAL_FORCE	mav_comm/mav_msgs/include/mav_msgs/default_topics.h	/^static constexpr char EXTERNAL_FORCE[] = "external_force";$/;"	m	namespace:mav_msgs::default_topics
+FILTERED_SENSOR_DATA	mav_comm/mav_msgs/include/mav_msgs/default_topics.h	/^static constexpr char FILTERED_SENSOR_DATA[] = "filtered_sensor_data";$/;"	m	namespace:mav_msgs::default_topics
+GPS	mav_comm/mav_msgs/include/mav_msgs/default_topics.h	/^static constexpr char GPS[] = "gps";$/;"	m	namespace:mav_msgs::default_topics
+GROUND_SPEED	mav_comm/mav_msgs/include/mav_msgs/default_topics.h	/^static constexpr char GROUND_SPEED[] = "ground_speed";$/;"	m	namespace:mav_msgs::default_topics
+GROUND_TRUTH_POSE	mav_comm/mav_msgs/include/mav_msgs/default_topics.h	/^static constexpr char GROUND_TRUTH_POSE[] = "ground_truth\/pose";$/;"	m	namespace:mav_msgs::default_topics
+GROUND_TRUTH_TWIST	mav_comm/mav_msgs/include/mav_msgs/default_topics.h	/^static constexpr char GROUND_TRUTH_TWIST[] = "ground_truth\/twist";$/;"	m	namespace:mav_msgs::default_topics
+IMU	mav_comm/mav_msgs/include/mav_msgs/default_topics.h	/^static constexpr char IMU[] = "imu";$/;"	m	namespace:mav_msgs::default_topics
+MAGNETIC_FIELD	mav_comm/mav_msgs/include/mav_msgs/default_topics.h	/^static constexpr char MAGNETIC_FIELD[] = "magnetic_field";$/;"	m	namespace:mav_msgs::default_topics
+MOTOR_FORCE_MEASUREMENT	mav_comm/mav_msgs/include/mav_msgs/default_topics.h	/^static constexpr char MOTOR_FORCE_MEASUREMENT[] = "motor_force";$/;"	m	namespace:mav_msgs::default_topics
+MOTOR_MEASUREMENT	mav_comm/mav_msgs/include/mav_msgs/default_topics.h	/^static constexpr char MOTOR_MEASUREMENT[] = "motor_speed";$/;"	m	namespace:mav_msgs::default_topics
+MOTOR_POSITION_MEASUREMENT	mav_comm/mav_msgs/include/mav_msgs/default_topics.h	/^static constexpr char MOTOR_POSITION_MEASUREMENT[] = "motor_position";$/;"	m	namespace:mav_msgs::default_topics
+ODOMETRY	mav_comm/mav_msgs/include/mav_msgs/default_topics.h	/^static constexpr char ODOMETRY[] = "odometry";$/;"	m	namespace:mav_msgs::default_topics
+POSE	mav_comm/mav_msgs/include/mav_msgs/default_topics.h	/^static constexpr char POSE[] = "pose";$/;"	m	namespace:mav_msgs::default_topics
+POSE_WITH_COVARIANCE	mav_comm/mav_msgs/include/mav_msgs/default_topics.h	/^static constexpr char POSE_WITH_COVARIANCE[] = "pose_with_covariance";$/;"	m	namespace:mav_msgs::default_topics
+POSITION	mav_comm/mav_msgs/include/mav_msgs/default_topics.h	/^static constexpr char POSITION[] = "position";$/;"	m	namespace:mav_msgs::default_topics
+RC	mav_comm/mav_msgs/include/mav_msgs/default_topics.h	/^static constexpr char RC[] = "rc";$/;"	m	namespace:mav_msgs::default_topics
+STATUS	mav_comm/mav_msgs/include/mav_msgs/default_topics.h	/^static constexpr char STATUS[] = "status";$/;"	m	namespace:mav_msgs::default_topics
+TRANSFORM	mav_comm/mav_msgs/include/mav_msgs/default_topics.h	/^static constexpr char TRANSFORM[] = "transform";$/;"	m	namespace:mav_msgs::default_topics
+WIND_SPEED	mav_comm/mav_msgs/include/mav_msgs/default_topics.h	/^static constexpr char WIND_SPEED[] = "wind_speed";$/;"	m	namespace:mav_msgs::default_topics
+WRENCH	mav_comm/mav_msgs/include/mav_msgs/default_topics.h	/^static constexpr char WRENCH[] = "wrench";$/;"	m	namespace:mav_msgs::default_topics
+default_topics	mav_comm/mav_msgs/include/mav_msgs/default_topics.h	/^namespace default_topics {$/;"	n	namespace:mav_msgs
+mav_msgs	mav_comm/mav_msgs/include/mav_msgs/default_topics.h	/^namespace mav_msgs {$/;"	n
+MAV_MSGS_DEFAULT_VALUES_H_	mav_comm/mav_msgs/include/mav_msgs/default_values.h	22;"	d
+kGravity	mav_comm/mav_msgs/include/mav_msgs/default_values.h	/^const double kGravity = MagnitudeOfGravity(kZurichHeight, kZurichLatitude);$/;"	m	namespace:mav_msgs
+kZurichHeight	mav_comm/mav_msgs/include/mav_msgs/default_values.h	/^const double kZurichHeight = 405.94;$/;"	m	namespace:mav_msgs
+kZurichLatitude	mav_comm/mav_msgs/include/mav_msgs/default_values.h	/^const double kZurichLatitude = 0.8267;$/;"	m	namespace:mav_msgs
+mav_msgs	mav_comm/mav_msgs/include/mav_msgs/default_values.h	/^namespace mav_msgs {$/;"	n
+EigenActuators	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  EigenActuators(const Eigen::VectorXd& _angular_velocities) {$/;"	f	struct:mav_msgs::EigenActuators
+EigenActuators	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^struct EigenActuators {$/;"	s	namespace:mav_msgs
+EigenAttitudeThrust	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  EigenAttitudeThrust()$/;"	f	struct:mav_msgs::EigenAttitudeThrust
+EigenAttitudeThrust	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  EigenAttitudeThrust(const Eigen::Quaterniond& _attitude,$/;"	f	struct:mav_msgs::EigenAttitudeThrust
+EigenAttitudeThrust	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^struct EigenAttitudeThrust {$/;"	s	namespace:mav_msgs
+EigenMavState	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  EigenMavState()$/;"	f	class:mav_msgs::EigenMavState
+EigenMavState	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  EigenMavState(const Eigen::Vector3d& position_W,$/;"	f	class:mav_msgs::EigenMavState
+EigenMavState	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^class EigenMavState {$/;"	c	namespace:mav_msgs
+EigenOdometry	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  EigenOdometry()$/;"	f	struct:mav_msgs::EigenOdometry
+EigenOdometry	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  EigenOdometry(const Eigen::Vector3d& _position,$/;"	f	struct:mav_msgs::EigenOdometry
+EigenOdometry	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^struct EigenOdometry {$/;"	s	namespace:mav_msgs
+EigenRateThrust	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  EigenRateThrust()$/;"	f	struct:mav_msgs::EigenRateThrust
+EigenRateThrust	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  EigenRateThrust(const Eigen::Vector3d& _angular_rates,$/;"	f	struct:mav_msgs::EigenRateThrust
+EigenRateThrust	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^struct EigenRateThrust {$/;"	s	namespace:mav_msgs
+EigenRollPitchYawrateThrust	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  EigenRollPitchYawrateThrust()$/;"	f	struct:mav_msgs::EigenRollPitchYawrateThrust
+EigenRollPitchYawrateThrust	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  EigenRollPitchYawrateThrust(double _roll, double _pitch, double _yaw_rate,$/;"	f	struct:mav_msgs::EigenRollPitchYawrateThrust
+EigenRollPitchYawrateThrust	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^struct EigenRollPitchYawrateThrust {$/;"	s	namespace:mav_msgs
+EigenTorqueThrust	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  EigenTorqueThrust()$/;"	f	struct:mav_msgs::EigenTorqueThrust
+EigenTorqueThrust	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  EigenTorqueThrust(const Eigen::Vector3d& _torque,$/;"	f	struct:mav_msgs::EigenTorqueThrust
+EigenTorqueThrust	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^struct EigenTorqueThrust {$/;"	s	namespace:mav_msgs
+EigenTrajectoryPoint	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  EigenTrajectoryPoint()$/;"	f	struct:mav_msgs::EigenTrajectoryPoint
+EigenTrajectoryPoint	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  EigenTrajectoryPoint(int64_t _time_from_start_ns,$/;"	f	struct:mav_msgs::EigenTrajectoryPoint
+EigenTrajectoryPoint	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^struct EigenTrajectoryPoint {$/;"	s	namespace:mav_msgs
+MAV_MSGS_CONCATENATE	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	307;"	d
+MAV_MSGS_CONCATENATE2	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	308;"	d
+MAV_MSGS_EIGEN_MAV_MSGS_H	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	22;"	d
+MAV_MSGS_MAKE_ALIGNED_CONTAINERS	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	309;"	d
+Vector	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^      Vector;$/;"	t	class:mav_msgs::EigenMavState
+Vector	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^      Vector;$/;"	t	struct:mav_msgs::EigenTrajectoryPoint
+acceleration_B	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  Eigen::Vector3d acceleration_B;$/;"	m	class:mav_msgs::EigenMavState
+acceleration_W	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  Eigen::Vector3d acceleration_W;$/;"	m	struct:mav_msgs::EigenTrajectoryPoint
+angles	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  Eigen::VectorXd angles;              \/\/ In rad.$/;"	m	struct:mav_msgs::EigenActuators
+angular_acceleration_B	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  Eigen::Vector3d angular_acceleration_B;$/;"	m	class:mav_msgs::EigenMavState
+angular_acceleration_W	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  Eigen::Vector3d angular_acceleration_W;$/;"	m	struct:mav_msgs::EigenTrajectoryPoint
+angular_rates	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  Eigen::Vector3d angular_rates;$/;"	m	struct:mav_msgs::EigenRateThrust
+angular_velocities	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  Eigen::VectorXd angular_velocities;  \/\/ In rad\/s.$/;"	m	struct:mav_msgs::EigenActuators
+angular_velocity_B	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  Eigen::Vector3d angular_velocity_B;$/;"	m	class:mav_msgs::EigenMavState
+angular_velocity_B	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  Eigen::Vector3d angular_velocity_B;$/;"	m	struct:mav_msgs::EigenOdometry
+angular_velocity_W	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  Eigen::Vector3d angular_velocity_W;$/;"	m	struct:mav_msgs::EigenTrajectoryPoint
+attitude	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  Eigen::Quaterniond attitude;$/;"	m	struct:mav_msgs::EigenAttitudeThrust
+getEulerAngles	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  inline void getEulerAngles(Eigen::Vector3d* euler_angles) const {$/;"	f	struct:mav_msgs::EigenOdometry
+getVelocityWorld	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  inline Eigen::Vector3d getVelocityWorld() const {$/;"	f	struct:mav_msgs::EigenOdometry
+getYaw	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  inline double getYaw() const { return yawFromQuaternion(orientation_W_B); }$/;"	f	struct:mav_msgs::EigenOdometry
+getYaw	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  inline double getYaw() const { return yawFromQuaternion(orientation_W_B); }$/;"	f	struct:mav_msgs::EigenTrajectoryPoint
+getYawAcc	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  inline double getYawAcc() const { return angular_acceleration_W.z(); }$/;"	f	struct:mav_msgs::EigenTrajectoryPoint
+getYawRate	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  inline double getYawRate() const { return angular_velocity_B.z(); }$/;"	f	struct:mav_msgs::EigenOdometry
+getYawRate	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  inline double getYawRate() const { return angular_velocity_W.z(); }$/;"	f	struct:mav_msgs::EigenTrajectoryPoint
+jerk_W	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  Eigen::Vector3d jerk_W;$/;"	m	struct:mav_msgs::EigenTrajectoryPoint
+mav_msgs	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^namespace mav_msgs {$/;"	n
+normalized	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  Eigen::VectorXd normalized;          \/\/ Everything else, normalized [-1 to 1].$/;"	m	struct:mav_msgs::EigenActuators
+orientation_W_B	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  Eigen::Quaterniond orientation_W_B;$/;"	m	class:mav_msgs::EigenMavState
+orientation_W_B	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  Eigen::Quaterniond orientation_W_B;$/;"	m	struct:mav_msgs::EigenOdometry
+orientation_W_B	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  Eigen::Quaterniond orientation_W_B;$/;"	m	struct:mav_msgs::EigenTrajectoryPoint
+pitch	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  double pitch;$/;"	m	struct:mav_msgs::EigenRollPitchYawrateThrust
+pose_covariance_	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  Eigen::Matrix<double, 6, 6> pose_covariance_;$/;"	m	struct:mav_msgs::EigenOdometry
+position_W	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  Eigen::Vector3d position_W;$/;"	m	class:mav_msgs::EigenMavState
+position_W	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  Eigen::Vector3d position_W;$/;"	m	struct:mav_msgs::EigenOdometry
+position_W	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  Eigen::Vector3d position_W;$/;"	m	struct:mav_msgs::EigenTrajectoryPoint
+roll	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  double roll;$/;"	m	struct:mav_msgs::EigenRollPitchYawrateThrust
+setFromYaw	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  inline void setFromYaw(double yaw) {$/;"	f	struct:mav_msgs::EigenOdometry
+setFromYaw	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  inline void setFromYaw(double yaw) {$/;"	f	struct:mav_msgs::EigenTrajectoryPoint
+setFromYawAcc	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  inline void setFromYawAcc(double yaw_acc) {$/;"	f	struct:mav_msgs::EigenTrajectoryPoint
+setFromYawRate	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  inline void setFromYawRate(double yaw_rate) {$/;"	f	struct:mav_msgs::EigenOdometry
+setFromYawRate	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  inline void setFromYawRate(double yaw_rate) {$/;"	f	struct:mav_msgs::EigenTrajectoryPoint
+setVelocityWorld	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  inline void setVelocityWorld(const Eigen::Vector3d& velocity_world) {$/;"	f	struct:mav_msgs::EigenOdometry
+snap_W	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  Eigen::Vector3d snap_W;$/;"	m	struct:mav_msgs::EigenTrajectoryPoint
+thrust	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  Eigen::Vector3d thrust;$/;"	m	struct:mav_msgs::EigenAttitudeThrust
+thrust	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  Eigen::Vector3d thrust;$/;"	m	struct:mav_msgs::EigenRateThrust
+thrust	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  Eigen::Vector3d thrust;$/;"	m	struct:mav_msgs::EigenRollPitchYawrateThrust
+thrust	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  Eigen::Vector3d thrust;$/;"	m	struct:mav_msgs::EigenTorqueThrust
+time_from_start_ns	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  int64_t time_from_start_ns;$/;"	m	struct:mav_msgs::EigenTrajectoryPoint
+timestamp_ns	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^      timestamp_ns;  \/\/ Time since epoch, negative value = invalid timestamp.$/;"	m	struct:mav_msgs::EigenOdometry
+timestamp_ns	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^      timestamp_ns;  \/\/ Time since epoch, negative value = invalid timestamp.$/;"	m	struct:mav_msgs::EigenTrajectoryPoint
+toString	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  std::string toString() const {$/;"	f	class:mav_msgs::EigenMavState
+toString	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  std::string toString() const {$/;"	f	struct:mav_msgs::EigenTrajectoryPoint
+torque	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  Eigen::Vector3d torque;$/;"	m	struct:mav_msgs::EigenTorqueThrust
+twist_covariance_	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  Eigen::Matrix<double, 6, 6> twist_covariance_;$/;"	m	struct:mav_msgs::EigenOdometry
+velocity_B	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  Eigen::Vector3d velocity_B;  \/\/ Velocity in expressed in the Body frame!$/;"	m	struct:mav_msgs::EigenOdometry
+velocity_W	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  Eigen::Vector3d velocity_W;$/;"	m	class:mav_msgs::EigenMavState
+velocity_W	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  Eigen::Vector3d velocity_W;$/;"	m	struct:mav_msgs::EigenTrajectoryPoint
+yaw_rate	mav_comm/mav_msgs/include/mav_msgs/eigen_mav_msgs.h	/^  double yaw_rate;$/;"	m	struct:mav_msgs::EigenRollPitchYawrateThrust
+MAV_PLANNING_MSGS_CONVERSIONS_H	mav_comm/mav_planning_msgs/include/mav_planning_msgs/conversions.h	20;"	d
+eigenPolynomialSegmentFromMsg	mav_comm/mav_planning_msgs/include/mav_planning_msgs/conversions.h	/^inline void eigenPolynomialSegmentFromMsg(const PolynomialSegment4D& msg,$/;"	f	namespace:mav_planning_msgs
+eigenPolynomialTrajectoryFromMsg	mav_comm/mav_planning_msgs/include/mav_planning_msgs/conversions.h	/^inline void eigenPolynomialTrajectoryFromMsg($/;"	f	namespace:mav_planning_msgs
+mav_planning_msgs	mav_comm/mav_planning_msgs/include/mav_planning_msgs/conversions.h	/^namespace mav_planning_msgs {$/;"	n
+msgArrayFromVector	mav_comm/mav_planning_msgs/include/mav_planning_msgs/conversions.h	/^inline void msgArrayFromVector(const Eigen::VectorXd& x,$/;"	f	namespace:mav_planning_msgs
+polynomialSegmentMsgFromEigen	mav_comm/mav_planning_msgs/include/mav_planning_msgs/conversions.h	/^inline void polynomialSegmentMsgFromEigen(const EigenPolynomialSegment& segment,$/;"	f	namespace:mav_planning_msgs
+polynomialTrajectoryMsgFromEigen	mav_comm/mav_planning_msgs/include/mav_planning_msgs/conversions.h	/^inline void polynomialTrajectoryMsgFromEigen($/;"	f	namespace:mav_planning_msgs
+vectorFromMsgArray	mav_comm/mav_planning_msgs/include/mav_planning_msgs/conversions.h	/^inline void vectorFromMsgArray(const PolynomialSegment4D::_x_type& array,$/;"	f	namespace:mav_planning_msgs
+EigenPolynomialSegment	mav_comm/mav_planning_msgs/include/mav_planning_msgs/eigen_planning_msgs.h	/^  EigenPolynomialSegment() : segment_time_ns(0), num_coeffs(0) {};$/;"	f	struct:mav_planning_msgs::EigenPolynomialSegment
+EigenPolynomialSegment	mav_comm/mav_planning_msgs/include/mav_planning_msgs/eigen_planning_msgs.h	/^struct EigenPolynomialSegment {$/;"	s	namespace:mav_planning_msgs
+EigenPolynomialTrajectory	mav_comm/mav_planning_msgs/include/mav_planning_msgs/eigen_planning_msgs.h	/^typedef std::vector<EigenPolynomialSegment> EigenPolynomialTrajectory;$/;"	t	namespace:mav_planning_msgs
+MAV_PLANNING_MSGS_EIGEN_MAV_MSGS_H	mav_comm/mav_planning_msgs/include/mav_planning_msgs/eigen_planning_msgs.h	20;"	d
+mav_planning_msgs	mav_comm/mav_planning_msgs/include/mav_planning_msgs/eigen_planning_msgs.h	/^namespace mav_planning_msgs {$/;"	n
+num_coeffs	mav_comm/mav_planning_msgs/include/mav_planning_msgs/eigen_planning_msgs.h	/^  int num_coeffs;$/;"	m	struct:mav_planning_msgs::EigenPolynomialSegment
+segment_time_ns	mav_comm/mav_planning_msgs/include/mav_planning_msgs/eigen_planning_msgs.h	/^  uint64_t segment_time_ns;$/;"	m	struct:mav_planning_msgs::EigenPolynomialSegment
+x	mav_comm/mav_planning_msgs/include/mav_planning_msgs/eigen_planning_msgs.h	/^  Eigen::VectorXd x;$/;"	m	struct:mav_planning_msgs::EigenPolynomialSegment
+y	mav_comm/mav_planning_msgs/include/mav_planning_msgs/eigen_planning_msgs.h	/^  Eigen::VectorXd y;$/;"	m	struct:mav_planning_msgs::EigenPolynomialSegment
+yaw	mav_comm/mav_planning_msgs/include/mav_planning_msgs/eigen_planning_msgs.h	/^  Eigen::VectorXd yaw;$/;"	m	struct:mav_planning_msgs::EigenPolynomialSegment
+z	mav_comm/mav_planning_msgs/include/mav_planning_msgs/eigen_planning_msgs.h	/^  Eigen::VectorXd z;$/;"	m	struct:mav_planning_msgs::EigenPolynomialSegment

@@ -15,6 +15,8 @@
 #include "proj_conf.h"
 #include <float.h>
 #include <cmath>
+#include <queue>
+#include <iostream>
 
 #define l 0.25
 #define k 0.02
@@ -30,6 +32,10 @@ bool flag = false;
 float ukf_lpf_gain;
 float ukf_estimated_force_enu[3];
 float ukf_estimated_force_enu_lpf[3];
+std::queue<float> x_bias_queue;
+std::queue<float> y_bias_queue;
+float bias_sum[2] = {0.0f};
+float bias_mean[2] = {0.0f};
 
 void lpf_first_order_init(float *ret_gain, float sampling_time, float cutoff_freq)
 {
@@ -223,9 +229,13 @@ int main(int argc, char **argv){
       float w = drone_pose.pose.orientation.w;
 
       forceest1.R_IB.setZero();
-      forceest1.R_IB << w*w+x*x-y*y-z*z,     2*x*y-2*w*z,     2*x*z+2*w*y,
-                            2*x*y+2*w*z, w*w-x*x+y*y-z*z,     2*y*z-2*w*x,
-                            2*x*z-2*w*y,     2*y*z+2*w*x, w*w-x*x-y*y+z*z;
+      // forceest1.R_IB << w*w+x*x-y*y-z*z,     2*x*y-2*w*z,     2*x*z+2*w*y,
+      //                       2*x*y+2*w*z, w*w-x*x+y*y-z*z,     2*y*z-2*w*x,
+      //                       2*x*z-2*w*y,     2*y*z+2*w*x, w*w-x*x-y*y+z*z;
+
+      forceest1.R_IB <<   cos(ground_truth_yaw), sin(ground_truth_yaw),   0,
+                         -sin(ground_truth_yaw), cos(ground_truth_yaw),   0,
+                                              0,                     0,   1;
 
       forceest1.angular_v_measure << drone_imu.angular_velocity.x,
                                      drone_imu.angular_velocity.y,
@@ -278,17 +288,33 @@ int main(int argc, char **argv){
       force.y = ukf_estimated_force_enu_lpf[1];
       force.z = ukf_estimated_force_enu_lpf[2];
 
-      printf("%d", nan_count);
-      printf("UKF estimated force  x: %f  y: %f  z: %f  yaw: %f\n", force.x, force.y, force.z, ground_truth_yaw);
-
-
       nh.getParam("/start",flag);
-      if(flag == false){
+
+      printf("%d", nan_count);
+      if(flag == true){
+        force.x -= bias_mean[0];
+        force.y -= bias_mean[1];
+        printf("UKF estimated force  x: %f  y: %f  z: %f  bias x: %f y: %f\n", force.x, force.y, force.z, bias_mean[0], bias_mean[1]);
+      }
+      else{
+        printf("!UKF estimated force  x: %f  y: %f  z: %f  bias x: %f y: %f\n", force.x, force.y, force.z, bias_mean[0], bias_mean[1]);
+        x_bias_queue.push(force.x);
+        y_bias_queue.push(force.y);
+        bias_sum[0] += x_bias_queue.back();
+        bias_sum[1] += y_bias_queue.back();
+
+        if(x_bias_queue.size() > 100 || y_bias_queue.size() > 100){
+          bias_sum[0] -= x_bias_queue.front();
+          bias_sum[1] -= y_bias_queue.front();
+          x_bias_queue.pop();
+          y_bias_queue.pop();
+        }
+
+        bias_mean[0] = bias_sum[0] / x_bias_queue.size();
+        bias_mean[1] = bias_sum[1] / y_bias_queue.size();
         force.x = 0.0;
         force.y = 0.0;
-        printf("!");
       }
-
       force_pub.publish(force);
     }
 
