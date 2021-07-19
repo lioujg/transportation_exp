@@ -64,15 +64,17 @@ void imu_cb(const sensor_msgs::Imu::ConstPtr &msg){
 
 Eigen::Vector3d thrust, last_thrust;
 void thrust_cb(const geometry_msgs::WrenchStamped::ConstPtr &msg){
-  if(isnan(msg->wrench.force.z) == 0){
-    thrust << msg->wrench.force.x, msg->wrench.force.y, msg->wrench.force.z;}
-  else if(isnan(msg->wrench.force.z) != 0){
-    thrust(2) = last_thrust(2);
-    std::cout << "I meet something cool like nan!!" << std::endl;
-    nan_count++;
-  }
+  // if(isnan(msg->wrench.force.z) == 0){
+  //   thrust << msg->wrench.force.x, msg->wrench.force.y, msg->wrench.force.z;}
+  // else if(isnan(msg->wrench.force.z) != 0){
+  //   thrust(2) = last_thrust(2);
+  //   std::cout << "I meet something cool like nan!!" << std::endl;
+  //   nan_count++;
+  // }
   // std::cout << thrust(2) << std::endl;
-  last_thrust = thrust;
+  // last_thrust = thrust;
+
+  thrust << 0, 0, 23;
 }
 
 float ground_truth_yaw;
@@ -229,13 +231,13 @@ int main(int argc, char **argv){
       float w = drone_pose.pose.orientation.w;
 
       forceest1.R_IB.setZero();
-      // forceest1.R_IB << w*w+x*x-y*y-z*z,     2*x*y-2*w*z,     2*x*z+2*w*y,
-      //                       2*x*y+2*w*z, w*w-x*x+y*y-z*z,     2*y*z-2*w*x,
-      //                       2*x*z-2*w*y,     2*y*z+2*w*x, w*w-x*x-y*y+z*z;
+      forceest1.R_IB << w*w+x*x-y*y-z*z,     2*x*y-2*w*z,     2*x*z+2*w*y,
+                            2*x*y+2*w*z, w*w-x*x+y*y-z*z,     2*y*z-2*w*x,
+                            2*x*z-2*w*y,     2*y*z+2*w*x, w*w-x*x-y*y+z*z;
 
-      forceest1.R_IB <<   cos(ground_truth_yaw), sin(ground_truth_yaw),   0,
-                         -sin(ground_truth_yaw), cos(ground_truth_yaw),   0,
-                                              0,                     0,   1;
+      // forceest1.R_IB <<   cos(ground_truth_yaw), sin(ground_truth_yaw),   0,
+      //                    -sin(ground_truth_yaw), cos(ground_truth_yaw),   0,
+      //                                         0,                     0,   1;
 
       forceest1.angular_v_measure << drone_imu.angular_velocity.x,
                                      drone_imu.angular_velocity.y,
