@@ -305,7 +305,7 @@ int main(int argc, char **argv){
         bias_sum[0] += x_bias_queue.back();
         bias_sum[1] += y_bias_queue.back();
 
-        if(x_bias_queue.size() > 100 || y_bias_queue.size() > 100){
+        if(x_bias_queue.size() > 30 || y_bias_queue.size() > 30){
           bias_sum[0] -= x_bias_queue.front();
           bias_sum[1] -= y_bias_queue.front();
           x_bias_queue.pop();
