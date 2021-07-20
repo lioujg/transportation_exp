@@ -71,7 +71,7 @@ void thrust_cb(const geometry_msgs::WrenchStamped::ConstPtr &msg){
     std::cout << "I meet something cool like nan!!" << std::endl;
     nan_count++;
   }
-  std::cout << thrust(2) << std::endl;
+  // std::cout << thrust(2) << std::endl;
   last_thrust = thrust;
 
   //thrust << 0, 0, 23;
