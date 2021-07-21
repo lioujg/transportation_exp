@@ -152,12 +152,12 @@ int main(int argc, char **argv){
     p1.acc << 0,0,0;
     p1.yaw = 0;
 
-    p2.pos << -0.9,-0.0,0;
+    p2.pos << -0.9,-0.2,0;
     p2.vel << 0,0,0;
     p2.acc << 0,0,0;
     p2.yaw = 0;
 
-    p3.pos << -0.6,0.2,0;
+    p3.pos << -0.6,0.0,0;
     p3.vel << 0,0,0;
     p3.acc << 0,0,0;
     p3.yaw = 0;
@@ -173,7 +173,7 @@ int main(int argc, char **argv){
     p5.yaw = 0;
 
   path.push_back(segments(p1,p2,3.0));
-  // path.push_back(segments(p2,p3,3.0));
+  path.push_back(segments(p2,p3,3.0));
   // path.push_back(segments(p3,p4,2.5));
   // path.push_back(segments(p4,p5,1.0));
   // path.push_back(segments(p5,p6,6.0));
