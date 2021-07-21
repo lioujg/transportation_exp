@@ -20,7 +20,7 @@
 #define normal
 #define PI 3.1415926
 
-double k1 = 1.0, k2 = 1.0, k3 = 1.0, kv = 1.0, kw = 6.0;
+double k1 = 1.0, k2 = 0.1, k3 = 1.0, k4 = 3.0, kv = 1.0, kw = 20.0;
 double mp = 0.5,  g = 9.8, Izz = mp * PAYLOAD_LENGTH * PAYLOAD_LENGTH / 12;
 
 Eigen::Vector3d pose, vel;
@@ -152,12 +152,12 @@ int main(int argc, char **argv){
     p1.acc << 0,0,0;
     p1.yaw = 0;
 
-    p2.pos << -0.9,-0.0,0;
+    p2.pos << -0.9,-0.1,0;
     p2.vel << 0,0,0;
     p2.acc << 0,0,0;
     p2.yaw = 0;
 
-    p3.pos << -0.6,0.2,0;
+    p3.pos << -0.6,0,0;
     p3.vel << 0,0,0;
     p3.acc << 0,0,0;
     p3.yaw = 0;
@@ -173,7 +173,7 @@ int main(int argc, char **argv){
     p5.yaw = 0;
 
   path.push_back(segments(p1,p2,3.0));
-  // path.push_back(segments(p2,p3,3.0));
+  path.push_back(segments(p2,p3,3.0));
   // path.push_back(segments(p3,p4,2.5));
   // path.push_back(segments(p4,p5,1.0));
   // path.push_back(segments(p5,p6,6.0));
@@ -261,7 +261,7 @@ int main(int argc, char **argv){
 
       //(41)(42) separately
       tmp << kv * (nonholoutput(0) - v_w_eta(0)) + x_e + nonlinearterm(0) + vd_dot,
-             kw * (nonholoutput(1) - v_w_eta(2)) + sin(theta_e)/k2 + w_d_dot,   //ffy is close to zero.
+             kw * (nonholoutput(1) - v_w_eta(2)) + sin(theta_e)/k2 + k4 * w_d_dot,   //ffy is close to zero.
              0;
 
       Eigen::Matrix3d M;
@@ -275,7 +275,7 @@ int main(int argc, char **argv){
 
 
       controller_force.x = cmd_(0);   // + nonlinearterm(0);// + vd_dot ;
-      controller_force.y = cmd_(1);   // + w_d_dot;
+      controller_force.y = cmd_(1);   // bias	// + w_d_dot;
 
       debug_msg.x = nonholoutput(0) - v_w_eta(0);
       debug_msg.y = nonholoutput(1) - v_w_eta(2);
@@ -292,8 +292,8 @@ int main(int argc, char **argv){
     ycc_path_pub.publish(ycc_path);
 
     // std::cout << "payload_yaw " << payload_yaw << std::endl;
-    printf("controller force x: %f, y: %f\n", controller_force.x, controller_force.y);
-    printf("vd_dot: %f, x_e: %f, eta x: %f, nonlinear: %f\t", vd_dot_debug, x_e, debug_msg.x, nonlinear);
+    printf("controller force x: %f, y: %f\t", controller_force.x, controller_force.y);
+    // printf("vd_dot: %f, x_e: %f, eta x: %f, nonlinear: %f\t", vd_dot_debug, x_e, debug_msg.x, nonlinear);
     printf("eta y: %f, w_d_dot: %f, sin(theta e): %f\n", debug_msg.y, debug_msg.z, sin(theta_e));
 
 
