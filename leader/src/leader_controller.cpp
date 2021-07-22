@@ -20,7 +20,7 @@
 #define normal
 #define PI 3.1415926
 
-double k1 = 1.0, k2 = 0.1, k3 = 1.0, k4 = 3.0, kv = 1.0, kw = 20.0;
+double k1 = 18.0, k2 = 0.1, k3 = 1.0, k4 = 3.0, kv = 1.0, kw = 20.0;
 double mp = 0.5,  g = 9.8, Izz = mp * PAYLOAD_LENGTH * PAYLOAD_LENGTH / 12;
 
 Eigen::Vector3d pose, vel;
@@ -129,7 +129,7 @@ int main(int argc, char **argv){
   ros::Publisher my_path_pub = nh.advertise<geometry_msgs::Point>("/path_plot",2);
   ros::Publisher ycc_path_pub = nh.advertise<nav_msgs::Path>("trajectory", 1, true);
 
-  ros::Rate loop_rate(50.0);
+  ros::Rate loop_rate(20.0);
   nh.setParam("/start",false);
   // geometry_msgs::PoseStamped force;
 
@@ -172,8 +172,8 @@ int main(int argc, char **argv){
     p5.acc << 0,0,0;
     p5.yaw = 0;
 
-  path.push_back(segments(p1,p2,3.0));
-  path.push_back(segments(p2,p3,3.0));
+  path.push_back(segments(p1,p2,4.5));
+  path.push_back(segments(p2,p3,4.5));
   // path.push_back(segments(p3,p4,2.5));
   // path.push_back(segments(p4,p5,1.0));
   // path.push_back(segments(p5,p6,6.0));
@@ -293,9 +293,9 @@ int main(int argc, char **argv){
 
     // std::cout << "payload_yaw " << payload_yaw << std::endl;
     printf("controller force x: %f, y: %f\t", controller_force.x, controller_force.y);
-    // printf("vd_dot: %f, x_e: %f, eta x: %f, nonlinear: %f\t", vd_dot_debug, x_e, debug_msg.x, nonlinear);
-    printf("eta y: %f, w_d_dot: %f, sin(theta e): %f\n", debug_msg.y, debug_msg.z, sin(theta_e));
-
+    printf("vd_dot: %f, x_e: %f, eta x: %f, nonlinear: %f\t", vd_dot_debug, x_e, debug_msg.x, nonlinear);
+    //printf("eta y: %f, w_d_dot: %f, sin(theta e): %f", debug_msg.y, debug_msg.z, sin(theta_e));
+    printf("\n");
 
 
     ros::spinOnce();
