@@ -20,7 +20,7 @@
 #define normal
 #define PI 3.1415926
 
-double k1 = 18.0, k2 = 0.1, k3 = 1.0, k4 = 3.0, kv = 1.0, kw = 20.0;
+double k1 = 3.0, k2 = 0.1, k3 = 1.0, k4 = 3.0, kv = 3.0, kw = 11.0;
 double mp = 0.5,  g = 9.8, Izz = mp * PAYLOAD_LENGTH * PAYLOAD_LENGTH / 12;
 
 Eigen::Vector3d pose, vel;
@@ -146,43 +146,67 @@ int main(int argc, char **argv){
   path_def path;
   trajectory_profile p1,p2,p3,p4,p5,p6,p7,p8;
   std::vector<trajectory_profile> data;
-
-    p1.pos << -1.2,0,0;
+#if 0
+    p1.pos << -1.2,0.9,0;
     p1.vel << 0,0,0;
     p1.acc << 0,0,0;
     p1.yaw = 0;
 
-    p2.pos << -0.9,-0.1,0;
+    p2.pos << -0.3,0.9,0;
     p2.vel << 0,0,0;
     p2.acc << 0,0,0;
     p2.yaw = 0;
 
-    p3.pos << -0.6,0,0;
+    p3.pos << -0.4,0.45,0;
     p3.vel << 0,0,0;
     p3.acc << 0,0,0;
     p3.yaw = 0;
 
-    p4.pos << -1.0,-0.1,0;
+    p4.pos << -0.6,0.45,0;
     p4.vel << 0,0,0;
     p4.acc << 0,0,0;
     p4.yaw = 0;
 
-    p5.pos << -0.98,-0.12,0;
+    p5.pos << -0.3,0.55,0;
     p5.vel << 0,0,0;
     p5.acc << 0,0,0;
     p5.yaw = 0;
+#endif
+	p1.pos << -1.2,  0.9, 0.0;
+	p1.vel << 0.0,  0.0, 0.0;
+	p1.acc << 0.0, -0.0, 0.0;
 
-  path.push_back(segments(p1,p2,4.5));
-  path.push_back(segments(p2,p3,4.5));
-  // path.push_back(segments(p3,p4,2.5));
-  // path.push_back(segments(p4,p5,1.0));
-  // path.push_back(segments(p5,p6,6.0));
+	p2.pos << -0.4,  0.9, 0.0;
+	p2.vel << 0.0,  0.0, 0.0;
+	p2.acc << 0.0, -0.0, 0.0;
+
+	p3.pos << -0.15, 0.45, 0.0;
+	p3.vel << 0.0, 0.0, 0.0;
+	p3.acc << 0.0, 0.0, 0.0;
+
+	p4.pos << -0.35, 0.45, 0.0;
+	p4.vel <<  0.0, 0.0, 0.0;
+	p4.acc <<  0.0, 0.0, 0.0;
+#if 0
+	p5.pos << -0.35, 0.4, 0.0;
+	p5.vel << 0.0, 0.0, 0.0;
+	p5.acc << 0.0, 0.0, 0.0;
+
+	p6.pos << -0.25, 0.4, 0.0;
+	p6.vel << 0.0,  0.0, 0.0;
+	p6.acc << 0.0,  0.0, 0.0;
+#endif
+  path.push_back(segments(p1,p2,7));
+  path.push_back(segments(p2,p3,5));
+  path.push_back(segments(p3,p4,3));
+  //path.push_back(segments(p4,p5,2));
+  //path.push_back(segments(p5,p6,3));
   // path.push_back(segments(p6,p7,6.0));
   // path.push_back(segments(p7,p8,6.0));
-  data = plan.get_profile(path,path.size(),0.02);
+  data = plan.get_profile(path,path.size(),0.05);
 
-  desired_pose.pose.position.x = -1.5;
-  desired_pose.pose.position.y = 0.0;
+  desired_pose.pose.position.x = -0.6;
+  desired_pose.pose.position.y = 0.6;
   desired_pose.pose.position.z = 0.6;
 
 
