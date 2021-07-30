@@ -27,6 +27,7 @@ Eigen::Vector3d pose, vel;
 Eigen::Vector3d v_p;
 Eigen::Vector3d r_p_c2(-0.5 * PAYLOAD_LENGTH, 0, 0);
 double vir_x, vir_y, theta_r, vx, vy, ax, ay, jx, jy;
+double eta_1, eta_2;
 double last_w = 0.0;
 
 float payload_yaw;
@@ -283,9 +284,20 @@ int main(int argc, char **argv){
       Eigen::Vector3d tmp;
       Eigen::Vector3d cmd_;
 
+      eta_1 = (nonholoutput(0) - v_w_eta(0));
+      eta_2 = (nonholoutput(1) - v_w_eta(2));
+
+      if(eta_1 > 1){
+        eta_1 = 1;
+      }
+
+      if(vd_dot > 1){
+        vd_dot = 1;
+      }
+
       //(41)(42) separately
-      tmp << kv * (nonholoutput(0) - v_w_eta(0)) + x_e + nonlinearterm(0) + vd_dot,
-             kw * (nonholoutput(1) - v_w_eta(2)) + sin(theta_e)/k2 + k4 * w_d_dot,   //ffy is close to zero.
+      tmp << kv * eta_1 + x_e + nonlinearterm(0) + vd_dot,
+             kw * eta_2 + sin(theta_e)/k2 + k4 * w_d_dot,   //ffy is close to zero.
              0;
 
       Eigen::Matrix3d M;
