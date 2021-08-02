@@ -22,7 +22,7 @@
 
 double k1 = 3.0, k2 = 0.1, k3 = 1.0, k4 = 0.3, kv = 3.0, kw = 30.0;
 double mp = 0.5,  g = 9.8, Izz = mp * PAYLOAD_LENGTH * PAYLOAD_LENGTH / 12;
-
+double x_upper = 0.1;
 Eigen::Vector3d pose, vel;
 Eigen::Vector3d v_p;
 Eigen::Vector3d r_p_c2(-0.5 * PAYLOAD_LENGTH, 0, 0);
@@ -287,12 +287,16 @@ int main(int argc, char **argv){
       eta_1 = (nonholoutput(0) - v_w_eta(0));
       eta_2 = (nonholoutput(1) - v_w_eta(2));
 
-      if(eta_1 > 1){
-        eta_1 = 1;
+      if(eta_1 > x_upper){
+        eta_1 = x_upper;
       }
 
-      if(vd_dot > 1){
-        vd_dot = 1;
+      if(vd_dot > x_upper){
+        vd_dot = x_upper;
+      }
+
+      if(x_e > x_upper){
+	x_e = x_upper;
       }
 
       //(41)(42) separately
@@ -313,7 +317,7 @@ int main(int argc, char **argv){
       controller_force.x = cmd_(0);   // + nonlinearterm(0);// + vd_dot ;
       controller_force.y = cmd_(1);   // bias	// + w_d_dot;
 
-      debug_msg.x = nonholoutput(0) - v_w_eta(0);
+      debug_msg.x = eta_1;
       debug_msg.y = nonholoutput(1) - v_w_eta(2);
       debug_msg.z = w_d_dot;
       nonlinear = nonlinearterm(0);
