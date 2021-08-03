@@ -289,16 +289,16 @@ int main(int argc, char **argv){
       eta_1 = (nonholoutput(0) - v_w_eta(0));
       eta_2 = (nonholoutput(1) - v_w_eta(2));
 
-      if(eta_1 > 1.0){
-        eta_1 = 1.0;
-      }else if(eta_1 < -1.0){
-        eta_1 = -1.0;
-      }
-      if(x_e > 0.5){
-        x_e = 0.5;
-      }else if(x_e < -0.5){
-        x_e = -0.5;
-      }
+      // if(eta_1 > 1.0){
+      //   eta_1 = 1.0;
+      // }else if(eta_1 < -1.0){
+      //   eta_1 = -1.0;
+      // }
+      // if(x_e > 0.5){
+      //   x_e = 0.5;
+      // }else if(x_e < -0.5){
+      //   x_e = -0.5;
+      // }
 
 
       //(41)(42) separately
@@ -306,14 +306,14 @@ int main(int argc, char **argv){
              kw * eta_2 + sin(theta_e)/k2 + k4 * w_d_dot,   //ffy is close to zero.
              0;
 
- //      if(tmp(0) > x_upper){
- //        tmp(0) = x_upper;
- //      }
- //      if(tmp(1) > y_upper){
-	// tmp(1) = y_upper;
- //      }else if(tmp(1) < -y_upper){
-	// tmp(1) = -y_upper;
- //      }
+      if(tmp(0) > x_upper){
+       tmp(0) = x_upper;
+      }
+      if(tmp(1) > y_upper){
+	     tmp(1) = y_upper;
+      }else if(tmp(1) < -y_upper){
+	     tmp(1) = -y_upper;
+      }
 
       controller_body_x = tmp(0);
       controller_body_y = tmp(1);
