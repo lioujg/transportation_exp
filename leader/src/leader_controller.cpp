@@ -23,7 +23,9 @@
 double k1 = 3.0, k2 = 0.1, k3 = 1.0, k4 = 0.3, kv = 3.0, kw = 30.0;
 double mp = 0.5,  g = 9.8, Izz = mp * PAYLOAD_LENGTH * PAYLOAD_LENGTH / 12;
 double x_upper = 1.95;
+double x_lower = -x_upper;
 double y_upper = 5.0;
+double y_lower = -y_upper;
 double controller_body_x, controller_body_y;
 Eigen::Vector3d pose, vel;
 Eigen::Vector3d v_p;
@@ -112,6 +114,12 @@ Eigen::Vector3d nonholonomic_output(double x_r, double y_r, double theta_r, doub
 
   output << vd, w_d, 0;
   return output;
+}
+
+void bound_double(double *val, double max, double min)
+{
+  if(*val > max) *val = max;
+  else if(*val < min) *val = min;
 }
 
 int main(int argc, char **argv){
@@ -306,14 +314,16 @@ int main(int argc, char **argv){
              kw * eta_2 + sin(theta_e)/k2 + k4 * w_d_dot,   //ffy is close to zero.
              0;
 
-       if(tmp(0) > x_upper){
-         tmp(0) = x_upper;
-       }
-       if(tmp(1) > y_upper){
-	 tmp(1) = y_upper;
-       }else if(tmp(1) < -y_upper){
-	 tmp(1) = -y_upper;
-       }
+      bound_double(&tmp(0), x_upper, x_lower);
+      bound_double(&tmp(1), y_upper, y_lower);
+  //      if(tmp(0) > x_upper){
+  //        tmp(0) = x_upper;
+  //      }
+  //      if(tmp(1) > y_upper){
+	 // tmp(1) = y_upper;
+  //      }else if(tmp(1) < -y_upper){
+	 // tmp(1) = -y_upper;
+  //      }
 
       controller_body_x = tmp(0);
       controller_body_y = tmp(1);
