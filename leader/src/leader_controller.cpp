@@ -22,10 +22,10 @@
 
 double k1 = 3.0, k2 = 0.1, k3 = 1.0, k4 = 0.3, kv = 3.0, kw = 30.0;
 double mp = 0.5,  g = 9.8, Izz = mp * PAYLOAD_LENGTH * PAYLOAD_LENGTH / 12;
-double x_upper = 1.95;
-double x_lower = -x_upper;
-double y_upper = 5.0;
-double y_lower = -y_upper;
+double x_upper = 0.8;
+double x_lower = -1.0;
+double y_upper = 3;
+double y_lower = -6;
 double controller_body_x, controller_body_y;
 Eigen::Vector3d pose, vel;
 Eigen::Vector3d v_p;
@@ -356,9 +356,10 @@ int main(int argc, char **argv){
     ycc_path_pub.publish(ycc_path);
 
     // std::cout << "payload_yaw " << payload_yaw << std::endl;
-    printf("controller force x: %f, y: %f\t", controller_body_x, controller_body_y);
-    printf("vd_dot: %f, x_e: %f, eta x: %f, nonlinear: %f\t", vd_dot_debug, x_e, debug_msg.x, nonlinear);
-    //printf("eta y: %f, w_d_dot: %f, sin(theta e): %f", debug_msg.y, debug_msg.z, sin(theta_e));
+    printf("controller force x: %f, y: %f\n", controller_body_x, controller_body_y);
+    printf("controller force inertial x: %f, y: %f\n", controller_force.x, controller_force.y);
+    printf("vd_dot: %f, x_e: %f, eta x: %f, nonlinear: %f\n", vd_dot_debug, x_e, debug_msg.x, nonlinear);
+    printf("eta y: %f, w_d_dot: %f, sin(theta e): %f", debug_msg.y, debug_msg.z, sin(theta_e));
     printf("\n");
 
 
