@@ -26,6 +26,8 @@ double x_upper = 0.8;
 double x_lower = -1.0;
 double y_upper = 3;
 double y_lower = -6;
+double x_ratio = 2;
+double y_ratio = 2;
 double controller_body_x, controller_body_y;
 Eigen::Vector3d pose, vel;
 Eigen::Vector3d v_p;
@@ -314,16 +316,10 @@ int main(int argc, char **argv){
              kw * eta_2 + sin(theta_e)/k2 + k4 * w_d_dot,   //ffy is close to zero.
              0;
 
-      bound_double(&tmp(0), x_upper, x_lower);
-      bound_double(&tmp(1), y_upper, y_lower);
-  //      if(tmp(0) > x_upper){
-  //        tmp(0) = x_upper;
-  //      }
-  //      if(tmp(1) > y_upper){
-	 // tmp(1) = y_upper;
-  //      }else if(tmp(1) < -y_upper){
-	 // tmp(1) = -y_upper;
-  //      }
+      tmp(0) = tmp(0) / x_ratio;
+      tmp(1) = tmp(1) / y_ratio;
+      // bound_double(&tmp(0), x_upper, x_lower);
+      // bound_double(&tmp(1), y_upper, y_lower);
 
       controller_body_x = tmp(0);
       controller_body_y = tmp(1);
