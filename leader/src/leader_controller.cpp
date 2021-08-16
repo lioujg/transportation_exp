@@ -22,12 +22,12 @@
 
 double k1 = 3.0, k2 = 0.1, k3 = 1.0, k4 = 0.3, kv = 3.0, kw = 30.0;
 double mp = 0.5,  g = 9.8, Izz = mp * PAYLOAD_LENGTH * PAYLOAD_LENGTH / 12;
-double x_upper = 0.8;
-double x_lower = -1.0;
-double y_upper = 3;
-double y_lower = -6;
-double x_ratio = 2;
-double y_ratio = 2;
+double x_upper = 2.0;
+double x_lower = -2.6;
+double y_upper = 10;
+double y_lower = -7;
+double x_ratio = 1.0;
+double y_ratio = 1.4;
 double controller_body_x, controller_body_y;
 Eigen::Vector3d pose, vel;
 Eigen::Vector3d v_p;
@@ -159,32 +159,37 @@ int main(int argc, char **argv){
   path_def path;
   trajectory_profile p1,p2,p3,p4,p5,p6,p7,p8;
   std::vector<trajectory_profile> data;
-#if 0
+
+#if 1
+// S curve
     p1.pos << -1.2,0.9,0;
     p1.vel << 0,0,0;
     p1.acc << 0,0,0;
     p1.yaw = 0;
 
-    p2.pos << -0.3,0.9,0;
+    p2.pos << -0.8,0.85,0;
     p2.vel << 0,0,0;
     p2.acc << 0,0,0;
     p2.yaw = 0;
 
-    p3.pos << -0.4,0.45,0;
+    p3.pos << 0.0,0.15,0;
     p3.vel << 0,0,0;
     p3.acc << 0,0,0;
     p3.yaw = 0;
 
-    p4.pos << -0.6,0.45,0;
+    p4.pos << 0.4,0.1,0;
     p4.vel << 0,0,0;
     p4.acc << 0,0,0;
     p4.yaw = 0;
 
-    p5.pos << -0.3,0.55,0;
-    p5.vel << 0,0,0;
-    p5.acc << 0,0,0;
-    p5.yaw = 0;
+  path.push_back(segments(p1,p2,5));
+  path.push_back(segments(p2,p3,6));
+  path.push_back(segments(p3,p4,5));
+  data = plan.get_profile(path,path.size(),0.05);
 #endif
+
+#if 0
+// U
 	p1.pos << -1.2,  0.9, 0.0;
 	p1.vel << 0.0,  0.0, 0.0;
 	p1.acc << 0.0, -0.0, 0.0;
@@ -200,15 +205,8 @@ int main(int argc, char **argv){
 	p4.pos << -0.35, 0.45, 0.0;
 	p4.vel <<  0.0, 0.0, 0.0;
 	p4.acc <<  0.0, 0.0, 0.0;
-#if 0
-	p5.pos << -0.35, 0.4, 0.0;
-	p5.vel << 0.0, 0.0, 0.0;
-	p5.acc << 0.0, 0.0, 0.0;
 
-	p6.pos << -0.25, 0.4, 0.0;
-	p6.vel << 0.0,  0.0, 0.0;
-	p6.acc << 0.0,  0.0, 0.0;
-#endif
+
   path.push_back(segments(p1,p2,7));
   path.push_back(segments(p2,p3,5));
   path.push_back(segments(p3,p4,3));
@@ -217,6 +215,8 @@ int main(int argc, char **argv){
   // path.push_back(segments(p6,p7,6.0));
   // path.push_back(segments(p7,p8,6.0));
   data = plan.get_profile(path,path.size(),0.05);
+#endif
+
 
   desired_pose.pose.position.x = -0.6;
   desired_pose.pose.position.y = 0.6;
@@ -318,11 +318,12 @@ int main(int argc, char **argv){
 
       tmp(0) = tmp(0) / x_ratio;
       tmp(1) = tmp(1) / y_ratio;
-      // bound_double(&tmp(0), x_upper, x_lower);
-      // bound_double(&tmp(1), y_upper, y_lower);
+      bound_double(&tmp(0), x_upper, x_lower);
+      bound_double(&tmp(1), y_upper, y_lower);
 
       controller_body_x = tmp(0);
       controller_body_y = tmp(1);
+
 
       Eigen::Matrix3d M;
       M <<   mp,                     0,    0,
@@ -354,8 +355,8 @@ int main(int argc, char **argv){
     // std::cout << "payload_yaw " << payload_yaw << std::endl;
     printf("controller force x: %f, y: %f\n", controller_body_x, controller_body_y);
     printf("controller force inertial x: %f, y: %f\n", controller_force.x, controller_force.y);
-    printf("vd_dot: %f, x_e: %f, eta x: %f, nonlinear: %f\n", vd_dot_debug, x_e, debug_msg.x, nonlinear);
-    printf("eta y: %f, w_d_dot: %f, sin(theta e): %f", debug_msg.y, debug_msg.z, sin(theta_e));
+    //printf("vd_dot: %f, x_e: %f, eta x: %f, nonlinear: %f\n", vd_dot_debug, x_e, debug_msg.x, nonlinear);
+    //printf("eta y: %f, w_d_dot: %f, sin(theta e): %f", debug_msg.y, debug_msg.z, sin(theta_e));
     printf("\n");
 
 
