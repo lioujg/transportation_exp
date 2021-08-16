@@ -56,6 +56,10 @@ geometry_msgs::Point controller_force;
 float nonlinear, vd_dot_debug;
 geometry_msgs::Point debug_msg;
 geometry_msgs::Point path_plot;
+geometry_msgs::Point v_hat_plot, vd_plot, eta1_plot;
+geometry_msgs::Point omega_plot, omega_d_plot, eta2_plot;
+geometry_msgs::Point FL_plot;
+
 
 sensor_msgs::Imu imu_data;
 void payload_imu_callback(const sensor_msgs::Imu::ConstPtr& msg){
@@ -141,6 +145,19 @@ int main(int argc, char **argv){
   ros::Publisher debug_pub = nh.advertise<geometry_msgs::Point>("/debug_msg",2);
   ros::Publisher my_path_pub = nh.advertise<geometry_msgs::Point>("/path_plot",2);
   ros::Publisher ycc_path_pub = nh.advertise<nav_msgs::Path>("trajectory", 1, true);
+
+  // figure 12
+  ros::Publisher v_hat_pub = nh.advertise<geometry_msgs::Point>("/v_hat_plot_f12",2);
+  ros::Publisher vd_pub = nh.advertise<geometry_msgs::Point>("/vd_plot_f12",2);
+  ros::Publisher eta1_pub = nh.advertise<geometry_msgs::Point>("/eta1_plot_f12",2);
+
+  // figure 13
+  ros::Publisher omega_pub = nh.advertise<geometry_msgs::Point>("/omega_plot_f13",2);
+  ros::Publisher omega_d_pub = nh.advertise<geometry_msgs::Point>("/omega_d_plot_f13",2);
+  ros::Publisher eta2_pub = nh.advertise<geometry_msgs::Point>("/eta2_plot_f13",2);
+
+  // figure 14, 15
+  ros::Publisher FL_pub = nh.advertise<geometry_msgs::Point>("/FL_plot_f14_15",2);
 
   ros::Rate loop_rate(20.0);
   nh.setParam("/start",false);
@@ -298,6 +315,14 @@ int main(int argc, char **argv){
 
       eta_1 = (nonholoutput(0) - v_w_eta(0));
       eta_2 = (nonholoutput(1) - v_w_eta(2));
+
+      v_hat_plot.x = v_w_eta(0);
+      omega_plot.z = v_w_eta(2);
+      vd_plot.x = nonholoutput(0);
+      omega_d_plot.x = nonholoutput(1);
+      eta1_plot.x = eta_1;
+      eta2_plot.x = eta_2;
+
 /*
       if(eta_1 > 0.5){
         eta_1 = 0.5;
@@ -316,6 +341,8 @@ int main(int argc, char **argv){
              kw * eta_2 + sin(theta_e)/k2 + k4 * w_d_dot,   //ffy is close to zero.
              0;
 
+
+
       tmp(0) = tmp(0) / x_ratio;
       tmp(1) = tmp(1) / y_ratio;
       // bound_double(&tmp(0), x_upper, x_lower);
@@ -323,6 +350,9 @@ int main(int argc, char **argv){
 
       controller_body_x = tmp(0);
       controller_body_y = tmp(1);
+
+      FL_plot.x = controller_body_x;
+      FL_plot.y = controller_body_y;
 
       Eigen::Matrix3d M;
       M <<   mp,                     0,    0,
@@ -350,6 +380,20 @@ int main(int argc, char **argv){
     my_path_pub.publish(path_plot);
 
     ycc_path_pub.publish(ycc_path);
+
+    // plot
+    // figure 12
+    v_hat_pub.publish(v_hat_plot);
+    vd_pub.publish(vd_plot);
+    eta1_pub.publish(eta1_plot);
+
+    // figure 13
+    omega_pub.publish(omega_plot);
+    omega_d_pub.publish(omega_d_plot);
+    eta2_pub.publish(eta2_plot);
+
+    // figure 14, 15
+    FL_pub.publish(FL_plot);
 
     // std::cout << "payload_yaw " << payload_yaw << std::endl;
     printf("controller force x: %f, y: %f\n", controller_body_x, controller_body_y);
