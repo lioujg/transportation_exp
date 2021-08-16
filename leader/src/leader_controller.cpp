@@ -14,18 +14,26 @@
 #include <sensor_msgs/Imu.h>
 #include <nav_msgs/Odometry.h>
 #include <geometry_msgs/Pose2D.h>
+#include <nav_msgs/Path.h>
 
-#define PAYLOAD_LENGTH 1.58
+#define PAYLOAD_LENGTH 1.59
 #define normal
 #define PI 3.1415926
 
-double k1 = 1.0, k2 = 2.0, k3 = 1.0, kv = 2.5, kw = 7.0;
-double mp = 0.5, L = 1.0, g = 9.8, Izz = mp*L*L/12;
-
+double k1 = 3.0, k2 = 0.1, k3 = 1.0, k4 = 0.3, kv = 3.0, kw = 30.0;
+double mp = 0.5,  g = 9.8, Izz = mp * PAYLOAD_LENGTH * PAYLOAD_LENGTH / 12;
+double x_upper = 0.8;
+double x_lower = -1.0;
+double y_upper = 3;
+double y_lower = -6;
+double x_ratio = 2;
+double y_ratio = 2;
+double controller_body_x, controller_body_y;
 Eigen::Vector3d pose, vel;
 Eigen::Vector3d v_p;
 Eigen::Vector3d r_p_c2(-0.5 * PAYLOAD_LENGTH, 0, 0);
 double vir_x, vir_y, theta_r, vx, vy, ax, ay, jx, jy;
+double eta_1, eta_2;
 double last_w = 0.0;
 
 float payload_yaw;
@@ -45,7 +53,9 @@ Eigen::Vector3d w_;
 geometry_msgs::PoseStamped desired_pose;
 geometry_msgs::Point controller_force;
 
+float nonlinear, vd_dot_debug;
 geometry_msgs::Point debug_msg;
+geometry_msgs::Point path_plot;
 
 sensor_msgs::Imu imu_data;
 void payload_imu_callback(const sensor_msgs::Imu::ConstPtr& msg){
@@ -108,6 +118,12 @@ Eigen::Vector3d nonholonomic_output(double x_r, double y_r, double theta_r, doub
   return output;
 }
 
+void bound_double(double *val, double max, double min)
+{
+  if(*val > max) *val = max;
+  else if(*val < min) *val = min;
+}
+
 int main(int argc, char **argv){
 
   ros::init(argc, argv, "leader_controller");
@@ -122,80 +138,88 @@ int main(int argc, char **argv){
   // ros::Subscriber yaw_sub = nh.subscribe("/fucking_yaw",2,optitrack_payload_yaw_callback);
 
   ros::Publisher controller_force_pub = nh.advertise<geometry_msgs::Point>("/controller_force",2);
-
-  // figure 12
-  ros::Publisher v_hat_pub = nh.advertise<geometry_msgs::Point>("/v_hat_plot_f12",2);
-  ros::Publisher vd_pub = nh.advertise<geometry_msgs::Point>("/vd_plot_f12",2);
-  ros::Publisher eta1_pub = nh.advertise<geometry_msgs::Point>("/eta1_plot_f12",2);
-
-  // figure 13
-  ros::Publisher omega_pub = nh.advertise<geometry_msgs::Point>("/omega_plot_f13",2);
-  ros::Publisher omega_d_pub = nh.advertise<geometry_msgs::Point>("/omega_d_plot_f13",2);
-  ros::Publisher eta2_pub = nh.advertise<geometry_msgs::Point>("/eta2_plot_f13",2);
-
   ros::Publisher debug_pub = nh.advertise<geometry_msgs::Point>("/debug_msg",2);
+  ros::Publisher my_path_pub = nh.advertise<geometry_msgs::Point>("/path_plot",2);
+  ros::Publisher ycc_path_pub = nh.advertise<nav_msgs::Path>("trajectory", 1, true);
 
-  ros::Rate loop_rate(50.0);
+  ros::Rate loop_rate(20.0);
   nh.setParam("/start",false);
   // geometry_msgs::PoseStamped force;
+
+  // YCC QP path plot
+  ros::Time current_time;//, last_time;
+  current_time = ros::Time::now();
+  // last_time = ros::Time::now();
+  nav_msgs::Path ycc_path;
+  ycc_path.header.stamp = current_time;
+  ycc_path.header.frame_id = "map";
 
   //planning
   qptrajectory plan;
   path_def path;
   trajectory_profile p1,p2,p3,p4,p5,p6,p7,p8;
   std::vector<trajectory_profile> data;
-
-    p1.pos << 0,0,0;
+#if 0
+    p1.pos << -1.2,0.9,0;
     p1.vel << 0,0,0;
     p1.acc << 0,0,0;
     p1.yaw = 0;
 
-    p2.pos << 0.25,-0.4,0;
+    p2.pos << -0.3,0.9,0;
     p2.vel << 0,0,0;
     p2.acc << 0,0,0;
     p2.yaw = 0;
 
-    p3.pos << 1.2,0,0;
+    p3.pos << -0.4,0.45,0;
     p3.vel << 0,0,0;
     p3.acc << 0,0,0;
     p3.yaw = 0;
 
-    p4.pos << 0.25,0.5,0;
+    p4.pos << -0.6,0.45,0;
     p4.vel << 0,0,0;
     p4.acc << 0,0,0;
     p4.yaw = 0;
 
-    p5.pos << -0.4,-0.5,0;
+    p5.pos << -0.3,0.55,0;
     p5.vel << 0,0,0;
     p5.acc << 0,0,0;
     p5.yaw = 0;
+#endif
+	p1.pos << -1.2,  0.9, 0.0;
+	p1.vel << 0.0,  0.0, 0.0;
+	p1.acc << 0.0, -0.0, 0.0;
 
-    p6.pos << -1.2,0,0;
-    p6.vel << 0,0,0;
-    p6.acc << 0,0,0;
-    p6.yaw = 0;
+	p2.pos << -0.4,  0.9, 0.0;
+	p2.vel << 0.0,  0.0, 0.0;
+	p2.acc << 0.0, -0.0, 0.0;
 
-    p7.pos << -0.4,0.5,0;
-    p7.vel << 0,0,0;
-    p7.acc << 0,0,0;
-    p7.yaw = 0;
+	p3.pos << -0.15, 0.45, 0.0;
+	p3.vel << 0.0, 0.0, 0.0;
+	p3.acc << 0.0, 0.0, 0.0;
 
-    p8.pos << 0,0,0;
-    p8.vel << 0,0,0;
-    p8.acc << 0,0,0;
-    p8.yaw = 0;
+	p4.pos << -0.35, 0.45, 0.0;
+	p4.vel <<  0.0, 0.0, 0.0;
+	p4.acc <<  0.0, 0.0, 0.0;
+#if 0
+	p5.pos << -0.35, 0.4, 0.0;
+	p5.vel << 0.0, 0.0, 0.0;
+	p5.acc << 0.0, 0.0, 0.0;
 
-  path.push_back(segments(p1,p2,6.0));
-  path.push_back(segments(p2,p3,6.0));
-  path.push_back(segments(p3,p4,6.0));
-  path.push_back(segments(p4,p5,6.0));
-  path.push_back(segments(p5,p6,6.0));
-  path.push_back(segments(p6,p7,6.0));
-  path.push_back(segments(p7,p8,6.0));
-  data = plan.get_profile(path,path.size(),0.02);
+	p6.pos << -0.25, 0.4, 0.0;
+	p6.vel << 0.0,  0.0, 0.0;
+	p6.acc << 0.0,  0.0, 0.0;
+#endif
+  path.push_back(segments(p1,p2,7));
+  path.push_back(segments(p2,p3,5));
+  path.push_back(segments(p3,p4,3));
+  //path.push_back(segments(p4,p5,2));
+  //path.push_back(segments(p5,p6,3));
+  // path.push_back(segments(p6,p7,6.0));
+  // path.push_back(segments(p7,p8,6.0));
+  data = plan.get_profile(path,path.size(),0.05);
 
-  desired_pose.pose.position.x = 0.05;
-  desired_pose.pose.position.y = 0.0;
+  desired_pose.pose.position.x = -0.6;
+  desired_pose.pose.position.y = 0.6;
   desired_pose.pose.position.z = 0.6;
 
 
@@ -225,9 +249,18 @@ int main(int argc, char **argv){
       jx = data[tick].jerk(0);
       jy = data[tick].jerk(1);
 
-      debug_msg.x = data[tick].pos(0);
-      debug_msg.y = data[tick].vel(0);
-      debug_msg.z = data[tick].acc(0);
+      path_plot.x = vir_x;
+      path_plot.y = vir_y;
+
+      // YCC QP path plot
+      geometry_msgs::PoseStamped this_pose_stamped;
+      this_pose_stamped.pose.position.x = vir_x;
+      this_pose_stamped.pose.position.y = vir_y;
+      this_pose_stamped.pose.position.z = 2.5;
+
+      this_pose_stamped.header.stamp = current_time;
+      this_pose_stamped.header.frame_id = "map";
+      ycc_path.poses.push_back(this_pose_stamped);
 
       theta_r = atan2(data[tick].vel(1),data[tick].vel(0));   //(4)
 
@@ -263,15 +296,38 @@ int main(int argc, char **argv){
       Eigen::Vector3d tmp;
       Eigen::Vector3d cmd_;
 
+      eta_1 = (nonholoutput(0) - v_w_eta(0));
+      eta_2 = (nonholoutput(1) - v_w_eta(2));
+/*
+      if(eta_1 > 0.5){
+        eta_1 = 0.5;
+      }else if(eta_1 < -0.5){
+        eta_1 = -0.5;
+      }
+      if(x_e > 0.5){
+        x_e = 0.5;
+      }else if(x_e < -0.5){
+        x_e = -0.5;
+      }
+*/
+
       //(41)(42) separately
-      tmp << kv * (nonholoutput(0) - v_w_eta(0)) + x_e + nonlinearterm(0) + vd_dot,
-             kw * (nonholoutput(1) - v_w_eta(1)) + sin(theta_e)/k2 + w_d_dot,   //ffy is close to zero.
+      tmp << kv * eta_1 + x_e + nonlinearterm(0) + vd_dot,
+             kw * eta_2 + sin(theta_e)/k2 + k4 * w_d_dot,   //ffy is close to zero.
              0;
 
+      tmp(0) = tmp(0) / x_ratio;
+      tmp(1) = tmp(1) / y_ratio;
+      // bound_double(&tmp(0), x_upper, x_lower);
+      // bound_double(&tmp(1), y_upper, y_lower);
+
+      controller_body_x = tmp(0);
+      controller_body_y = tmp(1);
+
       Eigen::Matrix3d M;
-      M <<   mp,        0,    0,
-              0,  2*Izz/L,    0,
-              0,        0,    1;
+      M <<   mp,                     0,    0,
+              0,  2*Izz/PAYLOAD_LENGTH,    0,
+              0,                     0,    1;
 
       cmd_ = R_pl_B.transpose() * M * tmp;
 
@@ -279,17 +335,29 @@ int main(int argc, char **argv){
 
 
       controller_force.x = cmd_(0);   // + nonlinearterm(0);// + vd_dot ;
-      controller_force.y = cmd_(1);   // + w_d_dot;
+      controller_force.y = cmd_(1);   // bias	// + w_d_dot;
+
+      debug_msg.x = eta_1;
+      debug_msg.y = nonholoutput(1) - v_w_eta(2);
+      debug_msg.z = w_d_dot;
+      nonlinear = nonlinearterm(0);
+      vd_dot_debug = vd_dot;
 
     }
 
     controller_force_pub.publish(controller_force);
     debug_pub.publish(debug_msg);
+    my_path_pub.publish(path_plot);
+
+    ycc_path_pub.publish(ycc_path);
 
     // std::cout << "payload_yaw " << payload_yaw << std::endl;
-    printf("controller force x: %f, y: %f\n", controller_force.x, controller_force.y);
-    // std::cout << "controller force x " << controller_force.x;
-    // std::cout << "controller force y " << controller_force.y << std::endl;
+    printf("controller force x: %f, y: %f\n", controller_body_x, controller_body_y);
+    printf("controller force inertial x: %f, y: %f\n", controller_force.x, controller_force.y);
+    printf("vd_dot: %f, x_e: %f, eta x: %f, nonlinear: %f\n", vd_dot_debug, x_e, debug_msg.x, nonlinear);
+    printf("eta y: %f, w_d_dot: %f, sin(theta e): %f", debug_msg.y, debug_msg.z, sin(theta_e));
+    printf("\n");
+
 
     ros::spinOnce();
     loop_rate.sleep();
