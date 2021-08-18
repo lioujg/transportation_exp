@@ -127,12 +127,12 @@ int main(int argc, char **argv){
   ros::Subscriber imu_sub = nh.subscribe<sensor_msgs::Imu>("/imu/data_raw",4,imu_cb);
 #if (MAV_SELECT == LEADER)
   ros::Subscriber pos_sub = nh.subscribe<geometry_msgs::PoseStamped>("/vrpn_client_node/MAV1/pose",4,optitrack_cb);
-  ros::Subscriber odometry_sub = nh.subscribe<geometry_msgs::PoseStamped>("/vrpn_client_node/payload/pose",2,optitrack_payload_cb);
-  ros::Publisher payload_yaw_pub = nh.advertise<geometry_msgs::Pose2D>("optitrack_payload_yaw",2);
 
 #pragma message("I'm leader!")
 #elif (MAV_SELECT == FOLLOWER)
   ros::Subscriber pos_sub = nh.subscribe<geometry_msgs::PoseStamped>("/vrpn_client_node/MAV2/pose",4,optitrack_cb);
+  ros::Subscriber odometry_sub = nh.subscribe<geometry_msgs::PoseStamped>("/vrpn_client_node/payload/pose",2,optitrack_payload_cb);
+  ros::Publisher payload_yaw_pub = nh.advertise<geometry_msgs::Pose2D>("optitrack_payload_yaw",2);
 #pragma message("I'm follower!")
 #endif
   ros::Subscriber thrust_sub = nh.subscribe<geometry_msgs::WrenchStamped>("/rotor_all_ft",4,thrust_cb);
@@ -340,7 +340,7 @@ int main(int argc, char **argv){
         force.y = 0.0;
       }
       force_pub.publish(force);
-#if (MAV_SELECT == LEADER)
+#if (MAV_SELECT == FOLLOWER)
       payload_yaw_pub.publish(payload_data);
 #endif
     }
