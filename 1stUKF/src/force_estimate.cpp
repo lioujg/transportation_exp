@@ -17,6 +17,7 @@
 #include <cmath>
 #include <queue>
 #include <iostream>
+#include <geometry_msgs/Pose2D.h>
 
 #define l 0.25
 #define k 0.02
@@ -26,6 +27,8 @@ geometry_msgs::Point euler, euler_ref, force, torque, bias, angular_v, pose;
 sensor_msgs::Imu drone_imu;
 geometry_msgs::PoseStamped optitrack_data, drone_pose, last_pose;
 geometry_msgs::TwistStamped drone_vel;
+geometry_msgs::Pose2D payload_data;
+
 float dt = 0.02;
 int nan_count = 0;
 bool flag = false;
@@ -90,6 +93,21 @@ void optitrack_cb(const geometry_msgs::PoseStamped::ConstPtr &msg){
   last_pose.pose = optitrack_data.pose;
 
   //yaw
+  // double quaternion_w, quaternion_x, quaternion_y, quaternion_z;
+  // double payload_roll, payload_yaw, payload_pitch;
+  // quaternion_x = optitrack_data.pose.orientation.x;
+  // quaternion_y = optitrack_data.pose.orientation.y;
+  // quaternion_z = optitrack_data.pose.orientation.z;
+  // quaternion_w = optitrack_data.pose.orientation.w;
+  // tf::Quaternion quaternion(quaternion_x, quaternion_y, quaternion_z, quaternion_w);
+  // tf::Matrix3x3(quaternion).getRPY(payload_roll, payload_pitch, payload_yaw);
+  // ground_truth_yaw = payload_yaw * 180 / M_PI;
+}
+
+void optitrack_payload_cb(const geometry_msgs::PoseStamped::ConstPtr &msg){
+  optitrack_data = *msg;
+
+  //yaw
   double quaternion_w, quaternion_x, quaternion_y, quaternion_z;
   double payload_roll, payload_yaw, payload_pitch;
   quaternion_x = optitrack_data.pose.orientation.x;
@@ -99,6 +117,7 @@ void optitrack_cb(const geometry_msgs::PoseStamped::ConstPtr &msg){
   tf::Quaternion quaternion(quaternion_x, quaternion_y, quaternion_z, quaternion_w);
   tf::Matrix3x3(quaternion).getRPY(payload_roll, payload_pitch, payload_yaw);
   ground_truth_yaw = payload_yaw * 180 / M_PI;
+  payload_data.theta = ground_truth_yaw;
 }
 
 int main(int argc, char **argv){
@@ -108,6 +127,9 @@ int main(int argc, char **argv){
   ros::Subscriber imu_sub = nh.subscribe<sensor_msgs::Imu>("/imu/data_raw",4,imu_cb);
 #if (MAV_SELECT == LEADER)
   ros::Subscriber pos_sub = nh.subscribe<geometry_msgs::PoseStamped>("/vrpn_client_node/MAV1/pose",4,optitrack_cb);
+  ros::Subscriber odometry_sub = nh.subscribe<geometry_msgs::PoseStamped>("/vrpn_client_node/payload/pose",2,optitrack_payload_cb);
+  ros::Publisher payload_yaw_pub = nh.advertise<geometry_msgs::Pose2D>("optitrack_payload_yaw",2);
+
 #pragma message("I'm leader!")
 #elif (MAV_SELECT == FOLLOWER)
   ros::Subscriber pos_sub = nh.subscribe<geometry_msgs::PoseStamped>("/vrpn_client_node/MAV2/pose",4,optitrack_cb);
@@ -318,6 +340,9 @@ int main(int argc, char **argv){
         force.y = 0.0;
       }
       force_pub.publish(force);
+#if (MAV_SELECT == LEADER)
+      payload_yaw_pub.publish(payload_data);
+#endif
     }
 
 
